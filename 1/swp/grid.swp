@@ -1,0 +1,9 @@
+bsp2 profile 5 4
+[1 1]
+[-1 1]
+[-1 -1]
+[1 -1]
+
+circ sweep 60 2.3
+
+gcyl florus profile sweep

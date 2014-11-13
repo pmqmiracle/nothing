@@ -1,0 +1,1 @@
+g++ main.cpp vecmath/*.cpp -I ./include/vecmath/ -lglut -lGL -lGLU -o test
