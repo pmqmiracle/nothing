@@ -12,6 +12,7 @@ void Mesh::load( const char* filename )
 	currentVertices = bindVertices;
 }
 
+
 void Mesh::draw()
 {
 	// Since these meshes don't have normals
