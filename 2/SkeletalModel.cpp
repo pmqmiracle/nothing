@@ -3,7 +3,6 @@
 #include <FL/Fl.H>
 
 using namespace std;
-
 #define MAX_BUFFER 1024
 
 void SkeletalModel::load(const char *skeletonFile, const char *meshFile, const char *attachmentsFile)
