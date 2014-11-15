@@ -29,7 +29,6 @@ int main( int argc, char* argv[] )
              << argv[ 0 ] << " data/cheb" << endl;
 		return -1;
 	}
-
     // Initialize the controls.  You have to define a ModelerControl
     // for every variable name that you define in the enumeration.
 
