@@ -4,6 +4,10 @@
 
 using namespace std;
 
+//读入obj文件
+//vertices个顶点一共vertices行
+//只有顶点v和三角面f
+//法向量n需要on-the-fly计算
 void Mesh::load( const char* filename )
 {
 	// 2.1.1. load() should populate bindVertices, currentVertices, and faces
@@ -39,7 +43,8 @@ void Mesh::load( const char* filename )
 	currentVertices = bindVertices;
 }
 
-
+//画带有人物模型的人 都是绘制当前currentVertices的triangles
+//因为这是per-triangle一个法向量 所以看起来是faceted的
 void Mesh::draw()
 {
 	// Since these meshes don't have normals
@@ -56,6 +61,7 @@ void Mesh::draw()
     {
         Vector3f v1_v0 = currentVertices[faces[k][1]]-currentVertices[faces[k][0]];
         Vector3f v2_v0 = currentVertices[faces[k][2]]-currentVertices[faces[k][0]];
+        //计算法向量
         Vector3f triangle_normal = Vector3f::cross(v1_v0,v2_v0).normalized();
         //face_normals.push_back(triangle_normal);
 
@@ -88,6 +94,9 @@ void Mesh::draw()
     */
 }
 
+//读入.attach文件,描述每个顶点与17(numjoints-1)个joints的权重关系,跟root都是weight=0
+//有vertices个顶点在obj文件
+//所以也有vertices个attachment关系权重
 void Mesh::loadAttachments( const char* filename, int numJoints )
 {
 	// 2.2. Implement this method to load the per-vertex attachment weights

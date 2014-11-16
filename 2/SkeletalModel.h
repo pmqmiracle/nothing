@@ -94,11 +94,10 @@ private:
     MatrixStack currentJoint2WorldTransform;
 
     //helper function
-    //void computeBindWorldToJointTransformsHelper(Joint *root, MatrixStack& mm);
     void computeBindWorldToJointTransformsHelper(Joint *root);
     //helper function
-    //void updateCurrentJointToWorldTransformsHelper(Joint *root, MatrixStack& mm);
     void updateCurrentJointToWorldTransformsHelper(Joint *root);
+    //void updateCurrentJointToWorldTransformsHelper(Joint *root, MatrixStack& mm);
 };
 
 #endif

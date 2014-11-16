@@ -41,12 +41,13 @@ int main( int argc, char* argv[] )
 
 	const int NUM_JOINTS = 18;
 
-    // 每个control都有X Y Z方向
+    // 每个control都有X Y Z方向,18*3个控制点
 	ModelerControl controls[ NUM_JOINTS*3 ];
 	string jointNames[NUM_JOINTS]={ "Root", "Chest", "Waist", "Neck", "Right hip", "Right leg",
                                     "Right knee", "Right foot", "Left hip", "Left leg", "Left knee", "Left foot",
                                     "Right collarbone", "Right shoulder", "Right elbow",
                                     "Left collarbone", "Left shoulder", "Left elbow" };
+    //为咩个joint设置可以rotate的弧度角和stepsize
 	for(unsigned int i = 0; i < NUM_JOINTS; i++)
 	{
 		char buf[255];
@@ -58,12 +59,9 @@ int main( int argc, char* argv[] )
 		controls[i*3+2] = ModelerControl(buf, -M_PI, M_PI, 0.1f, 0);
 	}
 
-    ModelerApplication::Instance()->Init
-	(
-		argc, argv,
-		controls,
-		NUM_JOINTS*3
-	);
+    // 设置FLTK的UI
+    // Create the FLTK user interface
+    ModelerApplication::Instance()->Init(argc, argv, controls, NUM_JOINTS*3);
 
     // Run the modeler application.
     int ret = ModelerApplication::Instance()->Run();

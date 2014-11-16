@@ -11,13 +11,11 @@
 
 // CLASS ModelerControl METHODS
 
-ModelerControl::ModelerControl():m_minimum(0.0f), m_maximum(1.0f), m_stepsize(0.1f),
-m_value(0.0f)
+ModelerControl::ModelerControl():m_minimum(0.0f), m_maximum(1.0f), m_stepsize(0.1f), m_value(0.0f)
 {
 }
 
-ModelerControl::ModelerControl(const char *name, float minimum,
-			       float maximum, float stepsize, float value)
+ModelerControl::ModelerControl(const char *name, float minimum, float maximum, float stepsize, float value)
 {
     SetVals(name, minimum, maximum, stepsize, value);
 }
@@ -30,13 +28,11 @@ ModelerControl::ModelerControl(const ModelerControl & o)
 ModelerControl & ModelerControl::operator=(const ModelerControl & o)
 {
     if (this != &o)
-	SetVals(o.m_name, o.m_minimum, o.m_maximum, o.m_stepsize,
-		o.m_value);
+	SetVals(o.m_name, o.m_minimum, o.m_maximum, o.m_stepsize, o.m_value);
     return *this;
 }
 
-void ModelerControl::SetVals(const char *name, float minimum,
-			     float maximum, float stepsize, float value)
+void ModelerControl::SetVals(const char *name, float minimum, float maximum, float stepsize, float value)
 {
     strncpy(m_name, name, 128);
     m_minimum = minimum;
@@ -89,28 +85,28 @@ void ModelerApplication::Init( int argc, char* argv[],
     m_ui->m_controlsPack->begin();
     // For each control, add appropriate objects to the user interface
     for (i = 0; i < m_numControls; i++) {
-	// Add the entry to the selection box
-	m_ui->m_controlsBrowser->add(controls[i].m_name);
+        // Add the entry to the selection box
+        m_ui->m_controlsBrowser->add(controls[i].m_name);
 
-	// Add the label (but make it invisible for now)
-	Fl_Box *box =
-	    new Fl_Box(0, 0, packWidth, textHeight, controls[i].m_name);
-	box->labelsize(10);
-	box->hide();
-	box->box(FL_FLAT_BOX);	// otherwise, Fl_Scroll messes up (ehsu)
-	m_controlLabelBoxes[i] = box;
+        // Add the label (but make it invisible for now)
+        Fl_Box *box = new Fl_Box(0, 0, packWidth, textHeight, controls[i].m_name);
+        box->labelsize(10);
+        //miracle
+        //box->hide();
+        box->box(FL_FLAT_BOX);	// otherwise, Fl_Scroll messes up (ehsu)
+        m_controlLabelBoxes[i] = box;
 
-	// Add the slider (but make it invisible for now)
-	Fl_Value_Slider *slider =
-	    new Fl_Value_Slider(0, 0, packWidth, sliderHeight, 0);
-	slider->type(1);
-	slider->range(controls[i].m_minimum, controls[i].m_maximum);
-	slider->step(controls[i].m_stepsize);
-	slider->value(controls[i].m_value);
-	slider->hide();
-	m_controlValueSliders[i] = slider;
-	slider->
-	    callback((Fl_Callback *) ModelerApplication::SliderCallback);
+        // Add the slider (but make it invisible for now)
+        Fl_Value_Slider *slider =
+            new Fl_Value_Slider(0, 0, packWidth, sliderHeight, 0);
+        slider->type(1);
+        slider->range(controls[i].m_minimum, controls[i].m_maximum);
+        slider->step(controls[i].m_stepsize);
+        slider->value(controls[i].m_value);
+        //miracle
+        //slider->hide();
+        m_controlValueSliders[i] = slider;
+        slider->callback((Fl_Callback *) ModelerApplication::SliderCallback);
     }
     m_ui->m_controlsPack->end();
 

@@ -11,7 +11,6 @@ struct Joint
 
 	// This matrix transforms world space into joint space for the initial ("bind") configuration of the joints.
 	Matrix4f bindWorldToJointTransform;
-
 	// This matrix maps joint space into world space for the *current* configuration of the joints.
 	Matrix4f currentJointToWorldTransform;
 };

@@ -67,6 +67,11 @@ void SkeletalModel::loadSkeleton( const char* filename )
     */
 
 	// Load the skeleton from file here.
+    // .skel文件
+    // 18个joints
+    // 没一行有四个数字,前3个是float, 是当前joint相对于parent的translation,第四个是int,是当前joint的parent的index
+    // root的index是-1
+    // 其他的joint[0,17]
     ifstream infile(filename);
     char buffer[MAX_BUFFER];
     float x,y,z;
@@ -89,6 +94,7 @@ void SkeletalModel::loadSkeleton( const char* filename )
     }
 }
 
+//在火柴人模式下:在每个joint点上画一个小球,递归DFS
 void SkeletalModel::drawJointsHelper(Joint *jay)
 {
     m_matrixStack.push(jay->transform);
@@ -115,19 +121,15 @@ void SkeletalModel::drawJoints( )
     SkeletalModel::drawJointsHelper(m_rootJoint);
 }
 
+//在火柴人模式下,给joints之间画肌肉=w= 就是box
 void SkeletalModel::drawSkeletonHelper(Joint *jay)
 {
-    Matrix4f translate = Matrix4f::translation(0,0,0.5);
     m_matrixStack.push(jay->transform);
 
-
-
-
+    Matrix4f translate = Matrix4f::translation(0,0,0.5);
     for(int i = 0;i < jay->children.size();++i)
     {
         Joint *jolin = jay->children[i];
-
-
 
         Vector3f z = jolin->transform.getCol(3).xyz();
         float length = z.abs();
@@ -146,7 +148,9 @@ void SkeletalModel::drawSkeletonHelper(Joint *jay)
         m_matrixStack.push(scale);
         m_matrixStack.push(translate);
         glLoadMatrixf(m_matrixStack.top());
+
         glutSolidCube(1.0f);
+
         m_matrixStack.pop();
         m_matrixStack.pop();
         m_matrixStack.pop();
@@ -162,6 +166,7 @@ void SkeletalModel::drawSkeleton( )
     SkeletalModel::drawSkeletonHelper(m_rootJoint);
 }
 
+//在FLTK的UI模式下可以设置rotate参数
 void SkeletalModel::setJointTransform(int jointIndex, float rX, float rY, float rZ)
 {
 	 // Set the rotation part of the joint's transformation matrix based on the passed in Euler angles.

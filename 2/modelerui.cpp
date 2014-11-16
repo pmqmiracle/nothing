@@ -10,24 +10,23 @@ void ModelerUserInterface::cb_m_controlsWindow(Fl_Double_Window* o, void* v) {
 }
 
 inline void ModelerUserInterface::cb_Save_i(Fl_Menu_*, void*) {
-  char *filename = NULL;
-filename = fl_file_chooser("Save BMP File", "*.bmp", NULL);
-if (filename)
-{
-	int x = m_modelerView->x();
-	int y = m_modelerView->y();
-	int w = m_modelerView->w();
-	int h = m_modelerView->h();
+    char *filename = NULL;
+    filename = fl_file_chooser("Save BMP File", "*.bmp", NULL);
+    if (filename)
+    {
+        int x = m_modelerView->x();
+        int y = m_modelerView->y();
+        int w = m_modelerView->w();
+        int h = m_modelerView->h();
 
-	m_modelerWindow->show();
-//	do {Sleep(10); }
-//	while (!m_modelerWindow->shown());
-//	m_modelerView->draw();
-	m_modelerView->make_current();
-m_modelerView->draw();
-	
-		
-	unsigned char *imageBuffer = new unsigned char[3*w*h];
+        m_modelerWindow->show();
+//      do {Sleep(10); }
+//      while (!m_modelerWindow->shown());
+//      m_modelerView->draw();
+        m_modelerView->make_current();
+        m_modelerView->draw();
+
+        unsigned char *imageBuffer = new unsigned char[3*w*h];
 
         // Tell openGL to read from the front buffer when capturing
         // out paint strokes
@@ -35,15 +34,14 @@ m_modelerView->draw();
 
         glPixelStorei( GL_PACK_ALIGNMENT, 1 );
         glPixelStorei( GL_PACK_ROW_LENGTH, w );
-        
-        glReadPixels( 0, 0, w, h, 
-                GL_RGB, GL_UNSIGNED_BYTE, 
-                imageBuffer );
 
+        glReadPixels( 0, 0, w, h,
+                    GL_RGB, GL_UNSIGNED_BYTE,
+                    imageBuffer );
 
-	writeBMP(filename, w,h, imageBuffer);
+        writeBMP(filename, w,h, imageBuffer);
 
-	delete [] imageBuffer;
+        delete [] imageBuffer;
 };
 }
 void ModelerUserInterface::cb_Save(Fl_Menu_* o, void* v) {
@@ -51,7 +49,7 @@ void ModelerUserInterface::cb_Save(Fl_Menu_* o, void* v) {
 }
 
 inline void ModelerUserInterface::cb_Open_i(Fl_Menu_*, void*) {
-  char *filename = NULL;
+    char *filename = NULL;
 	filename = fl_file_chooser("Open .pos File", "*.pos", NULL);
 
 	if (filename)
@@ -61,21 +59,22 @@ inline void ModelerUserInterface::cb_Open_i(Fl_Menu_*, void*) {
 			std::cerr << "Error: couldn't read position file " << filename << std::endl;
 			return;
 		}
-		
-		int controlNum; 
+
+		int controlNum;
 		float value;
 		while( ifs >> controlNum >> value )
 		{
 			if( controlNum >= ModelerApplication::Instance()->GetNumControls() ) {
 				break;
 			}
-			
+
 			ModelerApplication::Instance()->SetControlValue(controlNum, value);
 		}
 
 		m_modelerView->redraw();
 	};
 }
+
 void ModelerUserInterface::cb_Open(Fl_Menu_* o, void* v) {
   ((ModelerUserInterface*)(o->parent()->user_data()))->cb_Open_i(o,v);
 }
@@ -107,8 +106,9 @@ void ModelerUserInterface::cb_Save1(Fl_Menu_* o, void* v) {
 
 inline void ModelerUserInterface::cb_Exit_i(Fl_Menu_*, void*) {
   m_controlsWindow->hide();
-m_modelerWindow->hide();
+  m_modelerWindow->hide();
 }
+
 void ModelerUserInterface::cb_Exit(Fl_Menu_* o, void* v) {
   ((ModelerUserInterface*)(o->parent()->user_data()))->cb_Exit_i(o,v);
 }
@@ -116,6 +116,7 @@ void ModelerUserInterface::cb_Exit(Fl_Menu_* o, void* v) {
 inline void ModelerUserInterface::cb_m_controlsAnimOnMenu_i(Fl_Menu_*, void*) {
   ModelerApplication::Instance()->m_animating = (m_controlsAnimOnMenu->value() == 0) ? false : true;
 }
+
 void ModelerUserInterface::cb_m_controlsAnimOnMenu(Fl_Menu_* o, void* v) {
   ((ModelerUserInterface*)(o->parent()->user_data()))->cb_m_controlsAnimOnMenu_i(o,v);
 }
@@ -132,6 +133,7 @@ Fl_Menu_Item ModelerUserInterface::menu_m_controlsMenuBar[] = {
  {0,0,0,0,0,0,0,0,0},
  {0,0,0,0,0,0,0,0,0}
 };
+
 Fl_Menu_Item* ModelerUserInterface::m_controlsAnimOnMenu = ModelerUserInterface::menu_m_controlsMenuBar + 7;
 
 inline void ModelerUserInterface::cb_m_controlsBrowser_i(Fl_Browser*, void*) {
@@ -140,8 +142,9 @@ inline void ModelerUserInterface::cb_m_controlsBrowser_i(Fl_Browser*, void*) {
 		ModelerApplication::Instance()->ShowControl(i);
 	else
 		ModelerApplication::Instance()->HideControl(i);
-};
+  };
 }
+
 void ModelerUserInterface::cb_m_controlsBrowser(Fl_Browser* o, void* v) {
   ((ModelerUserInterface*)(o->parent()->user_data()))->cb_m_controlsBrowser_i(o,v);
 }
@@ -200,6 +203,6 @@ ModelerUserInterface::ModelerUserInterface() {
 
 void ModelerUserInterface::show() {
   m_controlsWindow->show();
-m_modelerWindow->show();
-m_modelerView->show();
+  m_modelerWindow->show();
+  m_modelerView->show();
 }
