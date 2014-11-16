@@ -27,7 +27,7 @@ void SkeletalModel::draw(Matrix4f cameraMatrix, bool skeletonVisible)
 		drawJoints();
 		drawSkeleton();
 	}
-	else
+	else//有人物model可以看到
 	{
 		// Clear out any weird matrix we may have been using for drawing the bones and revert to the camera matrix.
 		glLoadMatrixf(m_matrixStack.top());
@@ -119,11 +119,16 @@ void SkeletalModel::drawSkeletonHelper(Joint *jay)
 {
     Matrix4f translate = Matrix4f::translation(0,0,0.5);
     m_matrixStack.push(jay->transform);
-    //Matrix4f scale;
-    //Matrix4f rotate;
+
+
+
+
     for(int i = 0;i < jay->children.size();++i)
     {
         Joint *jolin = jay->children[i];
+
+
+
         Vector3f z = jolin->transform.getCol(3).xyz();
         float length = z.abs();
 
@@ -165,19 +170,17 @@ void SkeletalModel::setJointTransform(int jointIndex, float rX, float rY, float 
      joint->transform.setSubmatrix3x3(0, 0, rotation.getSubmatrix3x3(0, 0));
 }
 
-void SkeletalModel::computeBindWorldToJointTransformsHelper(Joint *jay, MatrixStack &mm)
+void SkeletalModel::computeBindWorldToJointTransformsHelper(Joint *jay)
 {
-    //bindWorld2JointTransform.push(jay->transform);
-    mm.push(jay->transform);
-    //jay->bindWorldToJointTransform = bindWorld2JointTransform.top().inverse();
-    jay->bindWorldToJointTransform = mm.top().inverse();
+    bindWorld2JointTransform.push(jay->transform);
+    jay->bindWorldToJointTransform = bindWorld2JointTransform.top().inverse();
     for(int i = 0;i < jay->children.size();++i)
     {
-        computeBindWorldToJointTransformsHelper(jay->children[i], mm);
+        computeBindWorldToJointTransformsHelper(jay->children[i]);
     }
-    //bindWorld2JointTransform.pop();
-    mm.pop();
+    bindWorld2JointTransform.pop();
 }
+
 void SkeletalModel::computeBindWorldToJointTransforms()
 {
 	// 2.3.1. Implement this method to compute a per-joint transform from
@@ -188,24 +191,21 @@ void SkeletalModel::computeBindWorldToJointTransforms()
 	//
 	// This method should update each joint's bindWorldToJointTransform.
 	// You will need to add a recursive helper function to traverse the joint hierarchy.
-    MatrixStack m = MatrixStack();
-    SkeletalModel::computeBindWorldToJointTransformsHelper(m_rootJoint, m);
+
+    SkeletalModel::computeBindWorldToJointTransformsHelper(m_rootJoint);
 }
 
-void SkeletalModel::updateCurrentJointToWorldTransformsHelper(Joint *jay, MatrixStack & mm)
+void SkeletalModel::updateCurrentJointToWorldTransformsHelper(Joint *jay)
 {
-    //currentJoint2WorldTransform.push(jay->transform);
-    mm.push(jay->transform);
-    //jay->currentJointToWorldTransform = currentJoint2WorldTransform.top();
-    jay->currentJointToWorldTransform = mm.top();
+    currentJoint2WorldTransform.push(jay->transform);
+    jay->currentJointToWorldTransform = currentJoint2WorldTransform.top();
     for(int i = 0;i < jay->children.size();++i)
     {
-        updateCurrentJointToWorldTransformsHelper(jay->children[i], mm);
+        updateCurrentJointToWorldTransformsHelper(jay->children[i]);
     }
-    //currentJoint2WorldTransform.pop();
-    mm.pop();
-
+    currentJoint2WorldTransform.pop();
 }
+
 void SkeletalModel::updateCurrentJointToWorldTransforms()
 {
 	// 2.3.2. Implement this method to compute a per-joint transform from
@@ -216,8 +216,8 @@ void SkeletalModel::updateCurrentJointToWorldTransforms()
 	//
 	// This method should update each joint's bindWorldToJointTransform.? wrong?
 	// You will need to add a recursive helper function to traverse the joint hierarchy.
-    MatrixStack m = MatrixStack();
-    SkeletalModel::updateCurrentJointToWorldTransformsHelper(m_rootJoint, m);
+
+    SkeletalModel::updateCurrentJointToWorldTransformsHelper(m_rootJoint);
 }
 
 void SkeletalModel::updateMesh()
@@ -229,12 +229,15 @@ void SkeletalModel::updateMesh()
 	// and the current joint --> world transforms.
 
     //need ??
-    m_matrixStack.clear();
+    //m_matrixStack.clear();
+    //在void SkeletalModel::draw(Matrix4f cameraMatrix, bool skeletonVisible)
+    //里面已经clear过恢复到camera
     for(int i = 0;i < m_mesh.bindVertices.size();++i)
     {
         vector<float> weights_per_vertex = m_mesh.attachments[i];
         //Vector4f sum(0,0,0,0);
         Vector3f sum(0,0,0);
+        //每个网格的顶点,都有记录它与17(与root都为0)个joint的链接权重weights
         for(int j = 1;j < m_joints.size();++j)
         {
             if(weights_per_vertex[j-1] == 0)

@@ -80,6 +80,7 @@ private:
 
 	Mesh m_mesh;
 
+    //给画骨架火柴人用的matrixstack
 	MatrixStack m_matrixStack;
 
     // helper function
@@ -88,13 +89,16 @@ private:
     void drawSkeletonHelper(Joint *root);
 
     //helpder matrixstack
+    //给画模型mesh的人模型用的matrixstack
     MatrixStack bindWorld2JointTransform;
     MatrixStack currentJoint2WorldTransform;
 
     //helper function
-    void computeBindWorldToJointTransformsHelper(Joint *root, MatrixStack& mm);
+    //void computeBindWorldToJointTransformsHelper(Joint *root, MatrixStack& mm);
+    void computeBindWorldToJointTransformsHelper(Joint *root);
     //helper function
-    void updateCurrentJointToWorldTransformsHelper(Joint *root, MatrixStack& mm);
+    //void updateCurrentJointToWorldTransformsHelper(Joint *root, MatrixStack& mm);
+    void updateCurrentJointToWorldTransformsHelper(Joint *root);
 };
 
 #endif
