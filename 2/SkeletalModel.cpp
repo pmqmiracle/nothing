@@ -165,7 +165,19 @@ void SkeletalModel::setJointTransform(int jointIndex, float rX, float rY, float 
      joint->transform.setSubmatrix3x3(0, 0, rotation.getSubmatrix3x3(0, 0));
 }
 
-
+void SkeletalModel::computeBindWorldToJointTransformsHelper(Joint *jay, MatrixStack &mm)
+{
+    //bindWorld2JointTransform.push(jay->transform);
+    mm.push(jay->transform);
+    //jay->bindWorldToJointTransform = bindWorld2JointTransform.top().inverse();
+    jay->bindWorldToJointTransform = mm.top().inverse();
+    for(int i = 0;i < jay->children.size();++i)
+    {
+        computeBindWorldToJointTransformsHelper(jay->children[i], mm);
+    }
+    //bindWorld2JointTransform.pop();
+    mm.pop();
+}
 void SkeletalModel::computeBindWorldToJointTransforms()
 {
 	// 2.3.1. Implement this method to compute a per-joint transform from
@@ -176,8 +188,24 @@ void SkeletalModel::computeBindWorldToJointTransforms()
 	//
 	// This method should update each joint's bindWorldToJointTransform.
 	// You will need to add a recursive helper function to traverse the joint hierarchy.
+    MatrixStack m = MatrixStack();
+    SkeletalModel::computeBindWorldToJointTransformsHelper(m_rootJoint, m);
 }
 
+void SkeletalModel::updateCurrentJointToWorldTransformsHelper(Joint *jay, MatrixStack & mm)
+{
+    //currentJoint2WorldTransform.push(jay->transform);
+    mm.push(jay->transform);
+    //jay->currentJointToWorldTransform = currentJoint2WorldTransform.top();
+    jay->currentJointToWorldTransform = mm.top();
+    for(int i = 0;i < jay->children.size();++i)
+    {
+        updateCurrentJointToWorldTransformsHelper(jay->children[i], mm);
+    }
+    //currentJoint2WorldTransform.pop();
+    mm.pop();
+
+}
 void SkeletalModel::updateCurrentJointToWorldTransforms()
 {
 	// 2.3.2. Implement this method to compute a per-joint transform from
@@ -186,8 +214,10 @@ void SkeletalModel::updateCurrentJointToWorldTransforms()
 	// The current pose is defined by the rotations you've applied to the
 	// joints and hence needs to be *updated* every time the joint angles change.
 	//
-	// This method should update each joint's bindWorldToJointTransform.
+	// This method should update each joint's bindWorldToJointTransform.? wrong?
 	// You will need to add a recursive helper function to traverse the joint hierarchy.
+    MatrixStack m = MatrixStack();
+    SkeletalModel::updateCurrentJointToWorldTransformsHelper(m_rootJoint, m);
 }
 
 void SkeletalModel::updateMesh()
@@ -197,5 +227,44 @@ void SkeletalModel::updateMesh()
 	// given the current state of the skeleton.
 	// You will need both the bind pose world --> joint transforms.
 	// and the current joint --> world transforms.
+
+    //need ??
+    m_matrixStack.clear();
+    for(int i = 0;i < m_mesh.bindVertices.size();++i)
+    {
+        vector<float> weights_per_vertex = m_mesh.attachments[i];
+        //Vector4f sum(0,0,0,0);
+        Vector3f sum(0,0,0);
+        for(int j = 1;j < m_joints.size();++j)
+        {
+            if(weights_per_vertex[j-1] == 0)
+                continue;
+            //miracle: linear algerbra
+            Vector3f trans =  (m_joints[j]->currentJointToWorldTransform
+                   * m_joints[j]->bindWorldToJointTransform * Vector4f(m_mesh.bindVertices[i],1)).homogenized().xyz();
+            sum = sum + weights_per_vertex[j-1] * trans;
+        }
+        m_mesh.currentVertices[i] = sum;
+    }
+
+    //Git
+    /*
+    m_matrixStack.clear();
+    for (unsigned i = 0; i < m_mesh.bindVertices.size(); i++) {
+        Vector4f bind = Vector4f(m_mesh.bindVertices[i], 1);
+        vector<float> weights = m_mesh.attachments[i];
+        Vector3f sum = Vector3f(0, 0, 0);
+        for (unsigned j = 0; j < m_joints.size() - 1; j++) {
+            float weight = weights[j];
+            if (weight == 0) {
+                continue;
+            }
+            Joint* joint = m_joints[j+1];
+            Vector3f transformed = (joint->currentJointToWorldTransform * (joint->bindWorldToJointTransform * bind)).homogenized().xyz();
+            sum = sum + weight * transformed;
+        }
+        m_mesh.currentVertices[i] = sum;
+    }
+    */
 }
 

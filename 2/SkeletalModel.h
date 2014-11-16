@@ -86,6 +86,15 @@ private:
     void drawJointsHelper(Joint *root);
     // helper function
     void drawSkeletonHelper(Joint *root);
+
+    //helpder matrixstack
+    MatrixStack bindWorld2JointTransform;
+    MatrixStack currentJoint2WorldTransform;
+
+    //helper function
+    void computeBindWorldToJointTransformsHelper(Joint *root, MatrixStack& mm);
+    //helper function
+    void updateCurrentJointToWorldTransformsHelper(Joint *root, MatrixStack& mm);
 };
 
 #endif

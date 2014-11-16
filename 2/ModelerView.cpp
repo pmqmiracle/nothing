@@ -168,7 +168,13 @@ void ModelerView::draw()
     // Note that the lighting is applied *before* applying the camera
     // transform.  This is so the light appeared fixed on the camera.
     //GLfloat Lt0diff[] = {1.0,1.0,1.0,1.0};
+    //miracle : color
+    //yellow
     GLfloat Lt0diff[] = {1.0,1.0,0.0,1.0};
+    //purple
+    //GLfloat Lt0diff[] = {1.0,0.0,1.0,1.0};
+    //blue
+    //GLfloat Lt0diff[] = {0.0,0.0,1.0,1.0};
     GLfloat Lt0pos[] = {3.0,3.0,5.0,1.0};
     glLightfv(GL_LIGHT0, GL_DIFFUSE, Lt0diff);
     glLightfv(GL_LIGHT0, GL_POSITION, Lt0pos);
