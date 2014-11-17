@@ -13,6 +13,7 @@
 
 #include "TimeStepper.hpp"
 #include "simpleSystem.h"
+#include "pendulumSystem.h"
 
 using namespace std;
 
@@ -29,7 +30,12 @@ namespace
       {
         // seed the random number generator with the current time
         srand( time( NULL ) );
-        system = new SimpleSystem();
+        //test simple system
+        //system = new SimpleSystem();
+
+        //test pendulum system
+        system = new PendulumSystem(5);
+
         if(argc == 1)
         {
             cout << "Default TimeStepper is RK" << endl;
