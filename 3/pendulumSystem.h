@@ -11,11 +11,11 @@ class PendulumSystem: public ParticleSystem
 {
 public:
 	PendulumSystem(int numParticles);
-	
+
 	vector<Vector3f> evalF(vector<Vector3f> state);
-	
+
 	void draw();
-	
+
 };
 
 #endif

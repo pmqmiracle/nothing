@@ -1,5 +1,4 @@
 #include "camera.h"
-
 #include <iostream>
 #include <GL/glu.h>
 
@@ -66,7 +65,7 @@ void Camera::MouseClick(Button button, int x, int y)
         break;
     case RIGHT:
         mCurrentDistance = mStartDistance;
-        break;        
+        break;
     default:
         break;
     }
@@ -96,7 +95,7 @@ void Camera::MouseRelease(int x, int y)
     mStartRot = mCurrentRot;
     mStartCenter = mCurrentCenter;
     mStartDistance = mCurrentDistance;
-    
+
     mButtonState = NONE;
 }
 
@@ -107,17 +106,17 @@ void Camera::ArcBallRotation(int x, int y)
     float scale;
     float sl, el;
     float dotprod;
-    
+
     // find vectors from center of window
     sx = mStartClick[0] - ( mDimensions[0] / 2.f );
     sy = mStartClick[1] - ( mDimensions[1] / 2.f );
     ex = x - ( mDimensions[0] / 2.f );
     ey = y - ( mDimensions[1] / 2.f );
-    
+
     // invert y coordinates (raster versus device coordinates)
     sy = -sy;
     ey = -ey;
-    
+
     // scale by inverse of size of window and magical sqrt2 factor
     if (mDimensions[0] > mDimensions[1]) {
         scale = (float) mDimensions[1];
@@ -126,7 +125,7 @@ void Camera::ArcBallRotation(int x, int y)
     }
 
     scale = 1.f / scale;
-    
+
     sx *= scale;
     sy *= scale;
     ex *= scale;
@@ -135,7 +134,7 @@ void Camera::ArcBallRotation(int x, int y)
     // project points to unit circle
     sl = hypot(sx, sy);
     el = hypot(ex, ey);
-    
+
     if (sl > 1.f) {
         sx /= sl;
         sy /= sl;
@@ -146,13 +145,13 @@ void Camera::ArcBallRotation(int x, int y)
         ey /= el;
         el = 1.f;
     }
-    
+
     // project up to unit sphere - find Z coordinate
     sz = sqrt(1.0f - sl * sl);
     ez = sqrt(1.0f - el * el);
-    
+
     // rotate (sx,sy,sz) into (ex,ey,ez)
-    
+
     // compute angle from dot-product of unit vectors (and double it).
     // compute axis from cross product.
     dotprod = sx * ex + sy * ey + sz * ez;
@@ -161,7 +160,7 @@ void Camera::ArcBallRotation(int x, int y)
     {
         Vector3f axis( sy * ez - ey * sz, sz * ex - ez * sx, sx * ey - ex * sy );
         axis.normalize();
-        
+
         float angle = 2.0f * acos( dotprod );
 
         mCurrentRot = Matrix4f::rotation( axis, angle );
@@ -233,7 +232,7 @@ Matrix4f Camera::viewMatrix() const
 		Vector3f::ZERO,
 		Vector3f::UP
 	);
-    
+
 	return lookAt * mCurrentRot * Matrix4f::translation( -mCurrentCenter );
 
 	/*
@@ -245,7 +244,7 @@ Matrix4f Camera::viewMatrix() const
     glMultMatrixf(mCurrentRot);
 
     //translate object to center
-    glTranslatef(-mCurrentCenter[0],-mCurrentCenter[1],-mCurrentCenter[2]);    
+    glTranslatef(-mCurrentCenter[0],-mCurrentCenter[1],-mCurrentCenter[2]);
 	*/
 }
 
@@ -257,5 +256,5 @@ void Camera::DistanceZoom(int x, int y)
     float delta = float(cy-sy)/mViewport[3];
 
     // exponential zoom factor
-    mCurrentDistance = mStartDistance * exp(delta);  
+    mCurrentDistance = mStartDistance * exp(delta);
 }

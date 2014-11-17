@@ -4,10 +4,10 @@
 PendulumSystem::PendulumSystem(int numParticles):ParticleSystem(numParticles)
 {
 	m_numParticles = numParticles;
-	
+
 	// fill in code for initializing the state based on the number of particles
 	for (int i = 0; i < m_numParticles; i++) {
-		
+
 		// for this system, we care about the position and the velocity
 
 	}

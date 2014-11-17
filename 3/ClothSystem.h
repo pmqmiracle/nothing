@@ -12,7 +12,7 @@ class ClothSystem: public ParticleSystem
 public:
 	ClothSystem();
 	vector<Vector3f> evalF(vector<Vector3f> state);
-	
+
 	void draw();
 
 private:
