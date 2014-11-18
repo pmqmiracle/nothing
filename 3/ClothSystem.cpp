@@ -1,21 +1,21 @@
 #include "ClothSystem.h"
 #include <cmath>
 
-float ClothSystem::DIST_BETWEEN_POINTS = 0.25f;
+float ClothSystem::DIST_BETWEEN_POINTS = 0.35f;
 float ClothSystem::sqrt2 = 1.414214f;
 
-float ClothSystem::mass = 2.3f;
-Vector3f ClothSystem::g = Vector3f(0,-0.01,0);
+float ClothSystem::mass = 0.9f;
+Vector3f ClothSystem::g = Vector3f(0,-0.1f,0);
 
-float ClothSystem::drag_k = 0.1f;//0.1f;
+float ClothSystem::drag_k = 0.5f;//0.1f;
 
-float ClothSystem::structural_k = 0.001f;//100.f;//2.0f;
+float ClothSystem::structural_k = 10.f;//0.001f;//100.f;
 float ClothSystem::structural_restLength = DIST_BETWEEN_POINTS;
 
-float ClothSystem::shear_k = 0.001f;//40.0f;
+float ClothSystem::shear_k = 8.f;//0.001f;//40.0f;
 float ClothSystem::shear_restLength = sqrt2*DIST_BETWEEN_POINTS;
 
-float ClothSystem::flexion_k = 0.01f;//40.0f;
+float ClothSystem::flexion_k = 8.f;//0.01f;//40.0f;
 float ClothSystem::flexion_restLength = 2*DIST_BETWEEN_POINTS;
 
 //TODO: Initialize here
@@ -69,7 +69,10 @@ int ClothSystem::linearIndex(int i, int j)
 vector<Vector3f> ClothSystem::evalF(vector<Vector3f> state)
 {
     vector<Vector3f> vv;
-    int n = sqrt(state.size());
+    //miracle: super bug!!!!
+    //state.size() = m_numParticles * 2; not equal !!!!!!
+    //int n = sqrt(state.size());
+    int n = sqrt(m_numParticles);
     for(int i = 0;i < n;++i)
     {
         for(int j = 0;j < n;++j)
@@ -80,6 +83,7 @@ vector<Vector3f> ClothSystem::evalF(vector<Vector3f> state)
             vv.push_back(state[2*linearIndex(i,j)+1]);
             //miracle
             if((i == 0 && j == 0)||(i == n-1 && j ==0))
+            //if((i == 0 && j == 0)||(i == n-1 && j ==0))
             //if((i == 0 && j == 0))
             {
                 //forces/mass
@@ -101,11 +105,14 @@ vector<Vector3f> ClothSystem::evalF(vector<Vector3f> state)
 Vector3f ClothSystem::evalF(vector<Vector3f> &state, int index_i, int index_j)
 {
     int index = linearIndex(index_i, index_j);
-    Vector3f current_pos = getState()[2*index];
+    //miracle: bug, 注意getState()和state[2*index]是不一样的!!!!
+    //Vector3f current_pos = getState()[2*index];
+    Vector3f current_pos = state[2*index];
 
-    Vector3f f_m;
+    Vector3f f_m(0,0,0);
     Vector3f gravity = mass*g;
-    Vector3f force1 = -1 * drag_k * getVelocity(index);
+    //Vector3f force1 = -1 * drag_k * getVelocity(index);
+    Vector3f force1 = -1 * drag_k * state[2*index+1];
 
     //structural springs
     Vector3f structural_force(0,0,0);
@@ -117,7 +124,8 @@ Vector3f ClothSystem::evalF(vector<Vector3f> &state, int index_i, int index_j)
         int ty = index_j+y[k];
         if(inGrid(tx,ty))
         {
-            Vector3f pos = getState()[2*linearIndex(tx,ty)];
+            //Vector3f pos = getState()[2*linearIndex(tx,ty)];
+            Vector3f pos = state[2*linearIndex(tx,ty)];
             structural_force += -1*structural_k*((current_pos-pos).abs()-structural_restLength)*(current_pos-pos).normalized();
         }
     }
@@ -132,7 +140,8 @@ Vector3f ClothSystem::evalF(vector<Vector3f> &state, int index_i, int index_j)
         int ty = index_j+y1[k];
         if(inGrid(tx,ty))
         {
-            Vector3f pos = getState()[2*linearIndex(tx,ty)];
+            //Vector3f pos = getState()[2*linearIndex(tx,ty)];
+            Vector3f pos = state[2*linearIndex(tx,ty)];
             shear_forces += -1*shear_k*((current_pos-pos).abs()-shear_restLength)*(current_pos-pos).normalized();
         }
     }
@@ -147,13 +156,14 @@ Vector3f ClothSystem::evalF(vector<Vector3f> &state, int index_i, int index_j)
         int ty = index_j+y2[k];
         if(inGrid(tx,ty))
         {
-            Vector3f pos = getState()[2*linearIndex(tx,ty)];
+            //Vector3f pos = getState()[2*linearIndex(tx,ty)];
+            Vector3f pos = state[2*linearIndex(tx,ty)];
             flexion_forces += -1*flexion_k*((current_pos-pos).abs()-flexion_restLength)*(current_pos-pos).normalized();
         }
     }
 
-    f_m = (gravity+force1+structural_force+shear_forces+flexion_forces)/mass;
-    //f_m = (gravity+force1+structural_force+shear_forces)/mass;
+    //f_m = (gravity+force1+structural_force+shear_forces+flexion_forces)/mass;
+    f_m = (gravity+force1+structural_force+shear_forces)/mass;
     return f_m;
 }
 

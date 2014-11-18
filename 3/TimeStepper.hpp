@@ -24,6 +24,11 @@ class Trapzoidal:public TimeStepper
 };
 
 /////////////////////////
+class MyRK4:public TimeStepper
+{
+public:
+    void takeStep(ParticleSystem* particleSystem, float stepSize);
+};
 
 //Provided
 class RK4:public TimeStepper

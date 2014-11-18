@@ -40,12 +40,13 @@ namespace
         //system = new PendulumSystem(5);
 
         //test clothsystem
-        system = new ClothSystem(144);
+        system = new ClothSystem(64);
 
         if(argc == 1)
         {
             cout << "Default TimeStepper is RK" << endl;
             timeStepper = new RK4();
+            //timeStepper = new MyRK4();
         }
         if(argc > 1)
         {
@@ -78,7 +79,7 @@ namespace
       {
         ///TODO The stepsize should change according to commandline arguments
         //const float h = 0.05f;
-        float h = 0.04f;
+        float h = 0.09f;
         /*if(argc == 2)
         {
             cout << "Stepsize is" << argv[2] << endl;
