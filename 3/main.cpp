@@ -15,6 +15,9 @@
 #include "simpleSystem.h"
 #include "pendulumSystem.h"
 
+//一定要加入新文件头否则出现无法在赋值时将‘int*’转换为‘ParticleSystem*’ QAQ
+#include "ClothSystem.h"
+
 using namespace std;
 
 // Globals here.
@@ -34,7 +37,10 @@ namespace
         //system = new SimpleSystem();
 
         //test pendulum system
-        system = new PendulumSystem(5);
+        //system = new PendulumSystem(5);
+
+        //test clothsystem
+        system = new ClothSystem(144);
 
         if(argc == 1)
         {
@@ -72,7 +78,7 @@ namespace
       {
         ///TODO The stepsize should change according to commandline arguments
         //const float h = 0.05f;
-        float h = 0.05f;
+        float h = 0.04f;
         /*if(argc == 2)
         {
             cout << "Stepsize is" << argv[2] << endl;
