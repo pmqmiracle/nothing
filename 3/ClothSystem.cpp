@@ -4,24 +4,34 @@
 float ClothSystem::DIST_BETWEEN_POINTS = 0.35f;
 float ClothSystem::sqrt2 = 1.414214f;
 
-float ClothSystem::mass = 0.9f;
-Vector3f ClothSystem::g = Vector3f(0,-0.1f,0);
+float ClothSystem::mass = 1.9f;
+Vector3f ClothSystem::g = Vector3f(0,-0.3f,0);
 
 float ClothSystem::drag_k = 0.5f;//0.1f;
 
-float ClothSystem::structural_k = 10.f;//0.001f;//100.f;
+float ClothSystem::structural_k = 20.f;//0.001f;//100.f;
 float ClothSystem::structural_restLength = DIST_BETWEEN_POINTS;
 
-float ClothSystem::shear_k = 8.f;//0.001f;//40.0f;
+float ClothSystem::shear_k = 12.f;//0.001f;//40.0f;
 float ClothSystem::shear_restLength = sqrt2*DIST_BETWEEN_POINTS;
 
-float ClothSystem::flexion_k = 8.f;//0.01f;//40.0f;
+float ClothSystem::flexion_k = 12.f;//0.01f;//40.0f;
 float ClothSystem::flexion_restLength = 2*DIST_BETWEEN_POINTS;
+
+float ClothSystem::MAX_WIND = 0.5f;
+float ClothSystem::wind_noise = 0.02f;
 
 //TODO: Initialize here
 ClothSystem::ClothSystem(int m):ParticleSystem(m)
 {
     m_numParticles = m;
+
+    //for rendering
+    m_normals.clear();
+    for(int i = 0;i < m;++i)
+    {
+        m_normals.push_back(Vector3f(0,1,0));
+    }
 
     int n = sqrt(m_numParticles);
     vector<Vector3f> vv;
@@ -84,6 +94,7 @@ vector<Vector3f> ClothSystem::evalF(vector<Vector3f> state)
             //miracle
             //设置定点"挂"衣服设置不同的可以有不同的很cool的效果=w=
             if((i == 0 && j == 0)||(i == n-1 && j ==0))
+            //if((i == n-1 && j == 0)||(i == n-1 && j == n-1))
             //if((i == 0 && j == 0)||(j == n-1 && i ==0))
             //if((i == 0 && j == 0)||(j == n-1 && i == n-1))
             //if((i == 0 && j == 0)||(j == n-1 && i == n-1)||(i == n-1 && j == 0)||(i ==0 && j == n-1))
@@ -99,6 +110,7 @@ vector<Vector3f> ClothSystem::evalF(vector<Vector3f> state)
             }
         }
     }
+
 	return vv;
 }
 
@@ -163,8 +175,15 @@ Vector3f ClothSystem::evalF(vector<Vector3f> &state, int index_i, int index_j)
         }
     }
 
-    //f_m = (gravity+force1+structural_force+shear_forces+flexion_forces)/mass;
-    f_m = (gravity+force1+structural_force+shear_forces)/mass;
+    //wind
+    wind = Vector3f(0,0,0);
+    wind += Vector3f(0, 0, MAX_WIND*sin(time(NULL))); // sinusoidal wind force
+    //wind += Vector3f(0, MAX_WIND*sin(time(NULL)),0); // sinusoidal wind force
+    wind += wind_noise * Vector3f(getRandomFloat(), getRandomFloat(), getRandomFloat()); // add some noise
+
+    f_m = (gravity+force1+structural_force+shear_forces+flexion_forces+wind)/mass;
+    //f_m = (gravity+force1+structural_force+shear_forces+wind)/mass;
+    //f_m = (gravity+force1+structural_force+wind)/mass;
     return f_m;
 }
 
@@ -176,10 +195,14 @@ bool ClothSystem::inGrid(int x, int y)
 ///TODO: render the system (ie draw the particles)
 void ClothSystem::draw()
 {
+    //for wireframe
+    /*
+    int size = sqrt(m_numParticles);
     glLineWidth(2);
     glDisable(GL_LIGHTING);
     glBegin(GL_LINES);
-    int size = sqrt(m_numParticles);
+
+    //for wireframe
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
             // draw lines down and right
@@ -199,7 +222,133 @@ void ClothSystem::draw()
         }
     }
     glEnd();
+    */
 
+
+    //for rendering mode
+    // Save current state of OpenGL
+    glPushAttrib(GL_ALL_ATTRIB_BITS);
+    if (true)
+    {
+        // This will use the current material color and light
+        // positions.  Just set these in drawScene();
+        glEnable(GL_LIGHTING);
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+
+        // This tells openGL to *not* draw backwards-facing triangles.
+        // This is more efficient, and in addition it will help you
+        // make sure that your triangles are drawn in the right order.
+
+        glEnable(GL_CULL_FACE);
+        glCullFace(GL_BACK);
+    }
+
+    //for rendering mode
+    m_normals.clear();
+    int size = sqrt(m_numParticles);
+    int dx[4] = {0,-1,0,1};
+    int dy[4] = {1,0,-1,0};
+    for(int i = 0;i < sqrt(m_numParticles);++i)
+    {
+        for(int j = 0;j < sqrt(m_numParticles);++j)
+        {
+            vector<Vector3f> neighbors;
+            for(int k = 0;k < 4;++k)
+            {
+                if(inGrid(i+dx[k],j+dy[k]))
+                {
+                    neighbors.push_back(m_vVecState[2*linearIndex(i+dx[k],j+dy[k])]);
+                }
+            }
+            vector<Vector3f> vv;
+            for(unsigned int m = 0;m < neighbors.size();++m)
+            {
+                vv.push_back(neighbors[m]-m_vVecState[2*linearIndex(i,j)]);
+            }
+            Vector3f average(0,0,0);
+            for(unsigned int v = 0;v < vv.size()-1;++v)
+            {
+                average = average + Vector3f::cross(vv[v],vv[v+1]).normalized();
+            }
+            m_normals.push_back(average);
+        }
+    }
+    //upper triangles
+    glBegin(GL_TRIANGLES);
+    //@TODO: ADD color??
+    //glColor4f(1,1,0,0);
+/*
+    for(int i = 0;i < size-1;++i)
+    {
+        for(int j = 0;j < size-1;++j)
+        {
+            int index = linearIndex(i,j);
+            glNormal3f(m_normals[index][0],m_normals[index][1],m_normals[index][2]);
+            glVertex3f(m_vVecState[2*index][0],m_vVecState[2*index][1],m_vVecState[2*index][2]);
+            int index2 = linearIndex(i,j+1);
+            glNormal3f(m_normals[index2][0],m_normals[index2][1],m_normals[index2][2]);
+            glVertex3f(m_vVecState[2*index2][0],m_vVecState[2*index2][1],m_vVecState[2*index2][2]);
+            int index3 = linearIndex(i+1,j);
+            glNormal3f(m_normals[index3][0],m_normals[index3][1],m_normals[index3][2]);
+            glVertex3f(m_vVecState[2*index3][0],m_vVecState[2*index3][1],m_vVecState[2*index3][2]);
+        }
+    }
+    //lower triangles
+    for(int i = 1;i < size;++i)
+    {
+        for(int j = 1;j < size;++j)
+        {
+            int index = linearIndex(i,j);
+            glNormal3f(m_normals[index][0],m_normals[index][1],m_normals[index][2]);
+            glVertex3f(m_vVecState[2*index][0],m_vVecState[2*index][1],m_vVecState[2*index][2]);
+            int index2 = linearIndex(i,j-1);
+            glNormal3f(m_normals[index2][0],m_normals[index2][1],m_normals[index2][2]);
+            glVertex3f(m_vVecState[2*index2][0],m_vVecState[2*index2][1],m_vVecState[2*index2][2]);
+            int index3 = linearIndex(i-1,j);
+            glNormal3f(m_normals[index3][0],m_normals[index3][1],m_normals[index3][2]);
+            glVertex3f(m_vVecState[2*index3][0],m_vVecState[2*index3][1],m_vVecState[2*index3][2]);
+        }
+    }
+*/
+    //back
+    //upper
+    for(int i = 0;i < size-1;++i)
+    {
+        for(int j = 0;j < size-1;++j)
+        {
+            int index = linearIndex(i,j);
+            glNormal3f(-m_normals[index][0],-m_normals[index][1],-m_normals[index][2]);
+            glVertex3f(m_vVecState[2*index][0],m_vVecState[2*index][1],m_vVecState[2*index][2]);
+            int index2 = linearIndex(i,j+1);
+            glNormal3f(-m_normals[index2][0],-m_normals[index2][1],-m_normals[index2][2]);
+            glVertex3f(m_vVecState[2*index2][0],m_vVecState[2*index2][1],m_vVecState[2*index2][2]);
+            int index3 = linearIndex(i+1,j);
+            glNormal3f(-m_normals[index3][0],-m_normals[index3][1],-m_normals[index3][2]);
+            glVertex3f(m_vVecState[2*index3][0],m_vVecState[2*index3][1],m_vVecState[2*index3][2]);
+        }
+    }
+    //lower triangles
+    for(int i = 1;i < size;++i)
+    {
+        for(int j = 1;j < size;++j)
+        {
+            int index = linearIndex(i,j);
+            glNormal3f(-m_normals[index][0],-m_normals[index][1],-m_normals[index][2]);
+            glVertex3f(m_vVecState[2*index][0],m_vVecState[2*index][1],m_vVecState[2*index][2]);
+            int index2 = linearIndex(i,j-1);
+            glNormal3f(-m_normals[index2][0],-m_normals[index2][1],-m_normals[index2][2]);
+            glVertex3f(m_vVecState[2*index2][0],m_vVecState[2*index2][1],m_vVecState[2*index2][2]);
+            int index3 = linearIndex(i-1,j);
+            glNormal3f(-m_normals[index3][0],-m_normals[index3][1],-m_normals[index3][2]);
+            glVertex3f(m_vVecState[2*index3][0],m_vVecState[2*index3][1],m_vVecState[2*index3][2]);
+        }
+    }
+
+    glEnd();
+
+    glPopAttrib();
+
+    //==================================================================================
     glEnable(GL_LIGHTING);
 	for (int i = 0; i < m_numParticles; i++)
     {
@@ -209,5 +358,6 @@ void ClothSystem::draw()
 		glutSolidSphere(0.025f,10.0f,10.0f);
 		glPopMatrix();
 	}
+
 }
 

@@ -41,12 +41,12 @@ namespace
         //system = new SimpleSystem();
 
         //test pendulum system
-        //system = new PendulumSystem(5);
-        //cout << "Intial system is PendulumSystem" << endl;
+        system = new PendulumSystem(5);
+        cout << "Intial system is PendulumSystem" << endl;
 
         //test clothsystem
-        system = new ClothSystem(81);
-        cout << "Intial system is ClothSystem" << endl;
+        //system = new ClothSystem(81);
+        //cout << "Intial system is ClothSystem" << endl;
 
         if(argc == 1)
         {
@@ -173,7 +173,7 @@ namespace
                 else
                 {
                     cout << "Current system is Cloth System" << endl;
-                    system = new ClothSystem(81);
+                    system = new ClothSystem(100);
                 }
                 break;
             }

@@ -6,6 +6,7 @@
 #include <GL/glut.h>
 
 #include "particleSystem.h"
+#include <ctime>
 
 class ClothSystem: public ParticleSystem
 {
@@ -18,6 +19,7 @@ public:
     Vector3f evalF(vector<Vector3f> &state, int index_i, int index_j);
 
 	void draw();
+    vector<Vector3f> m_normals;
 
     static float mass;
     static Vector3f g;
@@ -36,6 +38,15 @@ public:
     //flexion springs
     static float flexion_k;
     static float flexion_restLength;
+
+    //wind, noise
+    static float MAX_WIND;
+    Vector3f wind;
+    static float wind_noise;
+    static float getRandomFloat()
+    {
+        return 1.0f*rand()/(RAND_MAX);
+    }
 
 
     Vector3f getVelocity(int particle_index);

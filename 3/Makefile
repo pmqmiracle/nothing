@@ -7,7 +7,7 @@ CC        = g++
 SRCS      = $(wildcard *.cpp)
 SRCS     += $(wildcard vecmath/src/*.cpp)
 OBJS      = $(SRCS:.cpp=.o)
-PROG      = a3
+PROG      = miracle
 
 all: $(SRCS) $(PROG)
 
