@@ -13,7 +13,8 @@ public:
 	PendulumSystem(int numParticles);
 
 	vector<Vector3f> evalF(vector<Vector3f> state);
-    Vector3f evalF(vector<Vector3f> state, int index);
+    //fix bug
+    Vector3f evalF(vector<Vector3f> &state, int index);
 
 	void draw();
 
@@ -22,6 +23,8 @@ public:
     static float k2;
     static float restLength;
     static Vector3f g;
+
+    static float DISTANCE_BETWEEN_PARTICLE;
 
     Vector3f getVelocity(int particle_index);
     Vector3f getPosition(int particle_index);

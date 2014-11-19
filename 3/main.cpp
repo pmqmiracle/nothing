@@ -12,10 +12,10 @@
 ///TODO: include more headers if necessary
 
 #include "TimeStepper.hpp"
-#include "simpleSystem.h"
-#include "pendulumSystem.h"
 
 //一定要加入新文件头否则出现无法在赋值时将‘int*’转换为‘ParticleSystem*’ QAQ
+#include "simpleSystem.h"
+#include "pendulumSystem.h"
 #include "ClothSystem.h"
 
 using namespace std;
@@ -27,6 +27,10 @@ namespace
       ParticleSystem *system;
       TimeStepper * timeStepper;
 
+      bool firstPrint = true;
+      float h_step = 0.04f;
+
+      int currentSystem = 0;
       // initialize your particle systems
       ///TODO: read argv here. set timestepper , step size etc
       void initSystem(int argc, char * argv[])
@@ -38,15 +42,16 @@ namespace
 
         //test pendulum system
         //system = new PendulumSystem(5);
+        //cout << "Intial system is PendulumSystem" << endl;
 
         //test clothsystem
-        system = new ClothSystem(64);
+        system = new ClothSystem(81);
+        cout << "Intial system is ClothSystem" << endl;
 
         if(argc == 1)
         {
             cout << "Default TimeStepper is RK" << endl;
             timeStepper = new RK4();
-            //timeStepper = new MyRK4();
         }
         if(argc > 1)
         {
@@ -65,11 +70,19 @@ namespace
                 cout << "TimeStepper is Trapzoidal" << endl;
                 timeStepper = new Trapzoidal();
             }
+            else if(strcmp(argv[1],"m")==0)
+            {
+                cout << "MyRK4 is adopted" << endl;
+                timeStepper = new MyRK4();
+            }
             else
             {
                 cout << "Please reinput r, e, or t, default is r" << endl;
             }
         }
+        //./a3 m 0.05包括第一个参数一共三个参数哦
+        if(argc == 3)
+            h_step = atof(argv[2]);
       }
 
       // Take a step forward for the particle shower
@@ -79,26 +92,17 @@ namespace
       {
         ///TODO The stepsize should change according to commandline arguments
         //const float h = 0.05f;
-        float h = 0.09f;
-        /*if(argc == 2)
-        {
-            cout << "Stepsize is" << argv[2] << endl;
-            h = argv[2];
-        }
-        else
-        {
-            cout << "Default stepsize is" << argv[2] << endl;
-            h = 0.05f;
-        }*/
+        if(firstPrint)
+            cout << "Stepsize is " << h_step << endl;
+        firstPrint = false;
         if(timeStepper!=0){
-            timeStepper->takeStep(system,h);
+            timeStepper->takeStep(system,h_step);
         }
       }
 
       // Draw the current particle positions
       void drawSystem()
       {
-
         // Base material colors (they don't change)
         GLfloat particleColor[] = {0.4f, 0.7f, 1.0f, 1.0f};
         GLfloat floorColor[] = {1.0f, 0.0f, 0.0f, 1.0f};
@@ -115,9 +119,7 @@ namespace
         glScaled(50.0f,0.01f,50.0f);
         glutSolidCube(1);
         glPopMatrix();
-
       }
-
 
     //-------------------------------------------------------------------
 
@@ -144,20 +146,40 @@ namespace
     {
         switch ( key )
         {
-        case 27: // Escape key
-            exit(0);
-            break;
-        case ' ':
-        {
-            Matrix4f eye = Matrix4f::identity();
-            camera.SetRotation( eye );
-            camera.SetCenter( Vector3f::ZERO );
-            break;
+            case 27: // Escape key
+                exit(0);
+                break;
+            case ' ':
+            {
+                Matrix4f eye = Matrix4f::identity();
+                camera.SetRotation( eye );
+                camera.SetCenter( Vector3f::ZERO );
+                break;
+            }
+            case 't':
+            {
+                currentSystem = (currentSystem+1)%3;
+                delete system;
+                if(currentSystem == 0)
+                {
+                    cout << "Current system is Simple system" << endl;
+                    system = new SimpleSystem();
+                }
+                else if(currentSystem == 1)
+                {
+                    cout << "Current system is Pendulum System" << endl;
+                    system = new PendulumSystem(6);
+                }
+                else
+                {
+                    cout << "Current system is Cloth System" << endl;
+                    system = new ClothSystem(81);
+                }
+                break;
+            }
+            default:
+                cout << "Unhandled key press " << key << "." << endl;
         }
-        default:
-            cout << "Unhandled key press " << key << "." << endl;
-        }
-
         glutPostRedisplay();
     }
 
@@ -181,16 +203,16 @@ namespace
 
             switch (button)
             {
-            case GLUT_LEFT_BUTTON:
-                camera.MouseClick(Camera::LEFT, x, y);
-                break;
-            case GLUT_MIDDLE_BUTTON:
-                camera.MouseClick(Camera::MIDDLE, x, y);
-                break;
-            case GLUT_RIGHT_BUTTON:
-                camera.MouseClick(Camera::RIGHT, x,y);
-            default:
-                break;
+                case GLUT_LEFT_BUTTON:
+                    camera.MouseClick(Camera::LEFT, x, y);
+                    break;
+                case GLUT_MIDDLE_BUTTON:
+                    camera.MouseClick(Camera::MIDDLE, x, y);
+                    break;
+                case GLUT_RIGHT_BUTTON:
+                    camera.MouseClick(Camera::RIGHT, x,y);
+                default:
+                    break;
             }
         }
         else
@@ -263,7 +285,6 @@ namespace
         glLoadMatrixf( camera.viewMatrix() );
 
         // THIS IS WHERE THE DRAW CODE GOES.
-
         drawSystem();
 
         // This draws the coordinate axes when you're rotating, to
@@ -283,9 +304,13 @@ namespace
             glPushMatrix();
             glScaled(5.0,5.0,5.0);
             glBegin(GL_LINES);
-            glColor4f(1,0.5,0.5,1); glVertex3f(0,0,0); glVertex3f(1,0,0);
-            glColor4f(0.5,1,0.5,1); glVertex3f(0,0,0); glVertex3f(0,1,0);
-            glColor4f(0.5,0.5,1,1); glVertex3f(0,0,0); glVertex3f(0,0,1);
+            //glColor4f(1,0.5,0.5,1); glVertex3f(0,0,0); glVertex3f(1,0,0);
+            //yellow ===> x(right)
+            glColor4f(1,1,0,1); glVertex3f(0,0,0); glVertex3f(1,0,0);
+            //green ===> y(up)
+            glColor4f(0,1,0,1); glVertex3f(0,0,0); glVertex3f(0,1,0);
+            //blue ==> z(out)
+            glColor4f(0,0,1,1); glVertex3f(0,0,0); glVertex3f(0,0,1);
 
             glColor4f(0.5,0.5,0.5,1);
             glVertex3f(0,0,0); glVertex3f(-1,0,0);
@@ -306,9 +331,7 @@ namespace
     void timerFunc(int t)
     {
         stepSystem();
-
         glutPostRedisplay();
-
         glutTimerFunc(t, &timerFunc, t);
     }
 
@@ -332,7 +355,7 @@ int main( int argc, char* argv[] )
     camera.SetDistance( 10 );
     camera.SetCenter( Vector3f::ZERO );
 
-    glutCreateWindow("Assignment 4");
+    glutCreateWindow("Assignment 3 Physical simulation =w=");
 
     // Initialize OpenGL parameters.
     initRendering();

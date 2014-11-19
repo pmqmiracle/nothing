@@ -82,13 +82,14 @@ vector<Vector3f> ClothSystem::evalF(vector<Vector3f> state)
             //velocity
             vv.push_back(state[2*linearIndex(i,j)+1]);
             //miracle
+            //设置定点"挂"衣服设置不同的可以有不同的很cool的效果=w=
             if((i == 0 && j == 0)||(i == n-1 && j ==0))
-            //if((i == 0 && j == 0)||(i == n-1 && j ==0))
+            //if((i == 0 && j == 0)||(j == n-1 && i ==0))
+            //if((i == 0 && j == 0)||(j == n-1 && i == n-1))
+            //if((i == 0 && j == 0)||(j == n-1 && i == n-1)||(i == n-1 && j == 0)||(i ==0 && j == n-1))
             //if((i == 0 && j == 0))
             {
                 //forces/mass
-                //对于左上角 设置加速度为0
-                //对于左下角 为什么也要设置加速度为0?
                 vv.push_back(Vector3f(0,0,0));
             }
             else
