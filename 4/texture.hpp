@@ -2,6 +2,7 @@
 #define TEXTURE_HPP
 #include "bitmap_image.hpp"
 #include "Vector3f.h"
+
 ///@brief helper class that stores a texture and faciliates lookup
 ///assume 4byte RGBA image data
 class Texture{

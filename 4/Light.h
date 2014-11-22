@@ -78,6 +78,8 @@ public:
 		dir = (position-p);
 		dir = dir/dir.abs();
         col = color;
+
+        distanceToLight = dir.abs();
     }
 
 private:

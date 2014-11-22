@@ -50,12 +50,12 @@ public:
     {
         return ambient_light;
     }
-    
+
     int getNumLights() const
     {
         return num_lights;
     }
-    
+
     Light* getLight( int i ) const
     {
         assert( i >= 0 && i < num_lights );

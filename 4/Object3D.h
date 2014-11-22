@@ -14,16 +14,17 @@ public:
 	}
 	virtual ~Object3D(){}
 
-	Object3D( Material* material){
-	this->material = material ; 
+	Object3D( Material* material)
+    {
+	    this->material = material ;
 	}
-	
+
+    //纯虚函数
 	virtual bool intersect( const Ray& r , Hit& h, float tmin) = 0;
 
-
 	char* type;
-protected:
 
+protected:
 	Material* material;
 };
 

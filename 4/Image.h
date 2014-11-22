@@ -16,7 +16,7 @@ public:
         height = h;
         data = new Vector3f[ width * height ];
     }
-    
+
     ~Image()
     {
         delete[] data;
@@ -26,7 +26,7 @@ public:
     {
         return width;
     }
-    
+
     int Height() const
     {
         return height;
@@ -55,10 +55,10 @@ public:
     }
 
     static Image* LoadPPM( const char* filename );
-    void SavePPM( const char* filename ) const; 
+    void SavePPM( const char* filename ) const;
 
     static Image* LoadTGA( const char* filename );
-    void SaveTGA( const char* filename ) const; 
+    void SaveTGA( const char* filename ) const;
 	int SaveBMP(const char *filename);
 	void SaveImage(const char *filename);
     // extension for image comparison
@@ -69,7 +69,6 @@ private:
     int width;
     int height;
     Vector3f* data;
-
 };
 
 #endif // IMAGE_H
