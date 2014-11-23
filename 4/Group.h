@@ -18,16 +18,18 @@ public:
 
   Group(){
       objectSize = 0;
-      group.clear();
+      //group.clear();
   }
 
   Group( int num_objects ){
       objectSize = num_objects;
+      for(int i = 0;i < num_objects;++i)
+          group.push_back(NULL);
   }
 
   ~Group(){
-      objectSize = 0;
-      group.clear();
+      //objectSize = 0;
+      //group.clear();
   }
 
   virtual bool intersect( const Ray& r , Hit& h , float tmin )
@@ -44,7 +46,8 @@ public:
   //miracle : index for what???
   void addObject( int index , Object3D* obj )
   {
-      group.push_back(obj);
+      //group.push_back(obj);
+      this->group[index] = obj;
   }
 
   int getGroupSize()

@@ -32,15 +32,19 @@ int main( int argc, char* argv[] )
      if(strcmp(argv[argNum],"-input")==0)
      {
          inputFile = argv[++argNum];
+         //cout << "inputFile is : " << inputFile << endl;
      }
      if(strcmp(argv[argNum],"-size")==0)
      {
          width = atoi(argv[++argNum]);
+         //cout << "width : " << width << endl;
          height = atoi(argv[++argNum]);
+         //cout << "height : " << height << endl;
      }
      if(strcmp(argv[argNum],"-output")==0)
      {
          outputFile = argv[++argNum];
+         //cout << "OutputFile is : " << outputFile << endl;
      }
   }
 
@@ -52,6 +56,10 @@ int main( int argc, char* argv[] )
   const char* final_output = outputFile;
   SceneParser sp = SceneParser(inputFile);
   Camera* camera = sp.getCamera();
+
+  //Nov23 for non-square viewport
+  //camera->setRatio(width*1.0/height);
+
   Group* group = sp.getGroup();
   float t_min = 0.0f;
   Material* m;
@@ -60,9 +68,10 @@ int main( int argc, char* argv[] )
   {
       for(int j = 0;j < height;++j)
       {
+          //[-1,1]
           Ray ray = camera->generateRay(Vector2f(2.0*i/width - 1,2.0*j/height - 1));
           Hit hit;
-          float tCurrent;
+          float tCurrent = 1000.0;
           if(group->intersect(ray, hit, t_min))
           {
               tCurrent = hit.getT();
@@ -75,11 +84,13 @@ int main( int argc, char* argv[] )
                   //generate ray to to light
                   Vector3f dir, col;
                   float dis = 0.0f;//in fact not in use
+
+                  //得到当前光l的dir, col
                   l->getIllumination(p,dir,col,dis);
-                  Ray r2 = Ray(p, dir);
-                  Hit h2 = Hit();
+
                   color = color + m->Shade(ray, hit, dir, col);
               }
+              //adding ambient light right now, not in Shade
               color = color + sp.getAmbientLight();
               image.SetPixel(i,j,color);
           }

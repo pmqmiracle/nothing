@@ -13,23 +13,27 @@ public:
   Transform(){}
   Transform( const Matrix4f& m, Object3D* obj ):o(obj)
   {
-      this->M = m;
+      this->M = m;//matrix
   }
   ~Transform()
   {
   }
   virtual bool intersect( const Ray& r , Hit& h , float tmin)
   {
-      Matrix4f Minverse = M.inverse();
+      //transform the ray from world space to object space
+      Matrix4f Minverse = this->M.inverse();
       Vector3f newO = VecUtils::transformPoint(Minverse, r.getOrigin());
       Vector3f newD = VecUtils::transformDirection(Minverse, r.getDirection());
       newD.normalized();
       Ray newR(newO, newD);
       //////////////////////////////////////////////
+      //转换完ray后,才开始intersect routine
       if(o->intersect( newR , h , tmin))
       {
+            //correctly transform the resulting normal
             Vector3f newNormal = this->M.getSubmatrix3x3(0,0).inverse().transposed()*h.getNormal();
             newNormal.normalized();
+
             h.set(h.getT(), h.getMaterial(), newNormal);
             return true;
       }

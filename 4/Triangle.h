@@ -50,25 +50,35 @@ public:
                         );
         float beta = matrix1.determinant()/Adeterminant;
         float gamma = matrix2.determinant()/Adeterminant;
+        float alpha = 1-beta-gamma;
+        if(alpha < 0 || alpha > 1 || beta < 0 || beta > 1 || gamma < 0 || gamma > 1)
+            return false;
+        if(beta+gamma > 1)
+            return false;
+
         float tt = matrix3.determinant()/Adeterminant;
         float current_t = hit.getT();
-        if(tt < current_t && tt >= tmin)
+        if(tt < current_t && tt > tmin)
         {
             Vector3f normal = alpha * normals[0] + beta * normals[1] + gamma * normals[2];
+            normal.normalized();
+            Vector2f tex = alpha * texCoords[0] + beta * texCoords[1] + gamma * texCoords[2];
+            this->material->setTexCoord(tex);
             hit.set(tt, this->material, normal);
             return true;
         }
         return false;
 	}
+
 	bool hasTex;
 	Vector3f normals[3];
 	Vector2f texCoords[3];
+
 protected:
     float alpha;
     float beta;
     float gamma;
     Vector3f a, b, c;
-
 };
 
 #endif //TRIANGLE_H

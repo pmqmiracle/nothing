@@ -4,7 +4,7 @@ SRCS += $(wildcard vecmath/src/*.cpp)
 OBJS = $(SRCS:.cpp=.o)
 PROG = a4
 #CFLAGS = -O2 -Wall -Wextra
-CFLAGS = -O2 -w -Wextra
+CFLAGS = -O2 -w -g -Wextra
 INCFLAGS = -Ivecmath/include
 
 all: $(PROG)

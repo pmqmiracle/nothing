@@ -12,7 +12,7 @@ bool Mesh::intersect( const Ray& r , Hit& h , float tmin ) {
                       v[t[i][1]],v[t[i][2]],material);
     for(int jj=0;jj<3;jj++){
       triangle.normals[jj] = n[t[i][jj]];
-            
+
     }
     if(texCoord.size()>0){
       for(int jj=0;jj<3;jj++){

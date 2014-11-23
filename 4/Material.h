@@ -41,16 +41,17 @@ public:
   Vector3f Shade( const Ray& ray, const Hit& hit,
                   const Vector3f& dirToLight, const Vector3f& lightColor)
   {
-      //Phong shading
+      //specular component in Phong shading
       Vector3f color;
       if(this->t.valid())
           color = t(texCoords[0],texCoords[1]);
       else
           color = diffuseColor;
       //diffuse
-      float Lo_r = color[0]*max(0.0f,Vector3f::dot(hit.getNormal(),dirToLight))*lightColor[0];
-      float Lo_g = color[1]*max(0.0f,Vector3f::dot(hit.getNormal(),dirToLight))*lightColor[1];
-      float Lo_b = color[2]*max(0.0f,Vector3f::dot(hit.getNormal(),dirToLight))*lightColor[2];
+      //float Lo_r = color[0]*max(0.0f,Vector3f::dot(hit.getNormal(),dirToLight))*lightColor[0];
+      //float Lo_g = color[1]*max(0.0f,Vector3f::dot(hit.getNormal(),dirToLight))*lightColor[1];
+      //float Lo_b = color[2]*max(0.0f,Vector3f::dot(hit.getNormal(),dirToLight))*lightColor[2];
+      Vector3f partDiffuse = color*max(0.0f, Vector3f::dot(hit.getNormal(),dirToLight))*lightColor;
       //specular
       Vector3f R = ray.getDirection()-2*Vector3f::dot(ray.getDirection(),hit.getNormal())*hit.getNormal();
       float LR = Vector3f::dot(dirToLight, R);
@@ -58,9 +59,11 @@ public:
           LR = 0.0f;
       float specular = pow(LR, shininess);
       if(this->t.valid())
-          return Vector3f(Lo_r,Lo_g,Lo_b) + specular*t(texCoords[0],texCoords[1])*lightColor;
+          //return Vector3f(Lo_r,Lo_g,Lo_b) + specular*t(texCoords[0],texCoords[1])*lightColor;
+          return partDiffuse + specular*t(texCoords[0],texCoords[1])*lightColor;
       else
-          return Vector3f(Lo_r,Lo_g,Lo_b) + specular*specularColor*lightColor;
+          //return Vector3f(Lo_r,Lo_g,Lo_b) + specular*specularColor*lightColor;
+          return partDiffuse + specular * specularColor * lightColor;
   }
 
   void loadTexture(const char * filename)

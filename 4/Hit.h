@@ -65,6 +65,7 @@ public:
 		texCoord = coord;
 		hasTex = true;
 	}
+
 	bool hasTex;
 	Vector2f texCoord;
 

@@ -12,6 +12,7 @@ public:
   void load(const char * filename);
   void operator()(int x, int y,  unsigned char * color);
   ///@param x assumed to be between 0 and 1
+  //返回(x,y)的颜色
   Vector3f operator()(float x, float y);
   ~Texture();
 private:

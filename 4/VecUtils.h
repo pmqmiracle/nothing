@@ -45,7 +45,6 @@ public:
                 out[ i ] = high;
             }
         }
-
         return out;
     }
 
