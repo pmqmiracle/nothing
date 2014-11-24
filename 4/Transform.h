@@ -24,7 +24,10 @@ public:
       Matrix4f Minverse = this->M.inverse();
       Vector3f newO = VecUtils::transformPoint(Minverse, r.getOrigin());
       Vector3f newD = VecUtils::transformDirection(Minverse, r.getDirection());
-      newD.normalized();
+      //bug
+      //newD.normalized();
+      newD.normalize();
+
       Ray newR(newO, newD);
       //////////////////////////////////////////////
       //转换完ray后,才开始intersect routine
