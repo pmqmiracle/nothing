@@ -17,6 +17,7 @@ public:
 	Plane( const Vector3f& normal , float d , Material* m):Object3D(m)
     {
         this->normal = -1 * normal;
+        //this->normal = normal;
         this->d = d;
         this->material = m;
 	}
@@ -33,11 +34,14 @@ public:
             //miracle Nov23
             //need surface normal for shading
             //
-            //need to debug!!!!!!!!!!!111
+            //need to debug!!!!!!!!!!!
+
             if(tmp > 0.0)
                 h.set(tt, this->material, -1 * this->normal);
             else
                 h.set(tt, this->material, this->normal);
+
+            //h.set(tt, this->material, this->normal);
             return true;
         }
         else

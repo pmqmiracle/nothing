@@ -35,11 +35,17 @@ public:
   virtual bool intersect( const Ray& r , Hit& h , float tmin )
   {
       bool flag = false;
+      int whichOne = -1;
       for(int i = 0;i < objectSize;++i)
       {
           if(group[i]->intersect(r,h,tmin))
+          {
               flag = true;
+              whichOne = i;
+          }
       }
+      if(flag)
+        cout << "intersect with " << whichOne << endl;
       return flag;
   }
 

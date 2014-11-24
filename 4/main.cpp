@@ -68,6 +68,8 @@ int main( int argc, char* argv[] )
   float t_min = 0.0f;
   Material* m;
   Image image(width,height);
+  int countTrue = 0;
+  int countFalse = 0;
   for(int i = 0;i < width;++i)
   {
       for(int j = 0;j < height;++j)
@@ -76,8 +78,12 @@ int main( int argc, char* argv[] )
           Ray ray = camera->generateRay(Vector2f(2.0*i/width - 1,2.0*j/height - 1));
           Hit hit;
           float tCurrent = 1000.0;
-          if(group->intersect(ray, hit, t_min))
+          bool flag = group->intersect(ray, hit, t_min);
+          //cout << "intersection " << flag << endl;
+          if(flag)
           {
+              ++countTrue;
+              //cout << i << ", " << j << endl;
               tCurrent = hit.getT();
               m = hit.getMaterial();
               Vector3f color;//()
@@ -99,9 +105,15 @@ int main( int argc, char* argv[] )
               image.SetPixel(i,j,color);
           }
           else
+          {
+              ++countFalse;
+              //cout << i << ", " << j << endl;
               image.SetPixel(i,j,sp.getBackgroundColor());
+          }
       }
   }
+  cout << "INTERSECTION " << countTrue << endl;
+  cout << "NON-intersection" << countFalse << endl;
   image.SaveImage(final_output);
 
   ///TODO: below demonstrates how to use the provided Image class
