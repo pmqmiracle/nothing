@@ -28,7 +28,7 @@ int main( int argc, char* argv[] )
   int height;
   for( int argNum = 1; argNum < argc; ++argNum )
   {
-     std::cout << "Argument " << argNum << " is: " << argv[argNum] << std::endl;
+     //std::cout << "Argument " << argNum << " is: " << argv[argNum] << std::endl;
      if(strcmp(argv[argNum],"-input")==0)
      {
          inputFile = argv[++argNum];
@@ -46,6 +46,10 @@ int main( int argc, char* argv[] )
          outputFile = argv[++argNum];
          //cout << "OutputFile is : " << outputFile << endl;
      }
+  }
+  for( int argNum = 1;argNum < argc; ++argNum )
+  {
+      cout << "#" << argNum << " : " << argv[argNum] << endl;
   }
 
   // First, parse the scene using SceneParser.

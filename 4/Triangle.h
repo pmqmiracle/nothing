@@ -19,7 +19,8 @@ public:
     ///@param a b c are three vertex positions of the triangle
 	Triangle( const Vector3f& a, const Vector3f& b, const Vector3f& c, Material* m):Object3D(m){
           hasTex = false;
-          alpha = 1.0f;
+          //miracle: fix bug!!!!
+          //alpha = 1.0f;
           this->a = a;
           this->b = b;
           this->c = c;

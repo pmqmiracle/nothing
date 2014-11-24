@@ -1,6 +1,4 @@
 #!/bin/sh
-rm *.tga
-rm *.bmp
 
 ./a4 -input scene01_plane.txt  -size 200 200 -output 1.bmp
 ./a4 -input scene02_cube.txt  -size 200 200 -output 2.bmp
