@@ -35,7 +35,8 @@ public:
         float b = 2*Vector3f::dot(r.getDirection(),r.getOrigin()-this->center);
         ////////////////////////////////////////////////////////////////////////////////////////////
         //Nov24: fix bug ! OMG be careful to calculate c
-        //not: float c = Vector3f::dot(r.getOrigin()-this->center, r.getDirection()-this->center)-radius*radius;
+        //not:
+        //float c = Vector3f::dot(r.getOrigin()-this->center, r.getDirection()-this->center)-radius*radius;
         ////////////////////////////////////////////////////////////////////////////////////////////
         float c = Vector3f::dot(r.getOrigin()-this->center, r.getOrigin()-this->center)-this->radius*this->radius;
 
@@ -48,7 +49,8 @@ public:
             return false;
         float t1 = (-b+sqrt(inner))/(2*a);
         float t2 = (-b-sqrt(inner))/(2*a);
-        float result = -1;
+        float result = -1.0;
+        bool intersection = false;
         //bug!!!!!!!问题没有考虑完全
         //if(t1 < t2 && t1 > 0)
         //    result = t1;
@@ -59,17 +61,22 @@ public:
         if(t1 > 0.0 && t2 > 0.0)
         {
             result = min(t1,t2);
+            intersection = true;
         }
         //1 postive and 1 negative
         else if((t1 > 0.0 && t2 < 0.0)||(t1 < 0.0 && t2 > 0.0))
         {
             result = (t1>0.0)?t1:t2;
+            intersection = true;
         }
-        if(result > 0.0 && result > tmin && result < h.getT())
+        //if(result > 0.0 && result > tmin && result < h.getT())
+        if(intersection && result > tmin && result < h.getT())
         {
             Vector3f t_normal = (r.getOrigin()+result*r.getDirection())-(this->center);
             t_normal = t_normal.normalized();
             h.set(result, this->material, t_normal);
+            //Nov24
+            //h.set(result,h.getMaterial(),t_normal);//???????????????? no!!
             return true;
         }
         return false;

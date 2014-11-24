@@ -70,12 +70,19 @@ int main( int argc, char* argv[] )
   Image image(width,height);
   int countTrue = 0;
   int countFalse = 0;
+
+  char fname[] = "ray.txt";
+  ofstream fout(fname);
   for(int i = 0;i < width;++i)
   {
       for(int j = 0;j < height;++j)
       {
           //[-1,1]
           Ray ray = camera->generateRay(Vector2f(2.0*i/width - 1,2.0*j/height - 1));
+          //float angle = camera->getAngle();
+          //cout << angle << endl;
+          //fout << "Angle " << angle << endl;
+          fout << ray.getDirection()[0] << ", " << ray.getDirection()[1] << ", " << ray.getDirection()[2] << endl;
           Hit hit;
           float tCurrent = 1000.0;
           bool flag = group->intersect(ray, hit, t_min);
@@ -86,17 +93,17 @@ int main( int argc, char* argv[] )
               //cout << i << ", " << j << endl;
               tCurrent = hit.getT();
               m = hit.getMaterial();
-              Vector3f color;//()
+              Vector3f color = Vector3f(0,0,0);//()
               Vector3f p = ray.pointAtParameter(tCurrent);
               for(int k = 0;k < sp.getNumLights();++k)
               {
-                  Light* l = sp.getLight(k);
+                  Light* current_light = sp.getLight(k);
                   //generate ray to to light
                   Vector3f dir, col;
                   float dis = 0.0f;//in fact not in use
 
                   //得到当前光l的dir, col
-                  l->getIllumination(p,dir,col,dis);
+                  current_light->getIllumination(p,dir,col,dis);
 
                   color = color + m->Shade(ray, hit, dir, col);
               }

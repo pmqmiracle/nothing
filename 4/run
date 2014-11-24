@@ -1,3 +1,1 @@
-make clean
-make
-./a4 -input scene01_plane.txt  -size 200 200 -output plane.bmp
+./a4 -input scene01_plane.txt  -size 200 200 -output plane1.bmp

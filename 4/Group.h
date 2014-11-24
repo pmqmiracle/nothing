@@ -44,8 +44,8 @@ public:
               whichOne = i;
           }
       }
-      if(flag)
-        cout << "intersect with " << whichOne << endl;
+      //if(flag)
+        //cout << "intersect with " << whichOne << endl;
       return flag;
   }
 

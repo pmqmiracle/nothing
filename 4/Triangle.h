@@ -27,7 +27,6 @@ public:
           this->material = m;
 	}
 
-
 	virtual bool intersect( const Ray& ray,  Hit& hit , float tmin)
     {
         Matrix3f A(a[0]-b[0],a[0]-c[0],ray.getDirection()[0],
@@ -62,7 +61,10 @@ public:
         if(tt < current_t && tt > tmin)
         {
             Vector3f normal = alpha * normals[0] + beta * normals[1] + gamma * normals[2];
-            normal.normalized();
+            //bug
+            //normal.normalized();
+            normal.normalize();
+
             Vector2f tex = alpha * texCoords[0] + beta * texCoords[1] + gamma * texCoords[2];
             this->material->setTexCoord(tex);
             hit.set(tt, this->material, normal);
@@ -80,6 +82,7 @@ protected:
     float beta;
     float gamma;
     Vector3f a, b, c;
+    Material* material;
 };
 
 #endif //TRIANGLE_H

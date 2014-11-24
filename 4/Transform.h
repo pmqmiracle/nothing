@@ -32,7 +32,9 @@ public:
       {
             //correctly transform the resulting normal
             Vector3f newNormal = this->M.getSubmatrix3x3(0,0).inverse().transposed()*h.getNormal();
-            newNormal.normalized();
+            //bug
+            //newNormal.normalized();
+            newNormal.normalize();
 
             h.set(h.getT(), h.getMaterial(), newNormal);
             return true;
