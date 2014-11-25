@@ -14,14 +14,16 @@ using namespace std;
 float clampedDepth ( float depthInput, float depthMin , float depthMax);
 
 #include "bitmap_image.hpp"
+
 int main( int argc, char* argv[] )
 {
   // Fill in your implementation here.
-
   // This loop loops over each of the input arguments.
   // argNum is initialized to 1 because the first
   // "argument" provided to the program is actually the
   // name of the executable (in our case, "a4").
+  //cout << "cb test" << endl;
+
   char* inputFile;
   char* outputFile;
   int width;
@@ -62,7 +64,8 @@ int main( int argc, char* argv[] )
   Camera* camera = sp.getCamera();
 
   //Nov23 for non-square viewport
-  //camera->setRatio(width*1.0/height);
+  camera->setRatio(width*1.0/height);
+  cout << "ratio is : " << width*1.0/height << endl;
 
   Group* group = sp.getGroup();
   float t_min = 0.0f;
@@ -71,18 +74,17 @@ int main( int argc, char* argv[] )
   int countTrue = 0;
   int countFalse = 0;
 
-  char fname[] = "ray.txt";
-  ofstream fout(fname);
+  //输出中间结果写入文件
+  //char fname[] = "ray.txt";
+  //ofstream fout(fname);
   for(int i = 0;i < width;++i)
   {
       for(int j = 0;j < height;++j)
       {
           //[-1,1]
           Ray ray = camera->generateRay(Vector2f(2.0*i/width - 1,2.0*j/height - 1));
-          //float angle = camera->getAngle();
-          //cout << angle << endl;
-          //fout << "Angle " << angle << endl;
-          fout << ray.getDirection()[0] << ", " << ray.getDirection()[1] << ", " << ray.getDirection()[2] << endl;
+          //输出中间结果写入文件
+          //fout << ray.getDirection()[0] << ", " << ray.getDirection()[1] << ", " << ray.getDirection()[2] << endl;
           Hit hit;
           float tCurrent = 1000.0;
           bool flag = group->intersect(ray, hit, t_min);

@@ -72,7 +72,7 @@ public:
         }
         return false;
 	}
-
+//in Mesh.cpp fill in the variables below
 	bool hasTex;
 	Vector3f normals[3];
 	Vector2f texCoords[3];
@@ -82,7 +82,7 @@ protected:
     float beta;
     float gamma;
     Vector3f a, b, c;
-    Material* material;
+    //Material* material;
 };
 
 #endif //TRIANGLE_H

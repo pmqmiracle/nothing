@@ -40,19 +40,18 @@ public:
         this->center = center;
         this->ratio = 1;
 
-        w = direction.normalized();
-        v = up.normalized();
-        //bug
-        //u = Vector3f::cross(w, v);
-        //u.normalized();
-        //the above is different from the below: a+b is not equal to a += b
-        u = Vector3f::cross(w,v).normalized();
-        /*
+//        w = direction.normalized();
+//        v = up.normalized();
+//        //bug
+//        //u = Vector3f::cross(w, v);
+//        //u.normalized();
+//        //the above is different from the below: a+b is not equal to a += b
+//        u = Vector3f::cross(w,v).normalized();
+
+        // the effect is the same as above
         w = direction.normalized();
         u = Vector3f::cross(w, up).normalized();
         v = Vector3f::cross(u,w).normalized();
-        */
-
     }
 
     /*float getAngle()
@@ -64,8 +63,8 @@ public:
 	virtual Ray generateRay( const Vector2f& point)
     {
         float D = 1.0/tan((this->angle)*0.5);
-        //Vector3f r = (point[0]*this->u + this->ratio*point[1]*this->v + D*this->w);
-        Vector3f r = (point[0]*this->u + point[1]*this->v + D*this->w);
+        Vector3f r = (point[0]*this->u + this->ratio*point[1]*this->v + D*this->w);
+        //Vector3f r = (point[0]*this->u + point[1]*this->v + D*this->w);
         static int count = 0;
         if(count < 3)
             cout << "before normalized : " << r[0] << ", " << r[1] << ", " << r[2] << endl;
@@ -78,7 +77,7 @@ public:
             cout << "after normalized : " << r[0] << ", " << r[1] << ", " << r[2] << endl;
         if(count++ < 3)
         {
-            cout << D << endl;
+            cout << "D: " << D << endl;
             cout << "point :" << point[0] << ", " << point[1] << endl;
             cout << "U: " << u[0] << ", " << u[1] << ", " << u[2] << endl;
             cout << "V: " << v[0] << ", " << v[1] << ", " << v[2] << endl;

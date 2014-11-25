@@ -16,6 +16,10 @@ public:
 	Plane(){}
 	Plane( const Vector3f& normal , float d , Material* m):Object3D(m)
     {
+        //////////////////////////////////////////////////////////////////////
+        //need to figure it out why??????
+        //////////////////////////////////////////////////////////////////////
+        //test for normal sign
         this->normal = -1 * normal;
         //this->normal = normal;
         this->d = d;
@@ -36,10 +40,10 @@ public:
             //
             //need to debug!!!!!!!!!!!
 
-            if(tmp > 0.0)
-                h.set(tt, this->material, -1 * this->normal);
-            else
+            if(tmp < 0.0)
                 h.set(tt, this->material, this->normal);
+            else
+                h.set(tt, this->material, -1*this->normal);
 
             //h.set(tt, this->material, this->normal);
             return true;
@@ -52,7 +56,7 @@ protected:
     Vector3f normal;
     float d;
 
-    Material* material;
+    //Material* material;
 };
 #endif //PLANE_H
 

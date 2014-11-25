@@ -63,6 +63,7 @@ SceneParser::~SceneParser() {
     if (camera != NULL)
         delete camera;
     int i;
+    //双重删除remember
     for (i = 0; i < num_materials; i++) {
         delete materials[i]; }
     delete [] materials;

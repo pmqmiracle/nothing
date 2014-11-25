@@ -18,6 +18,8 @@ public:
   ~Transform()
   {
   }
+  //如果是transform的话,如果直接transform所有的primitives, scenes如果很复杂处理起来会很复杂,所以
+  //改为首先transform the ray
   virtual bool intersect( const Ray& r , Hit& h , float tmin)
   {
       //transform the ray from world space to object space
