@@ -29,7 +29,6 @@ private:
   SceneParser* m_scene;
 
   int m_maxBounces;
-  Group* g;
 
 };
 

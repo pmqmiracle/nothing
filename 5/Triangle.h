@@ -66,13 +66,13 @@ public:
             normal.normalize();
 
             Vector2f tex = alpha * texCoords[0] + beta * texCoords[1] + gamma * texCoords[2];
-            //this->material->setTexCoord(tex);
+            this->material->setTexCoord(tex);
             hit.set(tt, this->material, normal);
             return true;
         }
         return false;
 	}
-
+//in Mesh.cpp fill in the variables below
 	bool hasTex;
 	Vector3f normals[3];
 	Vector2f texCoords[3];
@@ -82,7 +82,7 @@ protected:
     float beta;
     float gamma;
     Vector3f a, b, c;
-    Material* material;
+    //Material* material;
 };
 
 #endif //TRIANGLE_H
