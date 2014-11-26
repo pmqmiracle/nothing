@@ -1,0 +1,1 @@
+./a5 -input scene01_plane.txt  -size 200 200 -output plane1.bmp

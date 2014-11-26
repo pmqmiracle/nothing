@@ -51,12 +51,12 @@ public:
 private:
 
     static double fade( double t )
-    { 
+    {
         return t * t * t * (t * (t * 6 - 15) + 10);
     }
-    
+
     static double lerp( double t, double a, double b )
-    { 
+    {
         return a + t * (b - a);
     }
 
@@ -66,7 +66,7 @@ private:
         double u = h<8 ? x : y;                 // INTO 12 GRADIENT DIRECTIONS.
         double v = h<4 ? y : h==12||h==14 ? x : z;
         return ((h&1) == 0 ? u : -u) + ((h&2) == 0 ? v : -v);
-    
+
     }
 
     // permutation

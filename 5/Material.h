@@ -11,7 +11,7 @@
 class Material
 {
 public:
-	
+
 	Material( const Vector3f& d_color ,const Vector3f& s_color=Vector3f::ZERO, float s=0,
 		float r =0 );
 
@@ -31,13 +31,22 @@ public:
 	Vector3f getSpecularColor();
 
 	void setNoise(const Noise & n);
+
+    void setTexCoord(Vector2f tex)
+    {
+        this->texCoords = tex;
+    }
+
 protected:
   Vector3f diffuseColor;
-  float refractionIndex;
-  float shininess;
   Vector3f specularColor;
+  float refractionIndex;//necessary for my recursive ray tracing
+  float shininess;
   Texture t;
   Noise noise;
+
+  Vector2f texCoords;
+
 };
 
 #endif // MATERIAL_H

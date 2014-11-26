@@ -9,21 +9,18 @@
 #include "Image.h"
 #include <string.h>
 
+#include "RayTracer.h"
+
 using namespace std;
 
 float clampedDepth ( float depthInput, float depthMin , float depthMax);
 
 #include "bitmap_image.hpp"
 
+#define REFRACTION_INDEX 1
+
 int main( int argc, char* argv[] )
 {
-  // Fill in your implementation here.
-  // This loop loops over each of the input arguments.
-  // argNum is initialized to 1 because the first
-  // "argument" provided to the program is actually the
-  // name of the executable (in our case, "a4").
-  //cout << "cb test" << endl;
-
   char* inputFile;
   char* outputFile;
   int width;
@@ -60,6 +57,7 @@ int main( int argc, char* argv[] )
   // the scene. Write the color at the intersection to that
   // pixel in your output image.
   const char* final_output = outputFile;
+
   SceneParser sp = SceneParser(inputFile);
   Camera* camera = sp.getCamera();
 
@@ -68,12 +66,14 @@ int main( int argc, char* argv[] )
   cout << "ratio is : " << width*1.0/height << endl;
 
   Group* group = sp.getGroup();
-  float t_min = 0.0f;
+
+  //float t_min = 0.0f;
+
   Material* m;
   Image image(width,height);
-  int countTrue = 0;
-  int countFalse = 0;
 
+  int bounce_num = 0;
+  RayTracer *raytracer = new RayTracer(&sp, bounce_num);
   //输出中间结果写入文件
   //char fname[] = "ray.txt";
   //ofstream fout(fname);
@@ -83,57 +83,18 @@ int main( int argc, char* argv[] )
       {
           //[-1,1]
           Ray ray = camera->generateRay(Vector2f(2.0*i/width - 1,2.0*j/height - 1));
-          //输出中间结果写入文件
-          //fout << ray.getDirection()[0] << ", " << ray.getDirection()[1] << ", " << ray.getDirection()[2] << endl;
           Hit hit;
-          float tCurrent = 1000.0;
-          bool flag = group->intersect(ray, hit, t_min);
-          //cout << "intersection " << flag << endl;
-          if(flag)
-          {
-              ++countTrue;
-              //cout << i << ", " << j << endl;
-              tCurrent = hit.getT();
-              m = hit.getMaterial();
-              Vector3f color = Vector3f(0,0,0);//()
-              Vector3f p = ray.pointAtParameter(tCurrent);
-              for(int k = 0;k < sp.getNumLights();++k)
-              {
-                  Light* current_light = sp.getLight(k);
-                  //generate ray to to light
-                  Vector3f dir, col;
-                  float dis = 0.0f;//in fact not in use
 
-                  //得到当前光l的dir, col
-                  current_light->getIllumination(p,dir,col,dis);
+          Vector3f finalcolor = raytracer->traceRay(ray, camera->getTMin(), 0, REFRACTION_INDEX, hit);
 
-                  color = color + m->Shade(ray, hit, dir, col);
-              }
-              //adding ambient light right now, not in Shade
-              color = color + sp.getAmbientLight();
-              image.SetPixel(i,j,color);
-          }
-          else
-          {
-              ++countFalse;
-              //cout << i << ", " << j << endl;
-              image.SetPixel(i,j,sp.getBackgroundColor());
-          }
+          image.SetPixel(i,j,finalcolor);
       }
   }
-  cout << "INTERSECTION " << countTrue << endl;
-  cout << "NON-intersection" << countFalse << endl;
+  //TODO: 变量??how to
+  //cout << "INTERSECTION " << countIntersect << endl;
+  //cout << "NON-intersection" << NotIntersect << endl;
   image.SaveImage(final_output);
 
-  ///TODO: below demonstrates how to use the provided Image class
-  ///Should be removed when you start
-  /*
-  Vector3f pixelColor (1.0f,0,0);
-  //width and height
-  Image image( 10 , 15 );
-  image.SetPixel( 5,5, pixelColor );
-  image.SaveImage("demo.bmp");
-  */
   return 0;
 }
 
