@@ -36,7 +36,6 @@ public:
                         grad(p[BB+1], x-1, y-1, z-1 ))));
     }
 
-
     static double octaveNoise( const Vector3f& pt, int octaves )
     {
         double answer = 0;
@@ -66,12 +65,9 @@ private:
         double u = h<8 ? x : y;                 // INTO 12 GRADIENT DIRECTIONS.
         double v = h<4 ? y : h==12||h==14 ? x : z;
         return ((h&1) == 0 ? u : -u) + ((h&2) == 0 ? v : -v);
-
     }
-
     // permutation
     static int p[512];
-
 };
 
 #endif

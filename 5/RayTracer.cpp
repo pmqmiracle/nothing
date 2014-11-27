@@ -49,7 +49,7 @@ bool RayTracer::castShadows(Ray& ray, Hit& hit, Vector3f& dir) const
     Hit newhit;
     float ep = 0.001;
     bool intersect = g->intersect(newray, newhit, ep);
-    return !intersect;//miracle why??
+    return !intersect;//Miracle??? true==没有障碍物阻挡 false==有东西相交挡住了光
 }
 
 float calculateR(float R0, float c)
@@ -81,6 +81,7 @@ Vector3f RayTracer::traceRay( Ray& ray, float tmin, int bounces,
             float dis = 0.0f;//in fact not in use
             //得到当前光l的dir, col
             current_light->getIllumination(p,dir,col,dis);
+
             Ray nowray(p,dir);
             Hit nowhit(dis, NULL, Vector3f());
             if(castShadows(ray, hit, dir) || !g->intersect(nowray, nowhit, ELIPSON))
@@ -110,6 +111,7 @@ Vector3f RayTracer::traceRay( Ray& ray, float tmin, int bounces,
 
               float newIndex;
               Vector3f newNormal;
+              //Miracle : still confused with it
               //从里面出来
               if(Vector3f::dot(hit.getNormal(),ray.getDirection())>0)
               {
@@ -125,11 +127,11 @@ Vector3f RayTracer::traceRay( Ray& ray, float tmin, int bounces,
               if(newIndex > 0)
               {
                   Vector3f t;
-                  Hit refractHit;
                   if(transmittedDirection(newNormal,ray.getDirection(),refr_index, newIndex, t))
                   {
                       //t already normalized
                       Ray ray3(p, t);
+                      Hit refractHit;
                       refractColor = m->getSpecularColor() * traceRay(ray3, ELIPSON, bounces+1, newIndex, refractHit);
 
                       float c;
