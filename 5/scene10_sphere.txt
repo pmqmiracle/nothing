@@ -39,9 +39,9 @@ Materials {
         Noise {
 			color 0.1 0.2 0.3
 			color 0.3 0.4 0.5
-			octaves 1
-			frequency 1
-			amplitude 1
+			octaves 4
+			frequency 2
+			amplitude 4
 		}
     }
 }

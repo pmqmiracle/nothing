@@ -31,6 +31,7 @@ bool iOutOfBoundary(int i, int height)
 
 #define REFRACTION_INDEX 1
 
+//[-0.5,0.5]
 float getRandom()
 {
     return -0.5+1.0*rand()/RAND_MAX;
@@ -45,7 +46,7 @@ int main( int argc, char* argv[] )
   char* outputFile;
   int width;
   int height;
-  int bounce_num;
+  int bounce_num = 0;
   for( int argNum = 1; argNum < argc; ++argNum )
   {
      //std::cout << "Argument " << argNum << " is: " << argv[argNum] << std::endl;
@@ -103,11 +104,15 @@ int main( int argc, char* argv[] )
   //输出中间结果写入文件
   //char fname[] = "ray.txt";
   //ofstream fout(fname);
+
+  /////////////////////////////////////////
+  //Jittering
+  /////////////////////////////////////////
   for(int i = 0;i < 3*width;++i)
   {
       for(int j = 0;j < 3*height;++j)
       {
-          //[-1,1]
+          //[-0.5,0.5]
           float myrandi = getRandom();
           float myrandj = getRandom();
           Ray ray = camera->generateRay(Vector2f(2.0*(i+myrandi)/(3*width) - 1 , 2.0*(j+myrandj)/(3*height) - 1 ));
@@ -120,9 +125,12 @@ int main( int argc, char* argv[] )
       }
   }
 
+  ///////////////////////////////////////
+  //Bluring
+  ///////////////////////////////////////
   //Gaussian blur
   Image GBImage(3*width,3*height);
-  //horizontally
+  //Blur horizontally
   for(int i = 0;i < 3*width;++i)
   {
       for(int j = 0;j < 3*height;++j)
@@ -142,7 +150,7 @@ int main( int argc, char* argv[] )
           BigImage.SetPixel(i,j,ccc);
       }
   }
-  //vertically
+  //Blur vertically
   for(int i = 0;i < 3*width;++i)
   {
       for(int j = 0;j < 3*height;++j)
@@ -162,6 +170,10 @@ int main( int argc, char* argv[] )
           BigImage.SetPixel(i,j,ccc);
       }
   }
+
+  /////////////////////////////////
+  //Down Sampling Averaging
+  /////////////////////////////////
   for(int i = 0;i < 3*width;++i)
   {
       for(int j = 0;j < 3*height;++j)
@@ -170,6 +182,7 @@ int main( int argc, char* argv[] )
           image.SetPixel(i/3,j/3,BigImage.GetPixel(i,j)+image.GetPixel(i/3,j/3));
       }
   }
+
   //average 3x3
   for(int i = 0;i < width;++i)
   {

@@ -1,6 +1,7 @@
 #ifndef PLANE_H
 #define PLANE_H
 
+//@TODO:Dec, debug for normal sign
 #include "Object3D.h"
 #include <vecmath.h>
 #include <cmath>
@@ -20,9 +21,9 @@ public:
         //need to figure it out why??????
         //////////////////////////////////////////////////////////////////////
         //test for normal sign
-        this->normal = -1 * normal;
-        //this->normal = normal;
-        this->d = d;
+        //this->normal = -1 * normal;
+        this->normal = normal;
+        this->d = -1*d;
         this->material = m;
 	}
 	~Plane(){}
@@ -40,12 +41,12 @@ public:
             //
             //need to debug!!!!!!!!!!!
 
-            if(tmp < 0.0)
-                h.set(tt, this->material, this->normal);
-            else
-                h.set(tt, this->material, -1*this->normal);
+//            if(tmp < 0.0)
+//                h.set(tt, this->material, this->normal);
+//            else
+//                h.set(tt, this->material, -1*this->normal);
 
-            //h.set(tt, this->material, this->normal);
+            h.set(tt, this->material, this->normal);
             return true;
         }
         else

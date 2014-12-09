@@ -37,12 +37,14 @@ public:
         this->texCoords = tex;
     }
 
+//Dec 8,2014 change from protected to public
+  Texture t;
 protected:
   Vector3f diffuseColor;
   Vector3f specularColor;
   float refractionIndex;//necessary for my recursive ray tracing
   float shininess;
-  Texture t;
+
   Noise noise;
 
   Vector2f texCoords;

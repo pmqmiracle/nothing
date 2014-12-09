@@ -49,6 +49,8 @@ bool RayTracer::castShadows(Ray& ray, Hit& hit, Vector3f& dir) const
     Hit newhit;
     float ep = 0.001;
     bool intersect = g->intersect(newray, newhit, ep);
+    //Dec 8, 2014
+    //如果有相交 说明遮住light了 就不用cast shadow, 否则说明没有遮挡物,可以计算shadow
     return !intersect;//Miracle??? true==没有障碍物阻挡 false==有东西相交挡住了光
 }
 
@@ -63,15 +65,27 @@ Vector3f RayTracer::traceRay( Ray& ray, float tmin, int bounces,
 {
     //hit = Hit( FLT_MAX, NULL, Vector3f( 0, 0, 0 ) );
     //return Vector3f(0,0,0);
-    Vector3f color = Vector3f(0,0,0);
+    //Vector3f color = Vector3f(0,0,0);
     if(g->intersect(ray, hit, tmin))
     {
         float tCurrent = hit.getT();
         Material* m = hit.getMaterial();
         Vector3f p = ray.pointAtParameter(tCurrent);
 
+
+
+        //Dec 8, 2014
+        Vector3f color = m_scene->getAmbientLight();
+        if (hit.hasTex && hit.getMaterial()->t.valid()) {
+          color = color * hit.getMaterial()->t(hit.texCoord[0], hit.texCoord[1]);
+        } else {
+          color = color * hit.getMaterial()->getDiffuseColor();
+        }
+
+
         /////////////////////////////////////////////////
         //do this regardless of reflection and refraction
+        //cast shadows从交点到所有光源的计算,shadow or not
         /////////////////////////////////////////////////
         for(int k = 0;k < m_scene->getNumLights();++k)
         {
@@ -83,6 +97,7 @@ Vector3f RayTracer::traceRay( Ray& ray, float tmin, int bounces,
             current_light->getIllumination(p,dir,col,dis);
 
             Ray nowray(p,dir);
+            //存储在nowhit
             Hit nowhit(dis, NULL, Vector3f());
             if(castShadows(ray, hit, dir) || !g->intersect(nowray, nowhit, ELIPSON))
             {
@@ -113,12 +128,14 @@ Vector3f RayTracer::traceRay( Ray& ray, float tmin, int bounces,
               Vector3f newNormal;
               //Miracle : still confused with it
               //从里面出来
+              //Not Going in
               if(Vector3f::dot(hit.getNormal(),ray.getDirection())>0)
               {
                   newIndex = 1.0;
                   newNormal = -1 * hit.getNormal();
               }
               //进去
+              //Going in
               else
               {
                   newIndex = m->getRefractionIndex();
@@ -141,6 +158,7 @@ Vector3f RayTracer::traceRay( Ray& ray, float tmin, int bounces,
                           c = abs(Vector3f::dot(ray.getDirection(),newNormal));
                       float R0 = pow((newIndex-refr_index)/(newIndex+refr_index), 2);
 
+                      //Dec 8, 2014
                       float R = calculateR(R0, c);
 
                       color = color + R*reflectColor + (1-R)*refractColor;
