@@ -16,16 +16,18 @@ Lights {
 
 Background {
     color 0 0 0 
-    ambientLight 0.1 0.1 0.1 
+    ambientLight 0.5 0.5 0.5 
 }
 
 Materials {
     numMaterials 4
     Material { diffuseColor 1 0 0 
-      specularColor 1 1 1
+      specularColor 0 1 0
       shininess 20
     }
-    Material { diffuseColor 0 1 0 }
+    Material { diffuseColor 0 1 0 
+	       specularColor 0 1 1
+	       shininess 100}
     Material { diffuseColor 0 0 1 }
     Material { diffuseColor 1 1 1 
 	specularColor 1 1 1

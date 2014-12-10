@@ -58,11 +58,21 @@ public:
       if(LR < 0.0f)
           LR = 0.0f;
       float specular = pow(LR, shininess);
-      if(this->t.valid())
+      //Dec 10, 2014
+      //改变应该是只有diffuse color得时候需要考虑是否选择diffusecolor 还是 texture color, specular得时候不需要?
+      //if(this->t.valid())
           //return Vector3f(Lo_r,Lo_g,Lo_b) + specular*t(texCoords[0],texCoords[1])*lightColor;
-          return partDiffuse + specular*t(texCoords[0],texCoords[1])*lightColor;
-      else
+      //    return partDiffuse + specular*t(texCoords[0],texCoords[1])*lightColor;
+      //else
           //return Vector3f(Lo_r,Lo_g,Lo_b) + specular*specularColor*lightColor;
+
+      //Dec 10, 2014 test diffuse, specular's effects
+
+          //only diffuse
+          //return partDiffuse;
+          //only specular
+          //return specular * specularColor * lightColor;
+          //All:diffuse+specular
           return partDiffuse + specular * specularColor * lightColor;
   }
 

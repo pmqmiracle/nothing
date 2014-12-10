@@ -107,9 +107,14 @@ int main( int argc, char* argv[] )
                   //得到当前光l的dir, col
                   current_light->getIllumination(p,dir,col,dis);
 
+                  //shading diffuse and ambient
                   color = color + m->Shade(ray, hit, dir, col);
               }
               //adding ambient light right now, not in Shade
+              //Dec 10, 2014
+              //test ambient, diffuse, specular's effects
+              //adding ambient
+              //or not adding ambient
               color = color + sp.getAmbientLight();
               image.SetPixel(i,j,color);
           }

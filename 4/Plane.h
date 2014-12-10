@@ -20,9 +20,14 @@ public:
         //need to figure it out why??????
         //////////////////////////////////////////////////////////////////////
         //test for normal sign
-        this->normal = -1 * normal;
-        //this->normal = normal;
-        this->d = d;
+        //Dec 10, 2014
+        //change
+        //this->normal = -1 * normal;
+        //this->d = d;
+        //this->material = m;
+
+        this->normal = normal;
+        this->d = -1*d;
         this->material = m;
 	}
 	~Plane(){}
@@ -40,12 +45,16 @@ public:
             //
             //need to debug!!!!!!!!!!!
 
+            //Dec 10, 2014
+            //change
+            /*
             if(tmp < 0.0)
                 h.set(tt, this->material, this->normal);
             else
                 h.set(tt, this->material, -1*this->normal);
+            */
 
-            //h.set(tt, this->material, this->normal);
+            h.set(tt, this->material, this->normal);
             return true;
         }
         else
