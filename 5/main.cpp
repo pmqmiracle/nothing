@@ -11,6 +11,8 @@
 
 #include "RayTracer.h"
 
+#include <ctime>
+
 using namespace std;
 
 float clampedDepth ( float depthInput, float depthMin , float depthMax);
@@ -29,7 +31,7 @@ bool iOutOfBoundary(int i, int height)
 
 #include "bitmap_image.hpp"
 
-#define REFRACTION_INDEX 1
+#define REFRACTION_INDEX 1.0
 
 //[-0.5,0.5]
 float getRandom()
@@ -39,6 +41,11 @@ float getRandom()
 
 int main( int argc, char* argv[] )
 {
+  //Dec 11, 2014, calculate program running time
+  clock_t start, end;
+  double cpu_running_time;
+  start = clock();
+
   cout << getRandom() << endl;
   cout << getRandom() << endl;
   cout << getRandom() << endl;
@@ -126,7 +133,7 @@ int main( int argc, char* argv[] )
   }
 
   ///////////////////////////////////////
-  //Bluring
+  //Bluring, smoothing
   ///////////////////////////////////////
   //Gaussian blur
   Image GBImage(3*width,3*height);
@@ -196,6 +203,11 @@ int main( int argc, char* argv[] )
   //cout << "INTERSECTION " << countIntersect << endl;
   //cout << "NON-intersection" << NotIntersect << endl;
   image.SaveImage(final_output);
+
+  end = clock();
+  //in seconds
+  cpu_running_time = (double)(end-start)/CLOCKS_PER_SEC;
+  printf("Running time : %f\n",cpu_running_time);
 
   return 0;
 }

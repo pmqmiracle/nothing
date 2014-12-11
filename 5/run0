@@ -1,0 +1,3 @@
+./a5 -input scene10_sphere2.txt  -size 300 300 -output 10.bmp\
+   -shadows -bounces 4 -jitter -filter
+

@@ -26,6 +26,7 @@ public:
 
 	float clampedDot( const Vector3f& L , const Vector3f& N )const;
 	void loadTexture(const char * filename);
+
 	float getRefractionIndex();
 	Vector3f getDiffuseColor();
 	Vector3f getSpecularColor();

@@ -8,8 +8,12 @@ Vector3f Noise::getColor(const Vector3f & pos)
   float m = PerlinNoise::octaveNoise(pos, octaves);
   float M = sin(frequency*pos[0] + amplitude*m);
 
+  //Dec 11, 2014
   //check M??
-  return M*color[0] + (1-M)*color[1];
+  //[-1,1]--->[0,1]
+  //printf("M value: %f\n",M);
+  M = (M+1)/2;
+  return M<0? 0:M*color[0] + (1-M)*color[1];
 }
 
 Noise::Noise(int _octaves,const Vector3f & color1, const Vector3f &color2,float freq,float amp):

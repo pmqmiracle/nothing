@@ -7,6 +7,7 @@
 #include "Light.h"
 
 #define ELIPSON 0.001
+#define EPSILON 0.001
 
 //IMPLEMENT THESE FUNCTIONS
 //These function definitions are mere suggestions. Change them as you like.
@@ -46,7 +47,9 @@ RayTracer::~RayTracer()
 bool RayTracer::castShadows(Ray& ray, Hit& hit, Vector3f& dir) const
 {
     Ray newray = Ray(ray.pointAtParameter(hit.getT()), dir);
-    Hit newhit;
+    //Dec 11
+    //Hit newhit;
+    Hit newhit = Hit(FLT_MAX, NULL, Vector3f(0,0,0));
     float ep = 0.001;
     bool intersect = g->intersect(newray, newhit, ep);
     //Dec 8, 2014
@@ -63,62 +66,53 @@ float calculateR(float R0, float c)
 Vector3f RayTracer::traceRay( Ray& ray, float tmin, int bounces,
                               float refr_index, Hit& hit ) const
 {
-    //hit = Hit( FLT_MAX, NULL, Vector3f( 0, 0, 0 ) );
-    //return Vector3f(0,0,0);
-    //Vector3f color = Vector3f(0,0,0);
-    if(g->intersect(ray, hit, tmin))
+    if(bounces > m_maxBounces)
+        return Vector3f(0,0,0);
+    if(g->intersect(ray, hit, ELIPSON))
     {
-        float tCurrent = hit.getT();
-        Material* m = hit.getMaterial();
-        Vector3f p = ray.pointAtParameter(tCurrent);
+              float tCurrent = hit.getT();
+              Material* m = hit.getMaterial();
+              Vector3f p = ray.pointAtParameter(tCurrent);
 
 
+              //Vector3f color;
+              Vector3f color = m_scene->getAmbientLight();
+              if (hit.hasTex && m->t.valid()) {
+                color = color * m->t(hit.texCoord[0], hit.texCoord[1]);
+              } else {
+                color = color * m->getDiffuseColor();
+              }
 
-        //Dec 8, 2014
-        Vector3f color = m_scene->getAmbientLight();
-        if (hit.hasTex && hit.getMaterial()->t.valid()) {
-          color = color * hit.getMaterial()->t(hit.texCoord[0], hit.texCoord[1]);
-        } else {
-          color = color * hit.getMaterial()->getDiffuseColor();
-        }
+              ////////////////////////////////////////////////////////////////////////
+              for(int k = 0;k < m_scene->getNumLights();++k)
+              {
+                  Light* current_light = m_scene->getLight(k);
+                  //generate ray to to light
+                  Vector3f dir, col;
+                  float dis = 0.0f;//in newhit
+                  //得到当前光l的dir, col
+                  current_light->getIllumination(p,dir,col,dis);
 
+                  Ray nowray(p,dir);
+                  //存储在nowhit
+                  Hit nowhit(dis, NULL, Vector3f());
+                  if(castShadows(ray, hit, dir) || !g->intersect(nowray, nowhit, ELIPSON))
+                  //Dec 11, 2014 test, seems duplicated?
 
-        /////////////////////////////////////////////////
-        //do this regardless of reflection and refraction
-        //cast shadows从交点到所有光源的计算,shadow or not
-        /////////////////////////////////////////////////
-        for(int k = 0;k < m_scene->getNumLights();++k)
-        {
-            Light* current_light = m_scene->getLight(k);
-            //generate ray to to light
-            Vector3f dir, col;
-            float dis = 0.0f;//in fact not in use
-            //得到当前光l的dir, col
-            current_light->getIllumination(p,dir,col,dis);
+                  //if(castShadows(ray, hit, dir))
+                  {
+                      color = color + m->Shade(ray, hit, dir, col);
+                  }
+              }
+              ////////////////////////////////////////////////////////////////////
 
-            Ray nowray(p,dir);
-            //存储在nowhit
-            Hit nowhit(dis, NULL, Vector3f());
-            if(castShadows(ray, hit, dir) || !g->intersect(nowray, nowhit, ELIPSON))
-            {
-                color = color + m->Shade(ray, hit, dir, col);
-            }
-        }
-
-        //reflection and refraction should care the bounces number
-        Vector3f reflectColor(0,0,0);
-        Vector3f refractColor(0,0,0);
-        if(bounces < m_maxBounces)
-        {
               //////////////////////////////////////////////////////
               //                reflection
               //////////////////////////////////////////////////////
-              {
-                  Vector3f mirrordir = mirrorDirection(hit.getNormal(),ray.getDirection());
-                  Ray ray2(p, mirrordir);
-                  Hit reflectHit;
-                  reflectColor = m->getSpecularColor() * traceRay(ray2, ELIPSON, bounces+1, refr_index, reflectHit);
-              }
+              Vector3f mirrordir = mirrorDirection(hit.getNormal(),ray.getDirection());
+              Ray ray2(p, mirrordir);
+              Hit reflectHit;
+              Vector3f reflectColor = m->getSpecularColor() * traceRay(ray2, ELIPSON, bounces+1, refr_index, reflectHit);
 
               //////////////////////////////////////////////////////
               //                refraction
@@ -129,6 +123,7 @@ Vector3f RayTracer::traceRay( Ray& ray, float tmin, int bounces,
               //Miracle : still confused with it
               //从里面出来
               //Not Going in
+              //ray already inside the object
               if(Vector3f::dot(hit.getNormal(),ray.getDirection())>0)
               {
                   newIndex = 1.0;
@@ -136,6 +131,7 @@ Vector3f RayTracer::traceRay( Ray& ray, float tmin, int bounces,
               }
               //进去
               //Going in
+              //ray is going into the object
               else
               {
                   newIndex = m->getRefractionIndex();
@@ -149,7 +145,7 @@ Vector3f RayTracer::traceRay( Ray& ray, float tmin, int bounces,
                       //t already normalized
                       Ray ray3(p, t);
                       Hit refractHit;
-                      refractColor = m->getSpecularColor() * traceRay(ray3, ELIPSON, bounces+1, newIndex, refractHit);
+                      Vector3f refractColor = m->getSpecularColor() * traceRay(ray3, ELIPSON, bounces+1, newIndex, refractHit);
 
                       float c;
                       if(refr_index > newIndex)
@@ -158,7 +154,6 @@ Vector3f RayTracer::traceRay( Ray& ray, float tmin, int bounces,
                           c = abs(Vector3f::dot(ray.getDirection(),newNormal));
                       float R0 = pow((newIndex-refr_index)/(newIndex+refr_index), 2);
 
-                      //Dec 8, 2014
                       float R = calculateR(R0, c);
 
                       color = color + R*reflectColor + (1-R)*refractColor;
@@ -168,11 +163,9 @@ Vector3f RayTracer::traceRay( Ray& ray, float tmin, int bounces,
                       return color+reflectColor;
               }
               return color+reflectColor;
-        }
-        //++NotIntersect;
-        return color;
     }
     //没有相交的就返回背景颜色
+    //返回cubemap的dir方向背景texture颜色
     else
         return m_scene->getBackgroundColor(ray.getDirection());
 }

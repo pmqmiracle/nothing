@@ -26,14 +26,17 @@ public:
         double w = fade(z);
         int A = p[X  ]+Y; int AA = p[A]+Z; int AB = p[A+1]+Z;      // HASH COORDINATES OF
         int B = p[X+1]+Y; int BA = p[B]+Z; int BB = p[B+1]+Z;      // THE 8 CUBE CORNERS,
-        return lerp(w, lerp(v, lerp(u, grad(p[AA  ], x  , y  , z   ),  // AND ADD
-                        grad(p[BA  ], x-1, y  , z   )), // BLENDED
-                    lerp(u, grad(p[AB  ], x  , y-1, z   ),  // RESULTS
-                        grad(p[BB  ], x-1, y-1, z   ))),// FROM  8
-                lerp(v, lerp(u, grad(p[AA+1], x  , y  , z-1 ),  // CORNERS
-                        grad(p[BA+1], x-1, y  , z-1 )), // OF CUBE
-                    lerp(u, grad(p[AB+1], x  , y-1, z-1 ),
-                        grad(p[BB+1], x-1, y-1, z-1 ))));
+        //3D=>七次插值
+        return lerp(w,  lerp(v, lerp(u, grad(p[AA  ], x  , y  , z   ),  // AND ADD
+                                        grad(p[BA  ], x-1, y  , z   )), // BLENDED
+                                lerp(u, grad(p[AB  ], x  , y-1, z   ),  // RESULTS
+                                        grad(p[BB  ], x-1, y-1, z   ))),// FROM  8
+
+                        lerp(v, lerp(u, grad(p[AA+1], x  , y  , z-1 ),  // CORNERS
+                                        grad(p[BA+1], x-1, y  , z-1 )), // OF CUBE
+                                lerp(u, grad(p[AB+1], x  , y-1, z-1 ),
+                                        grad(p[BB+1], x-1, y-1, z-1 )))
+                   );
     }
 
     static double octaveNoise( const Vector3f& pt, int octaves )

@@ -16,7 +16,9 @@ void intersectCall(int idx, void ** arg)
 }
 bool Mesh::intersect( const Ray& r , Hit& h , float tmin )
 {
-/*	bool result = false;
+    //简单的使用ray-triangleの相交测试不适用octree
+    //for 6.bmp pretty slow OwwwwwwO
+	bool result = false;
 	for( unsigned int i = 0 ; i < t.size() ; i++){
 		Triangle triangle(v[t[i][0]],
 			v[t[i][1]],v[t[i][2]],material);
@@ -33,7 +35,10 @@ bool Mesh::intersect( const Ray& r , Hit& h , float tmin )
 		result |= triangle.intersect( r , h , tmin);
 	}
 	return result;
-	*/
+
+    //Dec 11, 2014
+    //使用octree来加速ray-meshの相交测试,only for mesh , triangle
+    /*
 	ray = &r;
 	hit = &h;
 	tm = tmin;
@@ -44,26 +49,27 @@ bool Mesh::intersect( const Ray& r , Hit& h , float tmin )
 	octree.termFunc = intersectCall;
 	octree.intersect(r);
 	return arg[1];
+    */
 }
 bool Mesh ::intersectTrig(int idx){
 	bool result = false;
 	Triangle triangle(v[t[idx][0]],
 		v[t[idx][1]],v[t[idx][2]],material);
-	
-  //some shitty hack
-//change at will
-if(SMOOTH){
 
-    for(int jj=0;jj<3;jj++){
-		  triangle.normals[jj] = n[t[idx][jj]];
-	  }
-	}else{
-    
-    for(int jj=0;jj<3;jj++){
-		  triangle.normals[jj] = n[idx];
-	  }
-}
-  if(texCoord.size()>0){
+  //some shitty hack
+  //change at will
+    if(SMOOTH){
+
+        for(int jj=0;jj<3;jj++){
+              triangle.normals[jj] = n[t[idx][jj]];
+          }
+    }else{
+
+        for(int jj=0;jj<3;jj++){
+              triangle.normals[jj] = n[idx];
+         }
+    }
+    if(texCoord.size()>0){
 		for(int jj=0;jj<3;jj++){
 			triangle.texCoords[jj] = texCoord[t[idx].texID[jj]];
 		}
@@ -133,32 +139,32 @@ Mesh::Mesh(const char * filename,Material * material):Object3D(material)
 	}
 	f.close();
 	compute_norm();
-	octree.build(*this);
+    //使用octree加速检测
+	//octree.build(*this);
 }
 
 void Mesh::compute_norm()
 {
-if (SMOOTH){
-	n.resize(v.size());
-	for(unsigned int ii=0; ii<t.size(); ii++) {
-		Vector3f a = v[t[ii][1]] - v[t[ii][0]];
-		Vector3f b = v[t[ii][2]] - v[t[ii][0]];
-		b=Vector3f::cross(a,b);
-		for(int jj=0; jj<3; jj++) {
-			n[t[ii][jj]]+=b;
-		}
-	}
-	for(unsigned int ii=0; ii<v.size(); ii++) {
-		n[ii] = n[ii]/ n[ii].abs();
-	}
-}else{
-	n.resize(t.size());
-	for(unsigned int ii=0; ii<t.size(); ii++) {
-		Vector3f a = v[t[ii][1]] - v[t[ii][0]];
-		Vector3f b = v[t[ii][2]] - v[t[ii][0]];
-		b=Vector3f::cross(a,b);
-	  n[ii]=b.normalized();
-	}
-
-}
+    if (SMOOTH){
+        n.resize(v.size());
+        for(unsigned int ii=0; ii<t.size(); ii++) {
+            Vector3f a = v[t[ii][1]] - v[t[ii][0]];
+            Vector3f b = v[t[ii][2]] - v[t[ii][0]];
+            b=Vector3f::cross(a,b);
+            for(int jj=0; jj<3; jj++) {
+                n[t[ii][jj]]+=b;
+            }
+        }
+        for(unsigned int ii=0; ii<v.size(); ii++) {
+            n[ii] = n[ii]/ n[ii].abs();
+        }
+    }else{
+        n.resize(t.size());
+        for(unsigned int ii=0; ii<t.size(); ii++) {
+            Vector3f a = v[t[ii][1]] - v[t[ii][0]];
+            Vector3f b = v[t[ii][2]] - v[t[ii][0]];
+            b=Vector3f::cross(a,b);
+          n[ii]=b.normalized();
+        }
+    }
 }

@@ -29,9 +29,14 @@ Vector3f Material::Shade( const Ray& ray, const Hit& hit,
     }
 	Vector3f n = hit.getNormal().normalized();
 	//Diffuse Shading
+
+	///////////////////////////////////////////////////
+	////////Noise
+	///////////////////////////////////////////////////
 	if(noise.valid()){
 	    kd = noise.getColor(ray.getOrigin()+ray.getDirection()*hit.getT());
 	}
+
 	Vector3f color = clampedDot( dirToLight ,n )*pointwiseDot( lightColor , kd);
 	return color;
 }
