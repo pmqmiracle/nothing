@@ -1,0 +1,204 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+A	parse.c	32;"	d	file:
+ANIMATION_H	animation.h	9;"	d
+Add	quat.c	/^void Add (Quaternion* q, Quaternion* q1, Quaternion* q2) $/;"	f
+AddSelf	quat.c	/^void AddSelf (Quaternion* q, Quaternion* q2) $/;"	f
+Animation	animation.h	/^} Animation;$/;"	t	typeref:struct:__anon1
+AnimationList	animation.h	/^struct AnimationList$/;"	s
+B	parse.c	31;"	d	file:
+C0	kbsplpos.h	/^    Point3 C0, C1, C2, C3;$/;"	m	struct:__anon5
+C1	kbsplpos.h	/^    Point3 C0, C1, C2, C3;$/;"	m	struct:__anon5
+C2	kbsplpos.h	/^    Point3 C0, C1, C2, C3;$/;"	m	struct:__anon5
+C3	kbsplpos.h	/^    Point3 C0, C1, C2, C3;$/;"	m	struct:__anon5
+ComputeArcLength	kbsplpos.c	/^static void ComputeArcLength (SplineInfo* info)$/;"	f	file:
+ComputeIAndU	kbsplpos.c	/^static void ComputeIAndU (SplineInfo* info, double t, int* j, double* v)$/;"	f	file:
+CubicPolynomial	kbsplpos.h	/^CubicPolynomial;$/;"	t	typeref:struct:__anon5
+Dot	quat.c	/^double Dot (Quaternion* q, Quaternion* q2) $/;"	f
+Exp	quat.c	/^void Exp (Quaternion* q, Quaternion* q2) $/;"	f
+ExpSelf	quat.c	/^void ExpSelf (Quaternion* q) $/;"	f
+FALSE	animation.h	19;"	d
+FindAnimation	animation.c	/^Animation* FindAnimation(char* name,struct AnimationList *al)$/;"	f
+FromAngleAxis	quat.c	/^void FromAngleAxis (Quaternion* q, double angle, double ax,$/;"	f
+FromAngleAxisPt	quat.c	/^void FromAngleAxisPt (Quaternion* q, double rdAngle, Point3* rkPoint)$/;"	f
+FromRotationMatrix	quat.c	/^void FromRotationMatrix (Quaternion* q, double R[3][3])$/;"	f
+G	parse.c	30;"	d	file:
+GetCamera	animation.c	/^void GetCamera(struct AnimationList *al,double time,$/;"	f
+GetMatrix	animation.c	/^int GetMatrix(struct AnimationList *al,char* name, double time, double m[4][4])$/;"	f
+GetRotation	animation.c	/^int GetRotation(struct AnimationList *al,char* name, double time, double Rout[4])$/;"	f
+GetScale	animation.c	/^int GetScale(struct AnimationList *al,char* name, double time, double Sout[3])$/;"	f
+GetTranslation	animation.c	/^int GetTranslation(struct AnimationList *al,char* name, double time, double Tout[3])$/;"	f
+GetVisibility	animation.c	/^int GetVisibility(struct AnimationList *al, char *name, double time)$/;"	f
+Intermediate	quat.c	/^void Intermediate ( Quaternion* q0, Quaternion* q1,$/;"	f
+InterpolateSingle0	kbsplpos.c	/^static void InterpolateSingle0 (double u, CubicPolynomial* poly, Point3* P)$/;"	f	file:
+InterpolateSingle1	kbsplpos.c	/^static void InterpolateSingle1 (double u, CubicPolynomial* poly, Point3* P)$/;"	f	file:
+InterpolateSingle2	kbsplpos.c	/^static void InterpolateSingle2 (double u, CubicPolynomial* poly, Point3* P)$/;"	f	file:
+Inverse	quat.c	/^void Inverse (Quaternion* q, Quaternion* q2) $/;"	f
+InverseSelf	quat.c	/^void InverseSelf (Quaternion* q) $/;"	f
+InvertIntegral	kbsplpos.c	/^static void InvertIntegral (SplineInfo* info, double s, int* j , double* v)$/;"	f	file:
+KBSPLPOS_H	kbsplpos.h	4;"	d
+KBSPLROT_H	kbsplrot.h	4;"	d
+KB_InterpolateSingle	kbsplrot.c	/^static void KB_InterpolateSingle (double s, SquadInfo* si, Rotation3* R)$/;"	f	file:
+KB_PosInitialize	kbsplpos.c	/^void* KB_PosInitialize (int numKeys, PositionKey* key)$/;"	f
+KB_PosInterpolate0	kbsplpos.c	/^void KB_PosInterpolate0 (void* info, double t, Point3* P)$/;"	f
+KB_PosInterpolate0_AL	kbsplpos.c	/^void KB_PosInterpolate0_AL (void* info, double s, Point3* P)$/;"	f
+KB_PosInterpolate1	kbsplpos.c	/^void KB_PosInterpolate1 (void* info, double t, Point3* P)$/;"	f
+KB_PosInterpolate1_AL	kbsplpos.c	/^void KB_PosInterpolate1_AL (void* info, double s, Point3* P)$/;"	f
+KB_PosInterpolate2	kbsplpos.c	/^void KB_PosInterpolate2 (void* info, double t, Point3* P)$/;"	f
+KB_PosInterpolate2_AL	kbsplpos.c	/^void KB_PosInterpolate2_AL (void* info, double s, Point3* P)$/;"	f
+KB_PosLength	kbsplpos.c	/^double KB_PosLength (void* info, double t)$/;"	f
+KB_PosTerminate	kbsplpos.c	/^void KB_PosTerminate (void* info)$/;"	f
+KB_PosTotalLength	kbsplpos.c	/^double KB_PosTotalLength (void* info)$/;"	f
+KB_RotInitialize	kbsplrot.c	/^void* KB_RotInitialize (int numKeys, RotationKey* key)$/;"	f
+KB_RotInterpolate	kbsplrot.c	/^void KB_RotInterpolate (void* info, double t, Rotation3* R)$/;"	f
+KB_RotTerminate	kbsplrot.c	/^void KB_RotTerminate (void* info)$/;"	f
+Length	kbsplpos.c	/^double Length (CubicPolynomial* poly, double u)$/;"	f
+Log	quat.c	/^void Log (Quaternion* q, Quaternion* q2) $/;"	f
+LogSelf	quat.c	/^void LogSelf (Quaternion* q) $/;"	f
+M_PI	parse.c	17;"	d	file:
+Mul	quat.c	/^void Mul (Quaternion* q, Quaternion* q1, Quaternion* q2)$/;"	f
+MulScal	quat.c	/^void MulScal (Quaternion* q, Quaternion* q1, double c) $/;"	f
+MulScalSelf	quat.c	/^void MulScalSelf (Quaternion* q, double c) $/;"	f
+MulSelf	quat.c	/^void MulSelf (Quaternion* q, Quaternion* q2)$/;"	f
+NULL	animation.h	23;"	d
+Neg	quat.c	/^void Neg (Quaternion* q, Quaternion* q2) $/;"	f
+NegSelf	quat.c	/^void NegSelf (Quaternion* q) $/;"	f
+Norm	quat.c	/^double Norm (Quaternion* q)$/;"	f
+P	kbsplpos.h	/^    Point3 P;$/;"	m	struct:__anon4
+PARSE_H	parse.h	6;"	d
+POINT3	kbsplpos.h	11;"	d
+POINT3	quat.h	30;"	d
+Point3	kbsplpos.h	/^} Point3;$/;"	t	typeref:struct:__anon3
+Point3	quat.h	/^} Point3;$/;"	t	typeref:struct:__anon12
+PointMul	quat.c	/^void PointMul (Quaternion* q, Point3* Pres, Point3* pt)$/;"	f
+PositionKey	kbsplpos.h	/^PositionKey;$/;"	t	typeref:struct:__anon4
+QUAT_H	quat.h	27;"	d
+QuatToMatrix	quat.c	/^void QuatToMatrix(Quaternion* quat, double m[4][4])$/;"	f
+Quaternion	quat.h	/^} Quaternion;$/;"	t	typeref:struct:__anon13
+R	parse.c	29;"	d	file:
+Rot	kbsplrot.h	/^   Rotation3 Rot;$/;"	m	struct:__anon10
+Rotation3	kbsplrot.h	/^} Rotation3;$/;"	t	typeref:struct:__anon9
+RotationKey	kbsplrot.h	/^} RotationKey;$/;"	t	typeref:struct:__anon10
+Set	quat.c	/^void Set(Quaternion* q, double _w, double _x, double _y, double _z)$/;"	f
+SetQuat	quat.c	/^void SetQuat(Quaternion* q, Quaternion* q2)$/;"	f
+Slerp	quat.c	/^void Slerp (Quaternion* res, double t, Quaternion* p, Quaternion* q)$/;"	f
+SlerpExtraSpins	quat.c	/^void SlerpExtraSpins (Quaternion* res, double t, Quaternion* p,$/;"	f
+Speed	kbsplpos.c	/^static double Speed (CubicPolynomial* poly, double u)$/;"	f	file:
+SplineInfo	kbsplpos.h	/^SplineInfo;$/;"	t	typeref:struct:__anon6
+SplineInfo	kbsplrot.c	/^SplineInfo;$/;"	t	typeref:struct:__anon8	file:
+Squad	quat.c	/^void Squad (Quaternion* res, double t, Quaternion* p,$/;"	f
+SquadInfo	kbsplrot.c	/^SquadInfo;$/;"	t	typeref:struct:__anon7	file:
+Sub	quat.c	/^void Sub (Quaternion* q, Quaternion* q1, Quaternion* q2) $/;"	f
+SubSelf	quat.c	/^void SubSelf (Quaternion* q, Quaternion* q2) $/;"	f
+TEXTURE_H	texture.h	8;"	d
+TRUE	animation.h	15;"	d
+Texture	texture.h	/^struct Texture$/;"	s
+ToAngleAxis	quat.c	/^void ToAngleAxis (Quaternion* q, double* angle, double* ax, double* ay,$/;"	f
+ToAngleAxisPt	quat.c	/^void ToAngleAxisPt (Quaternion* q, double* rdAngle, Point3* rkPoint)$/;"	f
+ToRotationMatrix	quat.c	/^void ToRotationMatrix (Quaternion* q, double R[3][3]) $/;"	f
+UnitInverse	quat.c	/^void UnitInverse (Quaternion* q, Quaternion* q2) $/;"	f
+UnitInverseSelf	quat.c	/^void UnitInverseSelf (Quaternion* q) $/;"	f
+Vec2f	parse.c	/^typedef float Vec2f[2];$/;"	t	file:
+Vec3f	parse.c	/^typedef float Vec3f[3];$/;"	t	file:
+Vec4f	parse.c	/^typedef float Vec4f[4];$/;"	t	file:
+VisKey	animation.h	/^} VisKey;$/;"	t	typeref:struct:__anon2
+W	parse.c	27;"	d	file:
+X	parse.c	24;"	d	file:
+Y	parse.c	25;"	d	file:
+Z	parse.c	26;"	d	file:
+_GetMatrix	animation.c	/^void _GetMatrix(Animation* animation, double time, double m[4][4])$/;"	f
+_GetRotation	animation.c	/^int _GetRotation(Animation* animation, double time, double Rout[4])$/;"	f
+_GetScale	animation.c	/^int _GetScale(Animation* animation, double time, double Sout[3])$/;"	f
+_GetTranslation	animation.c	/^int _GetTranslation(Animation* animation, double time, double Tout[3])$/;"	f
+_GetVisibility	animation.c	/^int _GetVisibility(Animation* animation, double time)$/;"	f
+a	kbsplrot.c	/^    Quaternion p, a, b, q;$/;"	m	struct:__anon7	file:
+angle	kbsplrot.h	/^    double angle;$/;"	m	struct:__anon9
+animation	animation.h	/^   Animation animation;$/;"	m	struct:AnimationList
+b	kbsplrot.c	/^    Quaternion p, a, b, q;$/;"	m	struct:__anon7	file:
+bias	kbsplpos.h	/^    double tension, continuity, bias;$/;"	m	struct:__anon4
+bias	kbsplrot.h	/^   double tension, continuity, bias;$/;"	m	struct:__anon10
+bool	parse.h	/^typedef enum {false=0,true=1} bool;$/;"	t	typeref:enum:__anon11
+continuity	kbsplpos.h	/^    double tension, continuity, bias;$/;"	m	struct:__anon4
+continuity	kbsplrot.h	/^   double tension, continuity, bias;$/;"	m	struct:__anon10
+degree	kbsplpos.c	197;"	d	file:
+eatComments	texture.c	/^static void eatComments(FILE *f)$/;"	f	file:
+eatWhitespace	parse.c	/^static void eatWhitespace(FILE *f)$/;"	f	file:
+eatWhitespace	texture.c	/^static void eatWhitespace(FILE *f)$/;"	f	file:
+epsilon	kbsplrot.c	/^static double epsilon = 1e-06;$/;"	v	file:
+false	parse.h	/^typedef enum {false=0,true=1} bool;$/;"	e	enum:__anon11
+gDetailLevel	parse.c	/^static int gDetailLevel=0;  \/* zero as default *\/$/;"	v	file:
+g_dEpsilon	quat.c	/^static double g_dEpsilon = 1e-03;  \/\/ cutoff for sin(angle) near zero$/;"	v	file:
+g_dPi	quat.c	/^static double g_dPi = 3.1415926535897932384626433; \/*4.0*atan(1.0); *\/$/;"	v	file:
+getTextureCoords	parse.c	/^static void getTextureCoords(FILE *fp,char *texturename,int *num,Vec2f **vecs)$/;"	f	file:
+getTriangles	parse.c	/^static void getTriangles(FILE *fp,int *num_tris,unsigned short **indices,$/;"	f	file:
+getVectors	parse.c	/^static void getVectors(FILE *fp,char *type,int *num_vecs,Vec3f **vecs)$/;"	f	file:
+length	kbsplpos.h	/^    double* length;$/;"	m	struct:__anon6
+mHeight	texture.h	/^   int mHeight;$/;"	m	struct:Texture
+mRGB	texture.h	/^   unsigned char *mRGB; \/* the size is 3*mWidth*mHeight *\/$/;"	m	struct:Texture
+mWidth	texture.h	/^   int mWidth;$/;"	m	struct:Texture
+name	animation.h	/^   char *name;$/;"	m	struct:__anon1
+next	animation.h	/^   struct AnimationList* next;$/;"	m	struct:AnimationList	typeref:struct:AnimationList::AnimationList
+numPolys	kbsplpos.h	/^    int numPolys;$/;"	m	struct:__anon6
+numPolys	kbsplrot.c	/^    int numPolys;$/;"	m	struct:__anon8	file:
+numVisibilities	animation.h	/^   int numVisibilities;$/;"	m	struct:__anon1
+p	kbsplrot.c	/^    Quaternion p, a, b, q;$/;"	m	struct:__anon7	file:
+parseA	parse.c	/^static void parseA(FILE *f)$/;"	f	file:
+parseAnimParams	parse.c	/^static void parseAnimParams(FILE *fp)$/;"	f	file:
+parseAnimatedTriangle	parse.c	/^static void parseAnimatedTriangle(FILE *fp)$/;"	f	file:
+parseBackground	parse.c	/^static void parseBackground(FILE *fp)$/;"	f	file:
+parseComment	parse.c	/^static void parseComment(FILE *f)$/;"	f	file:
+parseCone	parse.c	/^static void parseCone(FILE *fp)$/;"	f	file:
+parseDetailLevel	parse.c	/^static void parseDetailLevel(FILE *fp)$/;"	f	file:
+parseFill	parse.c	/^static void parseFill(FILE *fp)$/;"	f	file:
+parseInclude	parse.c	/^static void parseInclude(FILE *fp)$/;"	f	file:
+parseKeyFrames	parse.c	/^static void parseKeyFrames(FILE *fp)$/;"	f	file:
+parseLight	parse.c	/^static void parseLight(FILE *fp)$/;"	f	file:
+parseMesh	parse.c	/^static void parseMesh(FILE *fp)$/;"	f	file:
+parsePoly	parse.c	/^static void parsePoly(FILE *fp)$/;"	f	file:
+parseSphere	parse.c	/^static void parseSphere(FILE *fp)$/;"	f	file:
+parseTextureStuff	parse.c	/^static void parseTextureStuff(FILE *fp)$/;"	f	file:
+parseTexturedTriangle	parse.c	/^static void parseTexturedTriangle(FILE *fp)$/;"	f	file:
+parseViewpoint	parse.c	/^static void parseViewpoint(FILE *fp)$/;"	f	file:
+parseXform	parse.c	/^static void parseXform(FILE *f)$/;"	f	file:
+pi	kbsplrot.c	/^static double pi = 3.1415926535897932384626433; \/*4.0*atan(1.0);*\/$/;"	v	file:
+poly	kbsplpos.h	/^    CubicPolynomial* poly;$/;"	m	struct:__anon6
+q	kbsplrot.c	/^    Quaternion p, a, b, q;$/;"	m	struct:__anon7	file:
+rotations	animation.h	/^   void *rotations;$/;"	m	struct:__anon1
+scales	animation.h	/^   void *scales;$/;"	m	struct:__anon1
+si	kbsplrot.c	/^    SquadInfo* si;$/;"	m	struct:__anon8	file:
+t	kbsplpos.h	/^    double t;$/;"	m	struct:__anon4
+t	kbsplrot.h	/^   double t;$/;"	m	struct:__anon10
+tension	kbsplpos.h	/^    double tension, continuity, bias;$/;"	m	struct:__anon4
+tension	kbsplrot.h	/^   double tension, continuity, bias;$/;"	m	struct:__anon10
+time	animation.h	/^   float time;$/;"	m	struct:__anon2
+tmax	kbsplpos.h	/^    double tmin, tmax, trange;$/;"	m	struct:__anon5
+tmax	kbsplrot.c	/^    double tmin, tmax, trange;$/;"	m	struct:__anon7	file:
+tmin	kbsplpos.h	/^    double tmin, tmax, trange;$/;"	m	struct:__anon5
+tmin	kbsplrot.c	/^    double tmin, tmax, trange;$/;"	m	struct:__anon7	file:
+totalLength	kbsplpos.h	/^    double totalLength;$/;"	m	struct:__anon6
+trange	kbsplpos.h	/^    double tmin, tmax, trange;$/;"	m	struct:__anon5
+trange	kbsplrot.c	/^    double tmin, tmax, trange;$/;"	m	struct:__anon7	file:
+translations	animation.h	/^   void *translations;$/;"	m	struct:__anon1
+true	parse.h	/^typedef enum {false=0,true=1} bool;$/;"	e	enum:__anon11
+viParseFile	parse.c	/^bool viParseFile(FILE *f)$/;"	f
+viReadPPM	texture.c	/^struct Texture *viReadPPM(char *filename)$/;"	f
+viWritePPM	texture.c	/^int viWritePPM(char *filename, int width, int height, unsigned char *pixels)$/;"	f
+visibilities	animation.h	/^   void *visibilities;$/;"	m	struct:__anon1
+visibility	animation.h	/^   unsigned char visibility; \/* 0 if not visible, otherwise visible *\/$/;"	m	struct:__anon2
+w	quat.h	/^    double w, x, y, z;$/;"	m	struct:__anon13
+x	kbsplpos.h	/^    double x, y, z;$/;"	m	struct:__anon3
+x	kbsplrot.h	/^    double x, y, z;$/;"	m	struct:__anon9
+x	quat.h	/^    double w, x, y, z;$/;"	m	struct:__anon13
+x	quat.h	/^    double x, y, z;$/;"	m	struct:__anon12
+y	kbsplpos.h	/^    double x, y, z;$/;"	m	struct:__anon3
+y	kbsplrot.h	/^    double x, y, z;$/;"	m	struct:__anon9
+y	quat.h	/^    double w, x, y, z;$/;"	m	struct:__anon13
+y	quat.h	/^    double x, y, z;$/;"	m	struct:__anon12
+z	kbsplpos.h	/^    double x, y, z;$/;"	m	struct:__anon3
+z	kbsplrot.h	/^    double x, y, z;$/;"	m	struct:__anon9
+z	quat.h	/^    double w, x, y, z;$/;"	m	struct:__anon13
+z	quat.h	/^    double x, y, z;$/;"	m	struct:__anon12
