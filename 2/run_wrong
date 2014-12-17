@@ -1,0 +1,1 @@
+g++ *.cpp *.h ./vecmath/include/* -lglut -lGL -lGLU -lfltk -lfltk_gl -fpermissive -o miracle

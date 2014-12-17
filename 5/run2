@@ -1,0 +1,7 @@
+./a5 -input scene06_bunny_1k.txt  -size 300 300 -output 6n.bmp\
+   -shadows -bounces 4 -jitter -filter
+./a5 -input scene10_sphere.txt  -size 300 300 -output 10n.bmp\
+   -shadows -bounces 4 -jitter -filter
+./a5 -input scene11_cube.txt  -size 300 300 -output 11n.bmp\
+ -shadows -bounces 4 -jitter -filter
+

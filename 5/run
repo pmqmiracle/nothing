@@ -1,0 +1,3 @@
+./a5soln -input scene13_diamond.txt  -size 300 300 -output 13c.bmp\
+ -shadows -bounces 4 -jitter -filter
+

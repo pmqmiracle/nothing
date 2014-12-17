@@ -1,0 +1,762 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ARG_PARSER_H	ArgParser.h	2;"	d
+ArgParser	ArgParser.h	/^  ArgParser() { DefaultValues(); }$/;"	f	class:ArgParser
+ArgParser	ArgParser.h	/^  ArgParser(int argc, char *argv[]) {$/;"	f	class:ArgParser
+ArgParser	ArgParser.h	/^class ArgParser {$/;"	c
+BACK	CubeMap.h	/^	LEFT,RIGHT,UP,DOWN,FRONT,BACK$/;"	e	enum:CubeMap::FACE
+BMPHeader	Image.cpp	/^struct BMPHeader$/;"	s	file:
+Box	octree.hpp	/^	Box(){}$/;"	f	struct:Box
+Box	octree.hpp	/^	Box(const Vector3f & a, const Vector3f & b):$/;"	f	struct:Box
+Box	octree.hpp	/^	Box(float mnx, float mny,float mnz,$/;"	f	struct:Box
+Box	octree.hpp	/^struct Box$/;"	s
+CAMERA_H	Camera.h	2;"	d
+CUBEMAP_H	CubeMap.h	2;"	d
+Camera	Camera.h	/^class Camera$/;"	c
+ClampColorComponent	Image.cpp	/^unsigned char ClampColorComponent( float c )$/;"	f
+CubeMap	CubeMap.cpp	/^CubeMap::CubeMap(const char * directory)$/;"	f	class:CubeMap
+CubeMap	CubeMap.h	/^class CubeMap{$/;"	c
+DOWN	CubeMap.h	/^	LEFT,RIGHT,UP,DOWN,FRONT,BACK$/;"	e	enum:CubeMap::FACE
+DefaultValues	ArgParser.h	/^  void DefaultValues() {$/;"	f	class:ArgParser
+DegreesToRadians	SceneParser.cpp	19;"	d	file:
+DirectionalLight	Light.h	/^    DirectionalLight( const Vector3f& d, const Vector3f& c )$/;"	f	class:DirectionalLight
+DirectionalLight	Light.h	/^class DirectionalLight : public Light$/;"	c
+ELIPSON	RayTracer.cpp	9;"	d	file:
+EPSILON	RayTracer.cpp	10;"	d	file:
+FACE	CubeMap.h	/^enum FACE$/;"	g	class:CubeMap
+FORWARD	./vecmath/include/Vector3f.h	/^	static const Vector3f FORWARD;$/;"	m	class:Vector3f
+FORWARD	./vecmath/src/Vector3f.cpp	/^const Vector3f Vector3f::FORWARD = Vector3f( 0, 0, -1 );$/;"	m	class:Vector3f	file:
+FRONT	CubeMap.h	/^	LEFT,RIGHT,UP,DOWN,FRONT,BACK$/;"	e	enum:CubeMap::FACE
+GROUP_H	Group.h	2;"	d
+GetPixel	Image.h	/^    const Vector3f& GetPixel( int x, int y ) const$/;"	f	class:Image
+Group	Group.h	/^  Group( int num_objects ){$/;"	f	class:Group
+Group	Group.h	/^  Group(){$/;"	f	class:Group
+Group	Group.h	/^class Group:public Object3D$/;"	c
+HIT_H	Hit.h	2;"	d
+Height	Image.h	/^    int Height() const$/;"	f	class:Image
+Hit	Hit.h	/^    Hit( const Hit& h )$/;"	f	class:Hit
+Hit	Hit.h	/^    Hit( float _t, Material* m, const Vector3f& n )$/;"	f	class:Hit
+Hit	Hit.h	/^    Hit()$/;"	f	class:Hit
+Hit	Hit.h	/^class Hit$/;"	c
+IDENTITY	./vecmath/include/Quat4f.h	/^	static const Quat4f IDENTITY;$/;"	m	class:Quat4f
+IDENTITY	./vecmath/src/Quat4f.cpp	/^const Quat4f Quat4f::IDENTITY = Quat4f( 1, 0, 0, 0 );$/;"	m	class:Quat4f	file:
+IMAGE_H	Image.h	2;"	d
+INCLUDE_BITMAP_IMAGE_HPP	bitmap_image.hpp	22;"	d
+Image	Image.h	/^    Image( int w, int h )$/;"	f	class:Image
+Image	Image.h	/^class Image$/;"	c
+Kernel	main.cpp	/^const float Kernel[] = {0.1201, 0.2339, 0.2931, 0.2339,0.1201};$/;"	v
+LEFT	CubeMap.h	/^	LEFT,RIGHT,UP,DOWN,FRONT,BACK$/;"	e	enum:CubeMap::FACE
+LIGHT_H	Light.h	2;"	d
+Light	Light.h	/^    Light()$/;"	f	class:Light
+Light	Light.h	/^class Light$/;"	c
+LoadPPM	Image.cpp	/^Image* Image::LoadPPM(const char *filename) {$/;"	f	class:Image
+LoadTGA	Image.cpp	/^Image* Image::LoadTGA(const char *filename) {$/;"	f	class:Image
+M	Transform.h	/^  Matrix4f M;$/;"	m	class:Transform
+MATERIAL_H	Material.h	2;"	d
+MATRIX2F_H	./vecmath/include/Matrix2f.h	2;"	d
+MATRIX3F_H	./vecmath/include/Matrix3f.h	2;"	d
+MATRIX4F_H	./vecmath/include/Matrix4f.h	2;"	d
+MAX_PARSER_TOKEN_LENGTH	SceneParser.h	31;"	d
+MESH_H	Mesh.hpp	2;"	d
+Material	Material.cpp	/^Material::Material( const Vector3f& d_color ,const Vector3f& s_color, float s, float r):$/;"	f	class:Material
+Material	Material.h	/^class Material$/;"	c
+Matrix2f	./vecmath/include/Matrix2f.h	/^class Matrix2f$/;"	c
+Matrix2f	./vecmath/src/Matrix2f.cpp	/^Matrix2f::Matrix2f( const Matrix2f& rm )$/;"	f	class:Matrix2f
+Matrix2f	./vecmath/src/Matrix2f.cpp	/^Matrix2f::Matrix2f( const Vector2f& v0, const Vector2f& v1, bool setColumns )$/;"	f	class:Matrix2f
+Matrix2f	./vecmath/src/Matrix2f.cpp	/^Matrix2f::Matrix2f( float fill )$/;"	f	class:Matrix2f
+Matrix2f	./vecmath/src/Matrix2f.cpp	/^Matrix2f::Matrix2f( float m00, float m01,$/;"	f	class:Matrix2f
+Matrix3f	./vecmath/include/Matrix3f.h	/^class Matrix3f$/;"	c
+Matrix3f	./vecmath/src/Matrix3f.cpp	/^Matrix3f::Matrix3f( const Matrix3f& rm )$/;"	f	class:Matrix3f
+Matrix3f	./vecmath/src/Matrix3f.cpp	/^Matrix3f::Matrix3f( const Vector3f& v0, const Vector3f& v1, const Vector3f& v2, bool setColumns )$/;"	f	class:Matrix3f
+Matrix3f	./vecmath/src/Matrix3f.cpp	/^Matrix3f::Matrix3f( float fill )$/;"	f	class:Matrix3f
+Matrix3f	./vecmath/src/Matrix3f.cpp	/^Matrix3f::Matrix3f( float m00, float m01, float m02,$/;"	f	class:Matrix3f
+Matrix4f	./vecmath/include/Matrix4f.h	/^class Matrix4f$/;"	c
+Matrix4f	./vecmath/src/Matrix4f.cpp	/^Matrix4f::Matrix4f( const Matrix4f& rm )$/;"	f	class:Matrix4f
+Matrix4f	./vecmath/src/Matrix4f.cpp	/^Matrix4f::Matrix4f( const Vector4f& v0, const Vector4f& v1, const Vector4f& v2, const Vector4f& v3, bool setColumns )$/;"	f	class:Matrix4f
+Matrix4f	./vecmath/src/Matrix4f.cpp	/^Matrix4f::Matrix4f( float fill )$/;"	f	class:Matrix4f
+Matrix4f	./vecmath/src/Matrix4f.cpp	/^Matrix4f::Matrix4f( float m00, float m01, float m02, float m03,$/;"	f	class:Matrix4f
+Mesh	Mesh.cpp	/^Mesh::Mesh(const char * filename,Material * material):Object3D(material)$/;"	f	class:Mesh
+Mesh	Mesh.hpp	/^class Mesh:public Object3D{$/;"	c
+NOISE_H	Noise.h	2;"	d
+Noise	Noise.cpp	/^Noise::Noise():octaves(0),init(false)$/;"	f	class:Noise
+Noise	Noise.cpp	/^Noise::Noise(const Noise & n): octaves(n.octaves),frequency(n.frequency), amplitude(n.amplitude),init(n.init)$/;"	f	class:Noise
+Noise	Noise.cpp	/^Noise::Noise(int _octaves,const Vector3f & color1, const Vector3f &color2,float freq,float amp):$/;"	f	class:Noise
+Noise	Noise.h	/^class Noise$/;"	c
+NotIntersect	RayTracer.h	/^static int NotIntersect = 0;$/;"	v
+OBJECT3D_H	Object3D.h	2;"	d
+OCTREE_HPP	octree.hpp	2;"	d
+Object3D	Object3D.h	/^	Object3D( Material* material)$/;"	f	class:Object3D
+Object3D	Object3D.h	/^	Object3D()$/;"	f	class:Object3D
+Object3D	Object3D.h	/^class Object3D$/;"	c
+OctNode	octree.hpp	/^	OctNode(){$/;"	f	struct:OctNode
+OctNode	octree.hpp	/^struct OctNode$/;"	s
+Octree	octree.hpp	/^	Octree(int level = 8):maxLevel(level){}$/;"	f	struct:Octree
+Octree	octree.hpp	/^struct Octree$/;"	s
+PERLIN_NOISE_H	PerlinNoise.h	6;"	d
+PLANE_H	Plane.h	2;"	d
+PerlinNoise	PerlinNoise.h	/^class PerlinNoise$/;"	c
+PerspectiveCamera	Camera.h	/^	PerspectiveCamera(const Vector3f& center, const Vector3f& direction,const Vector3f& up , float angle)$/;"	f	class:PerspectiveCamera
+PerspectiveCamera	Camera.h	/^class PerspectiveCamera: public Camera$/;"	c
+Plane	Plane.h	/^	Plane( const Vector3f& normal , float d , Material* m):Object3D(m)$/;"	f	class:Plane
+Plane	Plane.h	/^	Plane(){}$/;"	f	class:Plane
+Plane	Plane.h	/^class Plane: public Object3D$/;"	c
+PointLight	Light.h	/^    PointLight( const Vector3f& p, const Vector3f& c,float fall )$/;"	f	class:PointLight
+PointLight	Light.h	/^class PointLight : public Light$/;"	c
+QUAT4F_H	./vecmath/include/Quat4f.h	2;"	d
+Quat4f	./vecmath/include/Quat4f.h	/^class Quat4f$/;"	c
+Quat4f	./vecmath/src/Quat4f.cpp	/^Quat4f::Quat4f( const Quat4f& rq )$/;"	f	class:Quat4f
+Quat4f	./vecmath/src/Quat4f.cpp	/^Quat4f::Quat4f( const Vector3f& v )$/;"	f	class:Quat4f
+Quat4f	./vecmath/src/Quat4f.cpp	/^Quat4f::Quat4f( const Vector4f& v )$/;"	f	class:Quat4f
+Quat4f	./vecmath/src/Quat4f.cpp	/^Quat4f::Quat4f( float w, float x, float y, float z )$/;"	f	class:Quat4f
+Quat4f	./vecmath/src/Quat4f.cpp	/^Quat4f::Quat4f()$/;"	f	class:Quat4f
+RAY_H	Ray.h	2;"	d
+RAY_TRACER_H	RayTracer.h	2;"	d
+REFRACTION_INDEX	main.cpp	32;"	d	file:
+RIGHT	./vecmath/include/Vector2f.h	/^	static const Vector2f RIGHT;$/;"	m	class:Vector2f
+RIGHT	./vecmath/include/Vector3f.h	/^	static const Vector3f RIGHT;$/;"	m	class:Vector3f
+RIGHT	./vecmath/src/Vector2f.cpp	/^const Vector2f Vector2f::RIGHT = Vector2f( 1, 0 );$/;"	m	class:Vector2f	file:
+RIGHT	./vecmath/src/Vector3f.cpp	/^const Vector3f Vector3f::RIGHT = Vector3f( 1, 0, 0 );$/;"	m	class:Vector3f	file:
+RIGHT	CubeMap.h	/^	LEFT,RIGHT,UP,DOWN,FRONT,BACK$/;"	e	enum:CubeMap::FACE
+Ray	Ray.h	/^    Ray( const Ray& r )$/;"	f	class:Ray
+Ray	Ray.h	/^    Ray( const Vector3f& orig, const Vector3f& dir )$/;"	f	class:Ray
+Ray	Ray.h	/^    Ray()$/;"	f	class:Ray
+Ray	Ray.h	/^class Ray$/;"	c
+RayTracer	RayTracer.cpp	/^RayTracer::RayTracer( SceneParser * scene, int max_bounces$/;"	f	class:RayTracer
+RayTracer	RayTracer.h	/^  RayTracer()$/;"	f	class:RayTracer
+RayTracer	RayTracer.h	/^class RayTracer$/;"	c
+ReadByte	Image.cpp	/^unsigned char ReadByte( FILE* file)$/;"	f
+SCENE_PARSER_H	SceneParser.h	2;"	d
+SMOOTH	Mesh.cpp	9;"	d	file:
+SPHERE_H	Sphere.h	2;"	d
+SaveBMP	Image.cpp	/^Image::SaveBMP(const char *filename)$/;"	f	class:Image
+SaveImage	Image.cpp	/^void Image::SaveImage(const char * filename)$/;"	f	class:Image
+SavePPM	Image.cpp	/^void Image::SavePPM(const char *filename) const {$/;"	f	class:Image
+SaveTGA	Image.cpp	/^void Image::SaveTGA( const char* filename) const$/;"	f	class:Image
+SceneParser	SceneParser.cpp	/^SceneParser::SceneParser(const char* filename) {$/;"	f	class:SceneParser
+SceneParser	SceneParser.h	/^    SceneParser()$/;"	f	class:SceneParser
+SceneParser	SceneParser.h	/^class SceneParser$/;"	c
+SetAllPixels	Image.h	/^    void SetAllPixels( const Vector3f& color )$/;"	f	class:Image
+SetPixel	Image.h	/^    void SetPixel(int x, int y, const Vector3f& color)$/;"	f	class:Image
+Shade	Material.cpp	/^Vector3f Material::Shade( const Ray& ray, const Hit& hit,$/;"	f	class:Material
+Sphere	Sphere.h	/^	Sphere( Vector3f center , float radius , Material* material ):Object3D(material){$/;"	f	class:Sphere
+Sphere	Sphere.h	/^	Sphere(){$/;"	f	class:Sphere
+Sphere	Sphere.h	/^class Sphere : public Object3D$/;"	c
+TEXTURE_HPP	texture.hpp	2;"	d
+TRANSFORM_H	Transform.h	2;"	d
+TRIANGLE_H	Triangle.h	2;"	d
+Texture	texture.cpp	/^Texture::Texture():bimg(0),width(0),height(0)$/;"	f	class:Texture
+Texture	texture.hpp	/^class Texture{$/;"	c
+Transform	Transform.h	/^  Transform( const Matrix4f& m, Object3D* obj ):o(obj)$/;"	f	class:Transform
+Transform	Transform.h	/^  Transform(){}$/;"	f	class:Transform
+Transform	Transform.h	/^class Transform: public Object3D$/;"	c
+Triangle	Triangle.h	/^	Triangle( const Vector3f& a, const Vector3f& b, const Vector3f& c, Material* m):Object3D(m){$/;"	f	class:Triangle
+Triangle	Triangle.h	/^class Triangle: public Object3D$/;"	c
+Trig	Mesh.hpp	/^  Trig(){x[0]=0;x[1]=0;x[2]=0;}$/;"	f	struct:Trig
+Trig	Mesh.hpp	/^struct Trig{$/;"	s
+UP	./vecmath/include/Vector2f.h	/^	static const Vector2f UP;$/;"	m	class:Vector2f
+UP	./vecmath/include/Vector3f.h	/^	static const Vector3f UP;$/;"	m	class:Vector3f
+UP	./vecmath/src/Vector2f.cpp	/^const Vector2f Vector2f::UP = Vector2f( 0, 1 );$/;"	m	class:Vector2f	file:
+UP	./vecmath/src/Vector3f.cpp	/^const Vector3f Vector3f::UP = Vector3f( 0, 1, 0 );$/;"	m	class:Vector3f	file:
+UP	CubeMap.h	/^	LEFT,RIGHT,UP,DOWN,FRONT,BACK$/;"	e	enum:CubeMap::FACE
+VECMATH_H	./vecmath/include/vecmath.h	2;"	d
+VECTOR_2F_H	./vecmath/include/Vector2f.h	2;"	d
+VECTOR_3F_H	./vecmath/include/Vector3f.h	2;"	d
+VECTOR_4F_H	./vecmath/include/Vector4f.h	2;"	d
+VEC_UTILS_H	VecUtils.h	2;"	d
+VecUtils	VecUtils.h	/^class VecUtils$/;"	c
+Vector2f	./vecmath/include/Vector2f.h	/^class Vector2f$/;"	c
+Vector2f	./vecmath/src/Vector2f.cpp	/^Vector2f::Vector2f( const Vector2f& rv )$/;"	f	class:Vector2f
+Vector2f	./vecmath/src/Vector2f.cpp	/^Vector2f::Vector2f( float f )$/;"	f	class:Vector2f
+Vector2f	./vecmath/src/Vector2f.cpp	/^Vector2f::Vector2f( float x, float y )$/;"	f	class:Vector2f
+Vector3f	./vecmath/include/Vector3f.h	/^class Vector3f$/;"	c
+Vector3f	./vecmath/src/Vector3f.cpp	/^Vector3f::Vector3f( const Vector2f& xy, float z )$/;"	f	class:Vector3f
+Vector3f	./vecmath/src/Vector3f.cpp	/^Vector3f::Vector3f( const Vector3f& rv )$/;"	f	class:Vector3f
+Vector3f	./vecmath/src/Vector3f.cpp	/^Vector3f::Vector3f( float f )$/;"	f	class:Vector3f
+Vector3f	./vecmath/src/Vector3f.cpp	/^Vector3f::Vector3f( float x, const Vector2f& yz )$/;"	f	class:Vector3f
+Vector3f	./vecmath/src/Vector3f.cpp	/^Vector3f::Vector3f( float x, float y, float z )$/;"	f	class:Vector3f
+Vector4f	./vecmath/include/Vector4f.h	/^class Vector4f$/;"	c
+Vector4f	./vecmath/src/Vector4f.cpp	/^Vector4f::Vector4f( const Vector2f& xy, const Vector2f& zw )$/;"	f	class:Vector4f
+Vector4f	./vecmath/src/Vector4f.cpp	/^Vector4f::Vector4f( const Vector2f& xy, float z, float w )$/;"	f	class:Vector4f
+Vector4f	./vecmath/src/Vector4f.cpp	/^Vector4f::Vector4f( const Vector3f& xyz, float w )$/;"	f	class:Vector4f
+Vector4f	./vecmath/src/Vector4f.cpp	/^Vector4f::Vector4f( const Vector4f& rv )$/;"	f	class:Vector4f
+Vector4f	./vecmath/src/Vector4f.cpp	/^Vector4f::Vector4f( float buffer[ 4 ] )$/;"	f	class:Vector4f
+Vector4f	./vecmath/src/Vector4f.cpp	/^Vector4f::Vector4f( float f )$/;"	f	class:Vector4f
+Vector4f	./vecmath/src/Vector4f.cpp	/^Vector4f::Vector4f( float fx, float fy, float fz, float fw )$/;"	f	class:Vector4f
+Vector4f	./vecmath/src/Vector4f.cpp	/^Vector4f::Vector4f( float x, const Vector2f& yz, float w )$/;"	f	class:Vector4f
+Vector4f	./vecmath/src/Vector4f.cpp	/^Vector4f::Vector4f( float x, const Vector3f& yzw )$/;"	f	class:Vector4f
+Vector4f	./vecmath/src/Vector4f.cpp	/^Vector4f::Vector4f( float x, float y, const Vector2f& zw )$/;"	f	class:Vector4f
+Width	Image.h	/^    int Width() const$/;"	f	class:Image
+WriteByte	Image.cpp	/^void WriteByte( FILE* file, unsigned char b )$/;"	f
+ZERO	./vecmath/include/Quat4f.h	/^	static const Quat4f ZERO;$/;"	m	class:Quat4f
+ZERO	./vecmath/include/Vector2f.h	/^    static const Vector2f ZERO;$/;"	m	class:Vector2f
+ZERO	./vecmath/include/Vector3f.h	/^	static const Vector3f ZERO;$/;"	m	class:Vector3f
+ZERO	./vecmath/src/Quat4f.cpp	/^const Quat4f Quat4f::ZERO = Quat4f( 0, 0, 0, 0 );$/;"	m	class:Quat4f	file:
+ZERO	./vecmath/src/Vector2f.cpp	/^const Vector2f Vector2f::ZERO = Vector2f( 0, 0 );$/;"	m	class:Vector2f	file:
+ZERO	./vecmath/src/Vector3f.cpp	/^const Vector3f Vector3f::ZERO = Vector3f( 0, 0, 0 );$/;"	m	class:Vector3f	file:
+_USE_MATH_DEFINES	./vecmath/src/Quat4f.cpp	1;"	d	file:
+_USE_MATH_DEFINES	SceneParser.cpp	4;"	d	file:
+a	Triangle.h	/^    Vector3f a, b, c;$/;"	m	class:Triangle
+aa	octree.hpp	/^	unsigned char aa;$/;"	m	struct:Octree
+abs	./vecmath/src/Quat4f.cpp	/^float Quat4f::abs() const$/;"	f	class:Quat4f
+abs	./vecmath/src/Vector2f.cpp	/^float Vector2f::abs() const$/;"	f	class:Vector2f
+abs	./vecmath/src/Vector3f.cpp	/^float Vector3f::abs() const$/;"	f	class:Vector3f
+abs	./vecmath/src/Vector4f.cpp	/^float Vector4f::abs() const$/;"	f	class:Vector4f
+absSquared	./vecmath/src/Quat4f.cpp	/^float Quat4f::absSquared() const$/;"	f	class:Quat4f
+absSquared	./vecmath/src/Vector2f.cpp	/^float Vector2f::absSquared() const$/;"	f	class:Vector2f
+absSquared	./vecmath/src/Vector3f.cpp	/^float Vector3f::absSquared() const$/;"	f	class:Vector3f
+absSquared	./vecmath/src/Vector4f.cpp	/^float Vector4f::absSquared() const$/;"	f	class:Vector4f
+addObject	Group.h	/^  void addObject( int index , Object3D* obj )$/;"	f	class:Group
+alpha	Triangle.h	/^    float alpha;$/;"	m	class:Triangle
+ambient_light	SceneParser.h	/^    Vector3f ambient_light;$/;"	m	class:SceneParser
+amplitude	Noise.h	/^	float amplitude;$/;"	m	class:Noise
+angle	Camera.h	/^    float angle;$/;"	m	class:PerspectiveCamera
+arg	octree.hpp	/^	void ** arg;$/;"	m	struct:Octree
+b	Triangle.h	/^    Vector3f a, b, c;$/;"	m	class:Triangle
+background_color	SceneParser.h	/^    Vector3f background_color;$/;"	m	class:SceneParser
+beta	Triangle.h	/^    float beta;$/;"	m	class:Triangle
+bfOffBits	Image.cpp	/^    int bfOffBits;        \/* Byte offset to actual bitmap data (= 54) *\/$/;"	m	struct:BMPHeader	file:
+bfReserved	Image.cpp	/^    int bfReserved;       \/* set to 0 *\/$/;"	m	struct:BMPHeader	file:
+bfSize	Image.cpp	/^    int bfSize;           \/* Size of file in bytes *\/$/;"	m	struct:BMPHeader	file:
+bfType	Image.cpp	/^    char bfType[3];       \/* "BM" *\/$/;"	m	struct:BMPHeader	file:
+bgr_mode	bitmap_image.hpp	/^                        bgr_mode = 1$/;"	e	enum:bitmap_image::channel_mode
+biBitCount	Image.cpp	/^    short biBitCount;     \/* Bits per pixel (24 in this case) *\/$/;"	m	struct:BMPHeader	file:
+biClrImportant	Image.cpp	/^    int biClrImportant;   \/* Number of important colors.  If 0, all colors$/;"	m	struct:BMPHeader	file:
+biClrUsed	Image.cpp	/^    int biClrUsed;        \/* Number of colors in the color table (if 0, use$/;"	m	struct:BMPHeader	file:
+biCompression	Image.cpp	/^    int biCompression;    \/* Type of compression (0 if no compression) *\/$/;"	m	struct:BMPHeader	file:
+biHeight	Image.cpp	/^    int biHeight;         \/* Height of images, in pixels *\/$/;"	m	struct:BMPHeader	file:
+biPlanes	Image.cpp	/^    short biPlanes;       \/* Number of planes in target device (set to 1) *\/$/;"	m	struct:BMPHeader	file:
+biSize	Image.cpp	/^    int biSize;           \/* Size of BITMAPINFOHEADER, in bytes (= 40) *\/$/;"	m	struct:BMPHeader	file:
+biSizeImage	Image.cpp	/^    int biSizeImage;      \/* Image size, in bytes (0 if no compression) *\/$/;"	m	struct:BMPHeader	file:
+biWidth	Image.cpp	/^    int biWidth;          \/* Width of image, in pixels *\/$/;"	m	struct:BMPHeader	file:
+biXPelsPerMeter	Image.cpp	/^    int biXPelsPerMeter;  \/* Resolution in pixels\/meter of display device *\/$/;"	m	struct:BMPHeader	file:
+biYPelsPerMeter	Image.cpp	/^    int biYPelsPerMeter;  \/* Resolution in pixels\/meter of display device *\/$/;"	m	struct:BMPHeader	file:
+big_endian	bitmap_image.hpp	/^inline bool big_endian()$/;"	f
+bimg	texture.hpp	/^  bitmap_image * bimg;$/;"	m	class:Texture
+bit_count	bitmap_image.hpp	/^   unsigned short bit_count;$/;"	m	struct:bitmap_information_header
+bitmap_file_header	bitmap_image.hpp	/^struct bitmap_file_header$/;"	s
+bitmap_image	bitmap_image.hpp	/^   bitmap_image()$/;"	f	class:bitmap_image
+bitmap_image	bitmap_image.hpp	/^   bitmap_image(const bitmap_image& image)$/;"	f	class:bitmap_image
+bitmap_image	bitmap_image.hpp	/^   bitmap_image(const std::string& _filename)$/;"	f	class:bitmap_image
+bitmap_image	bitmap_image.hpp	/^   bitmap_image(const unsigned int width, const unsigned int height)$/;"	f	class:bitmap_image
+bitmap_image	bitmap_image.hpp	/^class bitmap_image$/;"	c
+bitmap_information_header	bitmap_image.hpp	/^struct bitmap_information_header$/;"	s
+blue_plane	bitmap_image.hpp	/^                       blue_plane  = 0,$/;"	e	enum:bitmap_image::color_plane
+bounces	ArgParser.h	/^  int bounces;$/;"	m	class:ArgParser
+box	octree.hpp	/^	Box box;$/;"	m	struct:Octree
+boxOverlap	octree.cpp	/^bool boxOverlap(Box * a, Box * b)$/;"	f
+build	octree.cpp	/^void Octree::build(const Mesh & m)$/;"	f	class:Octree
+buildNode	octree.cpp	/^void Octree::buildNode(OctNode  & parent, const Box & pbox ,$/;"	f	class:Octree
+bytes_per_pixel_	bitmap_image.hpp	/^   unsigned int   bytes_per_pixel_;$/;"	m	class:bitmap_image
+c	Triangle.h	/^    Vector3f a, b, c;$/;"	m	class:Triangle
+calculateR	RayTracer.cpp	/^float calculateR(float R0, float c)$/;"	f
+camera	SceneParser.h	/^    Camera* camera;$/;"	m	class:SceneParser
+castShadows	RayTracer.cpp	/^bool RayTracer::castShadows(Ray& ray, Hit& hit, Vector3f& dir) const$/;"	f	class:RayTracer
+center	Camera.h	/^	Vector3f center;$/;"	m	class:Camera
+center	Camera.h	/^    Vector3f center;$/;"	m	class:PerspectiveCamera
+center	Sphere.h	/^    Vector3f center;$/;"	m	class:Sphere
+channel_mode	bitmap_image.hpp	/^   enum channel_mode {$/;"	g	class:bitmap_image
+channel_mode_	bitmap_image.hpp	/^   channel_mode   channel_mode_;$/;"	m	class:bitmap_image
+child	octree.hpp	/^	OctNode * child[8];$/;"	m	struct:OctNode
+clamp	VecUtils.h	/^    static Vector3f clamp( const Vector3f& data, float low = 0, float high = 1 )$/;"	f	class:VecUtils
+clamp	bitmap_image.hpp	/^   T clamp(const T& v, const T& lower_range, const T& upper_range)$/;"	f
+clampedDot	Material.cpp	/^float Material::clampedDot( const Vector3f& L , const Vector3f& N )const {$/;"	f	class:Material
+clr_important	bitmap_image.hpp	/^   unsigned int   clr_important;$/;"	m	struct:bitmap_information_header
+clr_used	bitmap_image.hpp	/^   unsigned int   clr_used;$/;"	m	struct:bitmap_information_header
+color	Light.h	/^    Vector3f color;$/;"	m	class:DirectionalLight
+color	Light.h	/^    Vector3f color;$/;"	m	class:PointLight
+color	Noise.h	/^	Vector3f color[2];$/;"	m	class:Noise
+color_plane	bitmap_image.hpp	/^   enum color_plane {$/;"	g	class:bitmap_image
+compare	Image.cpp	/^Image* Image::compare(Image* img1, Image* img2) {$/;"	f	class:Image
+compression	bitmap_image.hpp	/^   unsigned int   compression;$/;"	m	struct:bitmap_information_header
+compute_norm	Mesh.cpp	/^void Mesh::compute_norm()$/;"	f	class:Mesh
+conjugate	./vecmath/src/Quat4f.cpp	/^void Quat4f::conjugate()$/;"	f	class:Quat4f
+conjugated	./vecmath/src/Quat4f.cpp	/^Quat4f Quat4f::conjugated() const$/;"	f	class:Quat4f
+copy_from	bitmap_image.hpp	/^   inline bool copy_from(const bitmap_image& image)$/;"	f	class:bitmap_image
+countIntersect	RayTracer.h	/^static int countIntersect = 0;$/;"	v
+create_bitmap	bitmap_image.hpp	/^   void create_bitmap()$/;"	f	class:bitmap_image
+cross	./vecmath/src/Vector2f.cpp	/^Vector3f Vector2f::cross( const Vector2f& v0, const Vector2f& v1 )$/;"	f	class:Vector2f
+cross	./vecmath/src/Vector3f.cpp	/^Vector3f Vector3f::cross( const Vector3f& v0, const Vector3f& v1 )$/;"	f	class:Vector3f
+cubemap	SceneParser.h	/^	CubeMap * cubemap;$/;"	m	class:SceneParser
+cubicInterpolate	./vecmath/src/Quat4f.cpp	/^Quat4f Quat4f::cubicInterpolate( const Quat4f& q0, const Quat4f& q1, const Quat4f& q2, const Quat4f& q3, float t )$/;"	f	class:Quat4f
+cubicInterpolate	./vecmath/src/Vector3f.cpp	/^Vector3f Vector3f::cubicInterpolate( const Vector3f& p0, const Vector3f& p1, const Vector3f& p2, const Vector3f& p3, float t )$/;"	f	class:Vector3f
+current_material	SceneParser.h	/^    Material* current_material;$/;"	m	class:SceneParser
+d	Plane.h	/^    float d;$/;"	m	class:Plane
+data	Image.h	/^    Vector3f* data;$/;"	m	class:Image
+data	bitmap_image.hpp	/^   inline const unsigned char* data()$/;"	f	class:bitmap_image
+data_	bitmap_image.hpp	/^   unsigned char* data_;$/;"	m	class:bitmap_image
+depth_file	ArgParser.h	/^  char *depth_file;$/;"	m	class:ArgParser
+depth_max	ArgParser.h	/^  float depth_max;$/;"	m	class:ArgParser
+depth_min	ArgParser.h	/^  float depth_min;$/;"	m	class:ArgParser
+determinant	./vecmath/src/Matrix2f.cpp	/^float Matrix2f::determinant()$/;"	f	class:Matrix2f
+determinant	./vecmath/src/Matrix3f.cpp	/^float Matrix3f::determinant() const$/;"	f	class:Matrix3f
+determinant	./vecmath/src/Matrix4f.cpp	/^float Matrix4f::determinant() const$/;"	f	class:Matrix4f
+determinant2x2	./vecmath/src/Matrix2f.cpp	/^float Matrix2f::determinant2x2( float m00, float m01,$/;"	f	class:Matrix2f
+determinant3x3	./vecmath/src/Matrix3f.cpp	/^float Matrix3f::determinant3x3( float m00, float m01, float m02,$/;"	f	class:Matrix3f
+diffuseColor	Material.h	/^  Vector3f diffuseColor;$/;"	m	class:Material
+direction	Camera.h	/^	Vector3f direction;$/;"	m	class:Camera
+direction	Light.h	/^    Vector3f direction;$/;"	m	class:DirectionalLight
+direction	Ray.h	/^    Vector3f direction;$/;"	m	class:Ray
+dot	./vecmath/src/Quat4f.cpp	/^float Quat4f::dot( const Quat4f& q0, const Quat4f& q1 )$/;"	f	class:Quat4f
+dot	./vecmath/src/Vector2f.cpp	/^float Vector2f::dot( const Vector2f& v0, const Vector2f& v1 )$/;"	f	class:Vector2f
+dot	./vecmath/src/Vector3f.cpp	/^float Vector3f::dot( const Vector3f& v0, const Vector3f& v1 )$/;"	f	class:Vector3f
+dot	./vecmath/src/Vector4f.cpp	/^float Vector4f::dot( const Vector4f& v0, const Vector4f& v1 )$/;"	f	class:Vector4f
+exp	./vecmath/src/Quat4f.cpp	/^Quat4f Quat4f::exp() const$/;"	f	class:Quat4f
+fade	PerlinNoise.h	/^    static double fade( double t )$/;"	f	class:PerlinNoise
+falloff	Light.h	/^    float falloff;$/;"	m	class:PointLight
+file	SceneParser.h	/^    FILE* file;$/;"	m	class:SceneParser
+file_name_	bitmap_image.hpp	/^   std::string    file_name_;$/;"	m	class:bitmap_image
+filter	ArgParser.h	/^  int filter;$/;"	m	class:ArgParser
+first_node	octree.cpp	/^int first_node(float tx0,float ty0,float tz0, float txm, float tym,float tzm){$/;"	f
+flip	bitmap_image.hpp	/^inline unsigned int flip(const unsigned int& v)$/;"	f
+flip	bitmap_image.hpp	/^inline unsigned short flip(const unsigned short& v)$/;"	f
+frequency	Noise.h	/^	float frequency;$/;"	m	class:Noise
+fromRotatedBasis	./vecmath/src/Quat4f.cpp	/^Quat4f Quat4f::fromRotatedBasis( const Vector3f& x, const Vector3f& y, const Vector3f& z )$/;"	f	class:Quat4f
+fromRotationMatrix	./vecmath/src/Quat4f.cpp	/^Quat4f Quat4f::fromRotationMatrix( const Matrix3f& m )$/;"	f	class:Quat4f
+g	RayTracer.h	/^  Group* g;$/;"	m	class:RayTracer
+gamma	Triangle.h	/^    float gamma;$/;"	m	class:Triangle
+generateRay	Camera.h	/^	virtual Ray generateRay( const Vector2f& point)$/;"	f	class:PerspectiveCamera
+getAmbientLight	SceneParser.h	/^    Vector3f getAmbientLight() const$/;"	f	class:SceneParser
+getAxisAngle	./vecmath/src/Quat4f.cpp	/^Vector3f Quat4f::getAxisAngle( float* radiansOut )$/;"	f	class:Quat4f
+getBackgroundColor	SceneParser.h	/^    Vector3f getBackgroundColor(Vector3f dir) const$/;"	f	class:SceneParser
+getCamera	SceneParser.h	/^    Camera* getCamera() const$/;"	f	class:SceneParser
+getCol	./vecmath/src/Matrix2f.cpp	/^Vector2f Matrix2f::getCol( int j ) const$/;"	f	class:Matrix2f
+getCol	./vecmath/src/Matrix3f.cpp	/^Vector3f Matrix3f::getCol( int j ) const$/;"	f	class:Matrix3f
+getCol	./vecmath/src/Matrix4f.cpp	/^Vector4f Matrix4f::getCol( int j ) const$/;"	f	class:Matrix4f
+getColor	Noise.cpp	/^Vector3f Noise::getColor(const Vector3f & pos)$/;"	f	class:Noise
+getDiffuseColor	Material.cpp	/^Vector3f Material::getDiffuseColor() const$/;"	f	class:Material
+getDiffuseColor	Material.cpp	/^Vector3f Material::getDiffuseColor(){$/;"	f	class:Material
+getDirection	Ray.h	/^    const Vector3f& getDirection() const$/;"	f	class:Ray
+getGroup	SceneParser.h	/^    Group* getGroup() const$/;"	f	class:SceneParser
+getGroupSize	Group.h	/^  int getGroupSize()$/;"	f	class:Group
+getIllumination	Light.h	/^    virtual void getIllumination( const Vector3f& p, Vector3f& dir, Vector3f& col, float& distanceToLight ) const$/;"	f	class:DirectionalLight
+getIllumination	Light.h	/^    virtual void getIllumination( const Vector3f& p, Vector3f& dir, Vector3f& col, float& distanceToLight ) const$/;"	f	class:PointLight
+getLight	SceneParser.h	/^    Light* getLight( int i ) const$/;"	f	class:SceneParser
+getMaterial	Hit.h	/^    Material* getMaterial() const$/;"	f	class:Hit
+getMaterial	SceneParser.h	/^    Material* getMaterial( int i ) const$/;"	f	class:SceneParser
+getNormal	Hit.h	/^    const Vector3f& getNormal() const$/;"	f	class:Hit
+getNumLights	SceneParser.h	/^    int getNumLights() const$/;"	f	class:SceneParser
+getNumMaterials	SceneParser.h	/^    int getNumMaterials() const$/;"	f	class:SceneParser
+getOrigin	Ray.h	/^    const Vector3f& getOrigin() const$/;"	f	class:Ray
+getRandom	main.cpp	/^float getRandom()$/;"	f
+getRefractionIndex	Material.cpp	/^float Material::getRefractionIndex(){$/;"	f	class:Material
+getRow	./vecmath/src/Matrix2f.cpp	/^Vector2f Matrix2f::getRow( int i ) const$/;"	f	class:Matrix2f
+getRow	./vecmath/src/Matrix3f.cpp	/^Vector3f Matrix3f::getRow( int i ) const$/;"	f	class:Matrix3f
+getRow	./vecmath/src/Matrix4f.cpp	/^Vector4f Matrix4f::getRow( int i ) const$/;"	f	class:Matrix4f
+getSpecularColor	Material.cpp	/^Vector3f Material::getSpecularColor(){$/;"	f	class:Material
+getSubmatrix2x2	./vecmath/src/Matrix3f.cpp	/^Matrix2f Matrix3f::getSubmatrix2x2( int i0, int j0 ) const$/;"	f	class:Matrix3f
+getSubmatrix2x2	./vecmath/src/Matrix4f.cpp	/^Matrix2f Matrix4f::getSubmatrix2x2( int i0, int j0 ) const$/;"	f	class:Matrix4f
+getSubmatrix3x3	./vecmath/src/Matrix4f.cpp	/^Matrix3f Matrix4f::getSubmatrix3x3( int i0, int j0 ) const$/;"	f	class:Matrix4f
+getT	Hit.h	/^    float getT() const$/;"	f	class:Hit
+getTMin	Camera.h	/^	virtual float getTMin() const {$/;"	f	class:PerspectiveCamera
+getToken	SceneParser.cpp	/^int SceneParser::getToken(char token[MAX_PARSER_TOKEN_LENGTH]) {$/;"	f	class:SceneParser
+get_pixel	bitmap_image.hpp	/^   inline void get_pixel(const unsigned int x, const unsigned int y,$/;"	f	class:bitmap_image
+grad	PerlinNoise.h	/^    static double grad( int hash, double x, double y, double z )$/;"	f	class:PerlinNoise
+green_plane	bitmap_image.hpp	/^                       green_plane = 1,$/;"	e	enum:bitmap_image::color_plane
+group	Group.h	/^  vector<Object3D*> group;$/;"	m	class:Group
+group	SceneParser.h	/^    Group* group;$/;"	m	class:SceneParser
+hasTex	Hit.h	/^	bool hasTex;$/;"	m	class:Hit
+hasTex	Triangle.h	/^	bool hasTex;$/;"	m	class:Triangle
+height	ArgParser.h	/^  int height;$/;"	m	class:ArgParser
+height	Image.h	/^    int height;$/;"	m	class:Image
+height	bitmap_image.hpp	/^   int height(){return height_;}$/;"	f	class:bitmap_image
+height	bitmap_image.hpp	/^   unsigned int   height;$/;"	m	struct:bitmap_information_header
+height	texture.hpp	/^  int width , height;$/;"	m	class:Texture
+height_	bitmap_image.hpp	/^   unsigned int   height_;$/;"	m	class:bitmap_image
+hit	Mesh.hpp	/^  Hit * hit;$/;"	m	class:Mesh
+homogenize	./vecmath/src/Vector4f.cpp	/^void Vector4f::homogenize()$/;"	f	class:Vector4f
+homogenized	./vecmath/src/Vector3f.cpp	/^Vector2f Vector3f::homogenized() const$/;"	f	class:Vector3f
+homogenized	./vecmath/src/Vector4f.cpp	/^Vector4f Vector4f::homogenized() const$/;"	f	class:Vector4f
+horizontal	Camera.h	/^	Vector3f horizontal;$/;"	m	class:Camera
+iOutOfBoundary	main.cpp	/^bool iOutOfBoundary(int i, int height)$/;"	f
+identity	./vecmath/src/Matrix2f.cpp	/^Matrix2f Matrix2f::identity()$/;"	f	class:Matrix2f
+identity	./vecmath/src/Matrix3f.cpp	/^Matrix3f Matrix3f::identity()$/;"	f	class:Matrix3f
+identity	./vecmath/src/Matrix4f.cpp	/^Matrix4f Matrix4f::identity()$/;"	f	class:Matrix4f
+infinitePerspectiveProjection	./vecmath/src/Matrix4f.cpp	/^Matrix4f Matrix4f::infinitePerspectiveProjection( float fLeft, float fRight,$/;"	f	class:Matrix4f
+init	Noise.h	/^	bool init;$/;"	m	class:Noise
+input_file	ArgParser.h	/^  char *input_file;$/;"	m	class:ArgParser
+inside	octree.cpp	/^bool inside(const Box & a, const Box & b){$/;"	f
+intersect	Group.h	/^  virtual bool intersect( const Ray& r , Hit& h , float tmin )$/;"	f	class:Group
+intersect	Mesh.cpp	/^bool Mesh::intersect( const Ray& r , Hit& h , float tmin )$/;"	f	class:Mesh
+intersect	Plane.h	/^	virtual bool intersect( const Ray& r , Hit& h , float tmin)$/;"	f	class:Plane
+intersect	Sphere.h	/^	virtual bool intersect( const Ray& r , Hit& h , float tmin)$/;"	f	class:Sphere
+intersect	Transform.h	/^  virtual bool intersect( const Ray& r , Hit& h , float tmin)$/;"	f	class:Transform
+intersect	Triangle.h	/^	virtual bool intersect( const Ray& ray,  Hit& hit , float tmin)$/;"	f	class:Triangle
+intersect	octree.cpp	/^bool intersect(float * a, float * b)$/;"	f
+intersect	octree.cpp	/^void Octree::intersect(const Ray & ray){$/;"	f	class:Octree
+intersectCall	Mesh.cpp	/^void intersectCall(int idx, void ** arg)$/;"	f
+intersectTrig	Mesh.cpp	/^bool Mesh ::intersectTrig(int idx){$/;"	f	class:Mesh
+inverse	./vecmath/src/Matrix2f.cpp	/^Matrix2f Matrix2f::inverse( bool* pbIsSingular, float epsilon )$/;"	f	class:Matrix2f
+inverse	./vecmath/src/Matrix3f.cpp	/^Matrix3f Matrix3f::inverse( bool* pbIsSingular, float epsilon ) const$/;"	f	class:Matrix3f
+inverse	./vecmath/src/Matrix4f.cpp	/^Matrix4f Matrix4f::inverse( bool* pbIsSingular, float epsilon ) const$/;"	f	class:Matrix4f
+inverse	./vecmath/src/Quat4f.cpp	/^Quat4f Quat4f::inverse() const$/;"	f	class:Quat4f
+invert	./vecmath/src/Quat4f.cpp	/^void Quat4f::invert()$/;"	f	class:Quat4f
+isTerm	octree.hpp	/^	bool isTerm(){return child[0]==0;}$/;"	f	struct:OctNode
+jOutOfBoundary	main.cpp	/^bool jOutOfBoundary(int j, int width)$/;"	f
+jitter	ArgParser.h	/^  int jitter;$/;"	m	class:ArgParser
+length_	bitmap_image.hpp	/^   unsigned int   length_;$/;"	m	class:bitmap_image
+lerp	./vecmath/src/Quat4f.cpp	/^Quat4f Quat4f::lerp( const Quat4f& q0, const Quat4f& q1, float alpha )$/;"	f	class:Quat4f
+lerp	./vecmath/src/Vector2f.cpp	/^Vector2f Vector2f::lerp( const Vector2f& v0, const Vector2f& v1, float alpha )$/;"	f	class:Vector2f
+lerp	./vecmath/src/Vector3f.cpp	/^Vector3f Vector3f::lerp( const Vector3f& v0, const Vector3f& v1, float alpha )$/;"	f	class:Vector3f
+lerp	./vecmath/src/Vector4f.cpp	/^Vector4f Vector4f::lerp( const Vector4f& v0, const Vector4f& v1, float alpha )$/;"	f	class:Vector4f
+lerp	PerlinNoise.h	/^    static double lerp( double t, double a, double b )$/;"	f	class:PerlinNoise
+lights	SceneParser.h	/^    Light** lights;$/;"	m	class:SceneParser
+load	texture.cpp	/^Texture::load(const char * filename)$/;"	f	class:Texture
+loadTexture	Material.cpp	/^void Material::loadTexture(const char * filename){$/;"	f	class:Material
+load_bitmap	bitmap_image.hpp	/^   void load_bitmap()$/;"	f	class:bitmap_image
+log	./vecmath/src/Quat4f.cpp	/^Quat4f Quat4f::log() const$/;"	f	class:Quat4f
+logDifference	./vecmath/src/Quat4f.cpp	/^Quat4f Quat4f::logDifference( const Quat4f& a, const Quat4f& b )$/;"	f	class:Quat4f
+lookAt	./vecmath/src/Matrix4f.cpp	/^Matrix4f Matrix4f::lookAt( const Vector3f& eye, const Vector3f& center, const Vector3f& up )$/;"	f	class:Matrix4f
+m_elements	./vecmath/include/Matrix2f.h	/^	float m_elements[ 4 ];$/;"	m	class:Matrix2f
+m_elements	./vecmath/include/Matrix3f.h	/^	float m_elements[ 9 ];$/;"	m	class:Matrix3f
+m_elements	./vecmath/include/Matrix4f.h	/^	float m_elements[ 16 ];$/;"	m	class:Matrix4f
+m_elements	./vecmath/include/Quat4f.h	/^	float m_elements[ 4 ];$/;"	m	class:Quat4f
+m_elements	./vecmath/include/Vector2f.h	/^	float m_elements[2];$/;"	m	class:Vector2f
+m_elements	./vecmath/include/Vector3f.h	/^	float m_elements[ 3 ];$/;"	m	class:Vector3f
+m_elements	./vecmath/include/Vector4f.h	/^	float m_elements[ 4 ];$/;"	m	class:Vector4f
+m_maxBounces	RayTracer.h	/^  int m_maxBounces;$/;"	m	class:RayTracer
+m_scene	RayTracer.h	/^  SceneParser* m_scene;\/\/a pointer of SceneParser for access to the geometry and light sources of the scene$/;"	m	class:RayTracer
+main	main.cpp	/^int main( int argc, char* argv[] )$/;"	f
+material	Hit.h	/^    Material* material;$/;"	m	class:Hit
+material	Object3D.h	/^	Material* material;$/;"	m	class:Object3D
+materials	SceneParser.h	/^    Material** materials;$/;"	m	class:SceneParser
+max	VecUtils.h	/^    static Vector3f max( const Vector3f& b, const Vector3f& c )$/;"	f	class:VecUtils
+maxLevel	octree.hpp	/^	int maxLevel;$/;"	m	struct:Octree
+max_trig	octree.hpp	/^	static const int max_trig = 7;$/;"	m	struct:Octree
+min	VecUtils.h	/^    static Vector3f min( const Vector3f& b, const Vector3f& c )$/;"	f	class:VecUtils
+mirrorDirection	RayTracer.cpp	/^Vector3f mirrorDirection( const Vector3f& normal, const Vector3f& incoming)$/;"	f
+mn	octree.hpp	/^	Vector3f mn, mx;$/;"	m	struct:Box
+mx	octree.hpp	/^	Vector3f mn, mx;$/;"	m	struct:Box
+n	Mesh.hpp	/^  std::vector<Vector3f>n;$/;"	m	class:Mesh
+negate	./vecmath/src/Vector2f.cpp	/^void Vector2f::negate()$/;"	f	class:Vector2f
+negate	./vecmath/src/Vector3f.cpp	/^void Vector3f::negate()$/;"	f	class:Vector3f
+negate	./vecmath/src/Vector4f.cpp	/^void Vector4f::negate()$/;"	f	class:Vector4f
+new_node	octree.cpp	/^int new_node(float txm, int x, float tym, int y, float tzm, int z)$/;"	f
+noise	Material.h	/^  Noise noise;$/;"	m	class:Material
+noise	PerlinNoise.h	/^    static double noise( double x, double y, double z )$/;"	f	class:PerlinNoise
+normal	./vecmath/src/Vector2f.cpp	/^Vector2f Vector2f::normal() const$/;"	f	class:Vector2f
+normal	Hit.h	/^    Vector3f normal;$/;"	m	class:Hit
+normal	Plane.h	/^    Vector3f normal;$/;"	m	class:Plane
+normalize	./vecmath/src/Quat4f.cpp	/^void Quat4f::normalize()$/;"	f	class:Quat4f
+normalize	./vecmath/src/Vector2f.cpp	/^void Vector2f::normalize()$/;"	f	class:Vector2f
+normalize	./vecmath/src/Vector3f.cpp	/^void Vector3f::normalize()$/;"	f	class:Vector3f
+normalize	./vecmath/src/Vector4f.cpp	/^void Vector4f::normalize()$/;"	f	class:Vector4f
+normalized	./vecmath/src/Quat4f.cpp	/^Quat4f Quat4f::normalized() const$/;"	f	class:Quat4f
+normalized	./vecmath/src/Vector2f.cpp	/^Vector2f Vector2f::normalized() const$/;"	f	class:Vector2f
+normalized	./vecmath/src/Vector3f.cpp	/^Vector3f Vector3f::normalized() const$/;"	f	class:Vector3f
+normalized	./vecmath/src/Vector4f.cpp	/^Vector4f Vector4f::normalized() const$/;"	f	class:Vector4f
+normals	Triangle.h	/^	Vector3f normals[3];$/;"	m	class:Triangle
+normals_file	ArgParser.h	/^  char *normals_file;$/;"	m	class:ArgParser
+num_lights	SceneParser.h	/^    int num_lights;$/;"	m	class:SceneParser
+num_materials	SceneParser.h	/^    int num_materials;$/;"	m	class:SceneParser
+o	Transform.h	/^  Object3D* o; \/\/un-transformed object$/;"	m	class:Transform
+obj	octree.hpp	/^	std::vector<int> obj;$/;"	m	struct:OctNode
+objectSize	Group.h	/^  int objectSize;$/;"	m	class:Group
+octaveNoise	PerlinNoise.h	/^    static double octaveNoise( const Vector3f& pt, int octaves )$/;"	f	class:PerlinNoise
+octaves	Noise.h	/^	int octaves;$/;"	m	class:Noise
+octree	Mesh.hpp	/^  Octree octree;$/;"	m	class:Mesh
+off_bits	bitmap_image.hpp	/^   unsigned int   off_bits;$/;"	m	struct:bitmap_file_header
+ones	./vecmath/src/Matrix2f.cpp	/^Matrix2f Matrix2f::ones()$/;"	f	class:Matrix2f
+ones	./vecmath/src/Matrix3f.cpp	/^Matrix3f Matrix3f::ones()$/;"	f	class:Matrix3f
+ones	./vecmath/src/Matrix4f.cpp	/^Matrix4f Matrix4f::ones()$/;"	f	class:Matrix4f
+operator !=	./vecmath/src/Vector2f.cpp	/^bool operator != ( const Vector2f& v0, const Vector2f& v1 )$/;"	f
+operator !=	./vecmath/src/Vector3f.cpp	/^bool operator != ( const Vector3f& v0, const Vector3f& v1 )$/;"	f
+operator !=	./vecmath/src/Vector4f.cpp	/^bool operator != ( const Vector4f& v0, const Vector4f& v1 )$/;"	f
+operator ()	./vecmath/src/Matrix2f.cpp	/^const float& Matrix2f::operator () ( int i, int j ) const$/;"	f	class:Matrix2f
+operator ()	./vecmath/src/Matrix2f.cpp	/^float& Matrix2f::operator () ( int i, int j )$/;"	f	class:Matrix2f
+operator ()	./vecmath/src/Matrix3f.cpp	/^const float& Matrix3f::operator () ( int i, int j ) const$/;"	f	class:Matrix3f
+operator ()	./vecmath/src/Matrix3f.cpp	/^float& Matrix3f::operator () ( int i, int j )$/;"	f	class:Matrix3f
+operator ()	./vecmath/src/Matrix4f.cpp	/^const float& Matrix4f::operator () ( int i, int j ) const$/;"	f	class:Matrix4f
+operator ()	./vecmath/src/Matrix4f.cpp	/^float& Matrix4f::operator () ( int i, int j )$/;"	f	class:Matrix4f
+operator ()	CubeMap.cpp	/^Vector3f CubeMap::operator()(const Vector3f & direction)$/;"	f	class:CubeMap
+operator ()	texture.cpp	/^Texture::operator()(float x, float y)$/;"	f	class:Texture
+operator ()	texture.cpp	/^Texture::operator()(int x, int y,  unsigned char * color)$/;"	f	class:Texture
+operator *	./vecmath/src/Matrix2f.cpp	/^Matrix2f operator * ( const Matrix2f& m, float f )$/;"	f
+operator *	./vecmath/src/Matrix2f.cpp	/^Matrix2f operator * ( const Matrix2f& x, const Matrix2f& y )$/;"	f
+operator *	./vecmath/src/Matrix2f.cpp	/^Matrix2f operator * ( float f, const Matrix2f& m )$/;"	f
+operator *	./vecmath/src/Matrix2f.cpp	/^Vector2f operator * ( const Matrix2f& m, const Vector2f& v )$/;"	f
+operator *	./vecmath/src/Matrix3f.cpp	/^Matrix3f operator * ( const Matrix3f& x, const Matrix3f& y )$/;"	f
+operator *	./vecmath/src/Matrix3f.cpp	/^Vector3f operator * ( const Matrix3f& m, const Vector3f& v )$/;"	f
+operator *	./vecmath/src/Matrix4f.cpp	/^Matrix4f operator * ( const Matrix4f& x, const Matrix4f& y )$/;"	f
+operator *	./vecmath/src/Matrix4f.cpp	/^Vector4f operator * ( const Matrix4f& m, const Vector4f& v )$/;"	f
+operator *	./vecmath/src/Quat4f.cpp	/^Quat4f operator * ( const Quat4f& q, float f )$/;"	f
+operator *	./vecmath/src/Quat4f.cpp	/^Quat4f operator * ( const Quat4f& q0, const Quat4f& q1 )$/;"	f
+operator *	./vecmath/src/Quat4f.cpp	/^Quat4f operator * ( float f, const Quat4f& q )$/;"	f
+operator *	./vecmath/src/Vector2f.cpp	/^Vector2f operator * ( const Vector2f& v, float f )$/;"	f
+operator *	./vecmath/src/Vector2f.cpp	/^Vector2f operator * ( const Vector2f& v0, const Vector2f& v1 )$/;"	f
+operator *	./vecmath/src/Vector2f.cpp	/^Vector2f operator * ( float f, const Vector2f& v )$/;"	f
+operator *	./vecmath/src/Vector3f.cpp	/^Vector3f operator * ( const Vector3f& v, float f )$/;"	f
+operator *	./vecmath/src/Vector3f.cpp	/^Vector3f operator * ( const Vector3f& v0, const Vector3f& v1 )$/;"	f
+operator *	./vecmath/src/Vector3f.cpp	/^Vector3f operator * ( float f, const Vector3f& v )$/;"	f
+operator *	./vecmath/src/Vector4f.cpp	/^Vector4f operator * ( const Vector4f& v, float f )$/;"	f
+operator *	./vecmath/src/Vector4f.cpp	/^Vector4f operator * ( const Vector4f& v0, const Vector4f& v1 )$/;"	f
+operator *	./vecmath/src/Vector4f.cpp	/^Vector4f operator * ( float f, const Vector4f& v )$/;"	f
+operator *=	./vecmath/src/Vector2f.cpp	/^Vector2f& Vector2f::operator *= ( float f )$/;"	f	class:Vector2f
+operator *=	./vecmath/src/Vector3f.cpp	/^Vector3f& Vector3f::operator *= ( float f )$/;"	f	class:Vector3f
+operator +	./vecmath/src/Quat4f.cpp	/^Quat4f operator + ( const Quat4f& q0, const Quat4f& q1 )$/;"	f
+operator +	./vecmath/src/Vector2f.cpp	/^Vector2f operator + ( const Vector2f& v0, const Vector2f& v1 )$/;"	f
+operator +	./vecmath/src/Vector3f.cpp	/^Vector3f operator + ( const Vector3f& v0, const Vector3f& v1 )$/;"	f
+operator +	./vecmath/src/Vector4f.cpp	/^Vector4f operator + ( const Vector4f& v0, const Vector4f& v1 )$/;"	f
+operator +=	./vecmath/src/Vector2f.cpp	/^Vector2f& Vector2f::operator += ( const Vector2f& v )$/;"	f	class:Vector2f
+operator +=	./vecmath/src/Vector3f.cpp	/^Vector3f& Vector3f::operator += ( const Vector3f& v )$/;"	f	class:Vector3f
+operator -	./vecmath/src/Quat4f.cpp	/^Quat4f operator - ( const Quat4f& q0, const Quat4f& q1 )$/;"	f
+operator -	./vecmath/src/Vector2f.cpp	/^Vector2f operator - ( const Vector2f& v )$/;"	f
+operator -	./vecmath/src/Vector2f.cpp	/^Vector2f operator - ( const Vector2f& v0, const Vector2f& v1 )$/;"	f
+operator -	./vecmath/src/Vector3f.cpp	/^Vector3f operator - ( const Vector3f& v )$/;"	f
+operator -	./vecmath/src/Vector3f.cpp	/^Vector3f operator - ( const Vector3f& v0, const Vector3f& v1 )$/;"	f
+operator -	./vecmath/src/Vector4f.cpp	/^Vector4f operator - ( const Vector4f& v )$/;"	f
+operator -	./vecmath/src/Vector4f.cpp	/^Vector4f operator - ( const Vector4f& v0, const Vector4f& v1 )$/;"	f
+operator -=	./vecmath/src/Vector2f.cpp	/^Vector2f& Vector2f::operator -= ( const Vector2f& v )$/;"	f	class:Vector2f
+operator -=	./vecmath/src/Vector3f.cpp	/^Vector3f& Vector3f::operator -= ( const Vector3f& v )$/;"	f	class:Vector3f
+operator /	./vecmath/src/Vector2f.cpp	/^Vector2f operator \/ ( const Vector2f& v, float f )$/;"	f
+operator /	./vecmath/src/Vector2f.cpp	/^Vector2f operator \/ ( const Vector2f& v0, const Vector2f& v1 )$/;"	f
+operator /	./vecmath/src/Vector3f.cpp	/^Vector3f operator \/ ( const Vector3f& v, float f )$/;"	f
+operator /	./vecmath/src/Vector3f.cpp	/^Vector3f operator \/ ( const Vector3f& v0, const Vector3f& v1 )$/;"	f
+operator /	./vecmath/src/Vector4f.cpp	/^Vector4f operator \/ ( const Vector4f& v, float f )$/;"	f
+operator /	./vecmath/src/Vector4f.cpp	/^Vector4f operator \/ ( const Vector4f& v0, const Vector4f& v1 )$/;"	f
+operator /=	./vecmath/src/Matrix4f.cpp	/^Matrix4f& Matrix4f::operator\/=(float d)$/;"	f	class:Matrix4f
+operator <<	Hit.h	/^inline ostream& operator << ( ostream &os, const Hit& h)$/;"	f
+operator <<	Ray.h	/^inline ostream& operator << ( ostream& os, const Ray& r)$/;"	f
+operator =	./vecmath/src/Matrix2f.cpp	/^Matrix2f& Matrix2f::operator = ( const Matrix2f& rm )$/;"	f	class:Matrix2f
+operator =	./vecmath/src/Matrix3f.cpp	/^Matrix3f& Matrix3f::operator = ( const Matrix3f& rm )$/;"	f	class:Matrix3f
+operator =	./vecmath/src/Matrix4f.cpp	/^Matrix4f& Matrix4f::operator = ( const Matrix4f& rm )$/;"	f	class:Matrix4f
+operator =	./vecmath/src/Quat4f.cpp	/^Quat4f& Quat4f::operator = ( const Quat4f& rq )$/;"	f	class:Quat4f
+operator =	./vecmath/src/Vector2f.cpp	/^Vector2f& Vector2f::operator = ( const Vector2f& rv )$/;"	f	class:Vector2f
+operator =	./vecmath/src/Vector3f.cpp	/^Vector3f& Vector3f::operator = ( const Vector3f& rv )$/;"	f	class:Vector3f
+operator =	./vecmath/src/Vector4f.cpp	/^Vector4f& Vector4f::operator = ( const Vector4f& rv )$/;"	f	class:Vector4f
+operator =	bitmap_image.hpp	/^   bitmap_image& operator=(const bitmap_image& image)$/;"	f	class:bitmap_image
+operator ==	./vecmath/src/Vector2f.cpp	/^bool operator == ( const Vector2f& v0, const Vector2f& v1 )$/;"	f
+operator ==	./vecmath/src/Vector3f.cpp	/^bool operator == ( const Vector3f& v0, const Vector3f& v1 )$/;"	f
+operator ==	./vecmath/src/Vector4f.cpp	/^bool operator == ( const Vector4f& v0, const Vector4f& v1 )$/;"	f
+operator []	./vecmath/src/Quat4f.cpp	/^const float& Quat4f::operator [] ( int i ) const$/;"	f	class:Quat4f
+operator []	./vecmath/src/Quat4f.cpp	/^float& Quat4f::operator [] ( int i )$/;"	f	class:Quat4f
+operator []	./vecmath/src/Vector2f.cpp	/^const float& Vector2f::operator [] ( int i ) const$/;"	f	class:Vector2f
+operator []	./vecmath/src/Vector2f.cpp	/^float& Vector2f::operator [] ( int i )$/;"	f	class:Vector2f
+operator []	./vecmath/src/Vector3f.cpp	/^const float& Vector3f::operator [] ( int i ) const$/;"	f	class:Vector3f
+operator []	./vecmath/src/Vector3f.cpp	/^float& Vector3f::operator [] ( int i )$/;"	f	class:Vector3f
+operator []	./vecmath/src/Vector4f.cpp	/^const float& Vector4f::operator [] ( int i ) const$/;"	f	class:Vector4f
+operator []	./vecmath/src/Vector4f.cpp	/^float& Vector4f::operator [] ( int i )$/;"	f	class:Vector4f
+operator []	Mesh.hpp	/^  int & operator[](int i) {return x[i];}$/;"	f	struct:Trig
+operator []	Mesh.hpp	/^  int operator[](int i)const {return x[i];}$/;"	f	struct:Trig
+operator const float*	./vecmath/src/Matrix4f.cpp	/^Matrix4f::operator const float* ()const$/;"	f	class:Matrix4f
+operator const float*	./vecmath/src/Vector2f.cpp	/^Vector2f::operator const float* () const$/;"	f	class:Vector2f
+operator const float*	./vecmath/src/Vector3f.cpp	/^Vector3f::operator const float* () const$/;"	f	class:Vector3f
+operator const float*	./vecmath/src/Vector4f.cpp	/^Vector4f::operator const float* () const$/;"	f	class:Vector4f
+operator float*	./vecmath/src/Matrix2f.cpp	/^Matrix2f::operator float* ()$/;"	f	class:Matrix2f
+operator float*	./vecmath/src/Matrix3f.cpp	/^Matrix3f::operator float* ()$/;"	f	class:Matrix3f
+operator float*	./vecmath/src/Matrix4f.cpp	/^Matrix4f::operator float* ()$/;"	f	class:Matrix4f
+operator float*	./vecmath/src/Vector2f.cpp	/^Vector2f::operator float* ()$/;"	f	class:Vector2f
+operator float*	./vecmath/src/Vector3f.cpp	/^Vector3f::operator float* ()$/;"	f	class:Vector3f
+operator float*	./vecmath/src/Vector4f.cpp	/^Vector4f::operator float* ()$/;"	f	class:Vector4f
+origin	Ray.h	/^    Vector3f origin;$/;"	m	class:Ray
+orthographicProjection	./vecmath/src/Matrix4f.cpp	/^Matrix4f Matrix4f::orthographicProjection( float left, float right, float bottom, float top, float zNear, float zFar, bool directX )$/;"	f	class:Matrix4f
+orthographicProjection	./vecmath/src/Matrix4f.cpp	/^Matrix4f Matrix4f::orthographicProjection( float width, float height, float zNear, float zFar, bool directX )$/;"	f	class:Matrix4f
+output_file	ArgParser.h	/^  char *output_file;$/;"	m	class:ArgParser
+p	PerlinNoise.cpp	/^int PerlinNoise::p[512] = $/;"	m	class:PerlinNoise	file:
+p	PerlinNoise.h	/^    static int p[512];$/;"	m	class:PerlinNoise
+parseBackground	SceneParser.cpp	/^void SceneParser::parseBackground() {$/;"	f	class:SceneParser
+parseCubeMap	SceneParser.cpp	/^CubeMap * SceneParser::parseCubeMap()$/;"	f	class:SceneParser
+parseDirectionalLight	SceneParser.cpp	/^Light* SceneParser::parseDirectionalLight() {$/;"	f	class:SceneParser
+parseFile	SceneParser.cpp	/^void SceneParser::parseFile() {$/;"	f	class:SceneParser
+parseGroup	SceneParser.cpp	/^Group* SceneParser::parseGroup() {$/;"	f	class:SceneParser
+parseLights	SceneParser.cpp	/^void SceneParser::parseLights() {$/;"	f	class:SceneParser
+parseMaterial	SceneParser.cpp	/^Material* SceneParser::parseMaterial() {$/;"	f	class:SceneParser
+parseMaterials	SceneParser.cpp	/^void SceneParser::parseMaterials() {$/;"	f	class:SceneParser
+parseNoise	SceneParser.cpp	/^Noise * SceneParser::parseNoise()$/;"	f	class:SceneParser
+parseObject	SceneParser.cpp	/^Object3D* SceneParser::parseObject(char token[MAX_PARSER_TOKEN_LENGTH]) {$/;"	f	class:SceneParser
+parsePerspectiveCamera	SceneParser.cpp	/^void SceneParser::parsePerspectiveCamera() {$/;"	f	class:SceneParser
+parsePlane	SceneParser.cpp	/^Plane* SceneParser::parsePlane() {$/;"	f	class:SceneParser
+parsePointLight	SceneParser.cpp	/^Light* SceneParser::parsePointLight() {$/;"	f	class:SceneParser
+parseSphere	SceneParser.cpp	/^Sphere* SceneParser::parseSphere() {$/;"	f	class:SceneParser
+parseTransform	SceneParser.cpp	/^Transform* SceneParser::parseTransform() {$/;"	f	class:SceneParser
+parseTriangle	SceneParser.cpp	/^Triangle* SceneParser::parseTriangle() {$/;"	f	class:SceneParser
+parseTriangleMesh	SceneParser.cpp	/^Mesh* SceneParser::parseTriangleMesh() {$/;"	f	class:SceneParser
+perspectiveProjection	./vecmath/src/Matrix4f.cpp	/^Matrix4f Matrix4f::perspectiveProjection( float fLeft, float fRight,$/;"	f	class:Matrix4f
+perspectiveProjection	./vecmath/src/Matrix4f.cpp	/^Matrix4f Matrix4f::perspectiveProjection( float fovYRadians, float aspect, float zNear, float zFar, bool directX )$/;"	f	class:Matrix4f
+planes	bitmap_image.hpp	/^   unsigned short planes;$/;"	m	struct:bitmap_information_header
+pointAtParameter	Ray.h	/^    Vector3f pointAtParameter( float t ) const$/;"	f	class:Ray
+pointwiseDot	Material.cpp	/^Vector3f Material::pointwiseDot( const Vector3f& v1 , const Vector3f& v2 ) {$/;"	f	class:Material
+position	Light.h	/^    Vector3f position;$/;"	m	class:PointLight
+print	./vecmath/src/Matrix2f.cpp	/^void Matrix2f::print()$/;"	f	class:Matrix2f
+print	./vecmath/src/Matrix3f.cpp	/^void Matrix3f::print()$/;"	f	class:Matrix3f
+print	./vecmath/src/Matrix4f.cpp	/^void Matrix4f::print()$/;"	f	class:Matrix4f
+print	./vecmath/src/Quat4f.cpp	/^void Quat4f::print()$/;"	f	class:Quat4f
+print	./vecmath/src/Vector2f.cpp	/^void Vector2f::print() const$/;"	f	class:Vector2f
+print	./vecmath/src/Vector3f.cpp	/^void Vector3f::print() const$/;"	f	class:Vector3f
+print	./vecmath/src/Vector4f.cpp	/^void Vector4f::print() const$/;"	f	class:Vector4f
+proc_subtree	octree.cpp	/^void Octree::proc_subtree (float tx0, float ty0, float tz0, float tx1, float ty1, float tz1, OctNode* node)$/;"	f	class:Octree
+radius	Sphere.h	/^    float radius;$/;"	m	class:Sphere
+randomRotation	./vecmath/src/Matrix4f.cpp	/^Matrix4f Matrix4f::randomRotation( float u0, float u1, float u2 )$/;"	f	class:Matrix4f
+randomRotation	./vecmath/src/Quat4f.cpp	/^Quat4f Quat4f::randomRotation( float u0, float u1, float u2 )$/;"	f	class:Quat4f
+ratio	Camera.h	/^    float ratio;$/;"	m	class:PerspectiveCamera
+ray	Mesh.hpp	/^  const Ray * ray;$/;"	m	class:Mesh
+readFloat	SceneParser.cpp	/^float SceneParser::readFloat() {$/;"	f	class:SceneParser
+readInt	SceneParser.cpp	/^int SceneParser::readInt() {$/;"	f	class:SceneParser
+readVec2f	SceneParser.cpp	/^Vector2f SceneParser::readVec2f() {$/;"	f	class:SceneParser
+readVector3f	SceneParser.cpp	/^Vector3f SceneParser::readVector3f() {$/;"	f	class:SceneParser
+read_bfh	bitmap_image.hpp	/^inline void read_bfh(std::ifstream& stream, bitmap_file_header& bfh)$/;"	f
+read_bih	bitmap_image.hpp	/^inline void read_bih(std::ifstream& stream,bitmap_information_header& bih)$/;"	f
+read_from_stream	bitmap_image.hpp	/^inline void read_from_stream(std::ifstream& stream,T& t)$/;"	f
+red_plane	bitmap_image.hpp	/^                       red_plane   = 2$/;"	e	enum:bitmap_image::color_plane
+refractionIndex	Material.h	/^  float refractionIndex;\/\/necessary for my recursive ray tracing$/;"	m	class:Material
+reserved1	bitmap_image.hpp	/^   unsigned short reserved1;$/;"	m	struct:bitmap_file_header
+reserved2	bitmap_image.hpp	/^   unsigned short reserved2;$/;"	m	struct:bitmap_file_header
+rgb_mode	bitmap_image.hpp	/^                        rgb_mode = 0,$/;"	e	enum:bitmap_image::channel_mode
+root	octree.hpp	/^	OctNode root;$/;"	m	struct:Octree
+rotateX	./vecmath/src/Matrix3f.cpp	/^Matrix3f Matrix3f::rotateX( float radians )$/;"	f	class:Matrix3f
+rotateX	./vecmath/src/Matrix4f.cpp	/^Matrix4f Matrix4f::rotateX( float radians )$/;"	f	class:Matrix4f
+rotateY	./vecmath/src/Matrix3f.cpp	/^Matrix3f Matrix3f::rotateY( float radians )$/;"	f	class:Matrix3f
+rotateY	./vecmath/src/Matrix4f.cpp	/^Matrix4f Matrix4f::rotateY( float radians )$/;"	f	class:Matrix4f
+rotateZ	./vecmath/src/Matrix3f.cpp	/^Matrix3f Matrix3f::rotateZ( float radians )$/;"	f	class:Matrix3f
+rotateZ	./vecmath/src/Matrix4f.cpp	/^Matrix4f Matrix4f::rotateZ( float radians )$/;"	f	class:Matrix4f
+rotation	./vecmath/src/Matrix2f.cpp	/^Matrix2f Matrix2f::rotation( float degrees )$/;"	f	class:Matrix2f
+rotation	./vecmath/src/Matrix3f.cpp	/^Matrix3f Matrix3f::rotation( const Quat4f& rq )$/;"	f	class:Matrix3f
+rotation	./vecmath/src/Matrix3f.cpp	/^Matrix3f Matrix3f::rotation( const Vector3f& rDirection, float radians )$/;"	f	class:Matrix3f
+rotation	./vecmath/src/Matrix4f.cpp	/^Matrix4f Matrix4f::rotation( const Quat4f& q )$/;"	f	class:Matrix4f
+rotation	./vecmath/src/Matrix4f.cpp	/^Matrix4f Matrix4f::rotation( const Vector3f& rDirection, float radians )$/;"	f	class:Matrix4f
+row	bitmap_image.hpp	/^    inline unsigned char* row(unsigned int row_index) const$/;"	f	class:bitmap_image
+row_increment_	bitmap_image.hpp	/^   unsigned int   row_increment_;$/;"	m	class:bitmap_image
+save_image	bitmap_image.hpp	/^   void save_image(const std::string& file_name)$/;"	f	class:bitmap_image
+scaling	./vecmath/src/Matrix3f.cpp	/^Matrix3f Matrix3f::scaling( float sx, float sy, float sz )$/;"	f	class:Matrix3f
+scaling	./vecmath/src/Matrix4f.cpp	/^Matrix4f Matrix4f::scaling( float sx, float sy, float sz )$/;"	f	class:Matrix4f
+set	Hit.h	/^    void set( float _t, Material* m, const Vector3f& n )$/;"	f	class:Hit
+setAxisAngle	./vecmath/src/Quat4f.cpp	/^void Quat4f::setAxisAngle( float radians, const Vector3f& axis )$/;"	f	class:Quat4f
+setCol	./vecmath/src/Matrix2f.cpp	/^void Matrix2f::setCol( int j, const Vector2f& v )$/;"	f	class:Matrix2f
+setCol	./vecmath/src/Matrix3f.cpp	/^void Matrix3f::setCol( int j, const Vector3f& v )$/;"	f	class:Matrix3f
+setCol	./vecmath/src/Matrix4f.cpp	/^void Matrix4f::setCol( int j, const Vector4f& v )$/;"	f	class:Matrix4f
+setNoise	Material.cpp	/^void Material::setNoise(const Noise & n)$/;"	f	class:Material
+setRatio	Camera.h	/^    virtual void setRatio(float r)$/;"	f	class:PerspectiveCamera
+setRow	./vecmath/src/Matrix2f.cpp	/^void Matrix2f::setRow( int i, const Vector2f& v )$/;"	f	class:Matrix2f
+setRow	./vecmath/src/Matrix3f.cpp	/^void Matrix3f::setRow( int i, const Vector3f& v )$/;"	f	class:Matrix3f
+setRow	./vecmath/src/Matrix4f.cpp	/^void Matrix4f::setRow( int i, const Vector4f& v )$/;"	f	class:Matrix4f
+setSubmatrix2x2	./vecmath/src/Matrix3f.cpp	/^void Matrix3f::setSubmatrix2x2( int i0, int j0, const Matrix2f& m )$/;"	f	class:Matrix3f
+setSubmatrix2x2	./vecmath/src/Matrix4f.cpp	/^void Matrix4f::setSubmatrix2x2( int i0, int j0, const Matrix2f& m )$/;"	f	class:Matrix4f
+setSubmatrix3x3	./vecmath/src/Matrix4f.cpp	/^void Matrix4f::setSubmatrix3x3( int i0, int j0, const Matrix3f& m )$/;"	f	class:Matrix4f
+setTexCoord	Hit.h	/^	void setTexCoord(const Vector2f & coord){$/;"	f	class:Hit
+setTexCoord	Material.h	/^    void setTexCoord(Vector2f tex)$/;"	f	class:Material
+set_pixel	bitmap_image.hpp	/^   inline void set_pixel(const unsigned int x, const unsigned int y,$/;"	f	class:bitmap_image
+shadows	ArgParser.h	/^  int shadows;$/;"	m	class:ArgParser
+shininess	Material.h	/^  float shininess;$/;"	m	class:Material
+size	bitmap_image.hpp	/^   unsigned int   size;$/;"	m	struct:bitmap_file_header
+size	bitmap_image.hpp	/^   unsigned int   size;$/;"	m	struct:bitmap_information_header
+size_image	bitmap_image.hpp	/^   unsigned int   size_image;$/;"	m	struct:bitmap_information_header
+slerp	./vecmath/src/Quat4f.cpp	/^Quat4f Quat4f::slerp( const Quat4f& a, const Quat4f& b, float t, bool allowFlip )$/;"	f	class:Quat4f
+specularColor	Material.h	/^  Vector3f specularColor;$/;"	m	class:Material
+squad	./vecmath/src/Quat4f.cpp	/^Quat4f Quat4f::squad( const Quat4f& a, const Quat4f& tanA, const Quat4f& tanB, const Quat4f& b, float t )$/;"	f	class:Quat4f
+squadTangent	./vecmath/src/Quat4f.cpp	/^Quat4f Quat4f::squadTangent( const Quat4f& before, const Quat4f& center, const Quat4f& after )$/;"	f	class:Quat4f
+stats	ArgParser.h	/^  int stats;$/;"	m	class:ArgParser
+struct_size	bitmap_image.hpp	/^   unsigned int struct_size()$/;"	f	struct:bitmap_file_header
+struct_size	bitmap_image.hpp	/^   unsigned int struct_size()$/;"	f	struct:bitmap_information_header
+t	CubeMap.h	/^Texture t[6];$/;"	m	class:CubeMap
+t	Hit.h	/^	float t;$/;"	m	class:Hit
+t	Material.h	/^  Texture t;$/;"	m	class:Material
+t	Mesh.hpp	/^  std::vector<Trig>t;$/;"	m	class:Mesh
+termFunc	octree.hpp	/^	void (*termFunc) (int idx, void ** arg);$/;"	m	struct:Octree
+texCoord	Hit.h	/^	Vector2f texCoord;$/;"	m	class:Hit
+texCoord	Mesh.hpp	/^  std::vector<Vector2f>texCoord; $/;"	m	class:Mesh
+texCoords	Material.h	/^  Vector2f texCoords;$/;"	m	class:Material
+texCoords	Triangle.h	/^	Vector2f texCoords[3];$/;"	m	class:Triangle
+texID	Mesh.hpp	/^  int texID[3];$/;"	m	struct:Trig
+tm	Mesh.hpp	/^  float tm;$/;"	m	class:Mesh
+traceRay	RayTracer.cpp	/^Vector3f RayTracer::traceRay( Ray& ray, float tmin, int bounces,$/;"	f	class:RayTracer
+transformDirection	VecUtils.h	/^    static Vector3f transformDirection( const Matrix4f& mat, const Vector3f& dir )$/;"	f	class:VecUtils
+transformPoint	VecUtils.h	/^    static Vector3f transformPoint( const Matrix4f& mat, const Vector3f& point )$/;"	f	class:VecUtils
+translation	./vecmath/src/Matrix4f.cpp	/^Matrix4f Matrix4f::translation( const Vector3f& rTranslation )$/;"	f	class:Matrix4f
+translation	./vecmath/src/Matrix4f.cpp	/^Matrix4f Matrix4f::translation( float x, float y, float z )$/;"	f	class:Matrix4f
+transmittedDirection	RayTracer.cpp	/^bool transmittedDirection( const Vector3f& normal, const Vector3f& incoming,$/;"	f
+transpose	./vecmath/src/Matrix2f.cpp	/^void Matrix2f::transpose()$/;"	f	class:Matrix2f
+transpose	./vecmath/src/Matrix3f.cpp	/^void Matrix3f::transpose()$/;"	f	class:Matrix3f
+transpose	./vecmath/src/Matrix4f.cpp	/^void Matrix4f::transpose()$/;"	f	class:Matrix4f
+transposed	./vecmath/src/Matrix2f.cpp	/^Matrix2f Matrix2f::transposed() const$/;"	f	class:Matrix2f
+transposed	./vecmath/src/Matrix3f.cpp	/^Matrix3f Matrix3f::transposed() const$/;"	f	class:Matrix3f
+transposed	./vecmath/src/Matrix4f.cpp	/^Matrix4f Matrix4f::transposed() const$/;"	f	class:Matrix4f
+trigBox	octree.cpp	/^Box trigBox(int t, const Mesh & m ){$/;"	f
+type	Object3D.h	/^	char* type;$/;"	m	class:Object3D
+type	bitmap_image.hpp	/^   unsigned short type;$/;"	m	struct:bitmap_file_header
+u	Camera.h	/^    Vector3f u, v, w;$/;"	m	class:PerspectiveCamera
+uniformScaling	./vecmath/src/Matrix3f.cpp	/^Matrix3f Matrix3f::uniformScaling( float s )$/;"	f	class:Matrix3f
+uniformScaling	./vecmath/src/Matrix4f.cpp	/^Matrix4f Matrix4f::uniformScaling( float s )$/;"	f	class:Matrix4f
+up	Camera.h	/^	Vector3f up;$/;"	m	class:Camera
+v	Camera.h	/^    Vector3f u, v, w;$/;"	m	class:PerspectiveCamera
+v	Mesh.hpp	/^  std::vector<Vector3f>v;$/;"	m	class:Mesh
+valid	Noise.cpp	/^bool Noise::valid()$/;"	f	class:Noise
+valid	texture.cpp	/^bool Texture::valid()$/;"	f	class:Texture
+valid_	bitmap_image.hpp	/^   bool           valid_;$/;"	m	class:bitmap_image
+w	./vecmath/src/Quat4f.cpp	/^float Quat4f::w() const$/;"	f	class:Quat4f
+w	./vecmath/src/Vector4f.cpp	/^float Vector4f::w() const$/;"	f	class:Vector4f
+w	./vecmath/src/Vector4f.cpp	/^float& Vector4f::w()$/;"	f	class:Vector4f
+w	Camera.h	/^    Vector3f u, v, w;$/;"	m	class:PerspectiveCamera
+width	ArgParser.h	/^  int width;$/;"	m	class:ArgParser
+width	Image.h	/^    int width;$/;"	m	class:Image
+width	bitmap_image.hpp	/^   int width(){return width_;}$/;"	f	class:bitmap_image
+width	bitmap_image.hpp	/^   unsigned int   width;$/;"	m	struct:bitmap_information_header
+width	texture.hpp	/^  int width , height;$/;"	m	class:Texture
+width_	bitmap_image.hpp	/^   unsigned int   width_;$/;"	m	class:bitmap_image
+write_bfh	bitmap_image.hpp	/^inline void write_bfh(std::ofstream& stream, const bitmap_file_header& bfh)$/;"	f
+write_bih	bitmap_image.hpp	/^inline void write_bih(std::ofstream& stream, const bitmap_information_header& bih)$/;"	f
+write_to_stream	bitmap_image.hpp	/^inline void write_to_stream(std::ofstream& stream,const T& t)$/;"	f
+wx	./vecmath/src/Vector4f.cpp	/^Vector2f Vector4f::wx() const$/;"	f	class:Vector4f
+wxy	./vecmath/src/Vector4f.cpp	/^Vector3f Vector4f::wxy() const$/;"	f	class:Vector4f
+wxyz	./vecmath/src/Quat4f.cpp	/^Vector4f Quat4f::wxyz() const$/;"	f	class:Quat4f
+wxz	./vecmath/src/Vector4f.cpp	/^Vector3f Vector4f::wxz() const$/;"	f	class:Vector4f
+x	./vecmath/src/Quat4f.cpp	/^float Quat4f::x() const$/;"	f	class:Quat4f
+x	./vecmath/src/Vector2f.cpp	/^float Vector2f::x() const$/;"	f	class:Vector2f
+x	./vecmath/src/Vector2f.cpp	/^float& Vector2f::x()$/;"	f	class:Vector2f
+x	./vecmath/src/Vector3f.cpp	/^float Vector3f::x() const$/;"	f	class:Vector3f
+x	./vecmath/src/Vector3f.cpp	/^float& Vector3f::x()$/;"	f	class:Vector3f
+x	./vecmath/src/Vector4f.cpp	/^float Vector4f::x() const$/;"	f	class:Vector4f
+x	./vecmath/src/Vector4f.cpp	/^float& Vector4f::x()$/;"	f	class:Vector4f
+x	Mesh.hpp	/^  int x[3];$/;"	m	struct:Trig
+x_pels_per_meter	bitmap_image.hpp	/^   unsigned int   x_pels_per_meter;$/;"	m	struct:bitmap_information_header
+xx	./vecmath/src/Vector2f.cpp	/^Vector2f Vector2f::xx() const$/;"	f	class:Vector2f
+xy	./vecmath/src/Vector2f.cpp	/^Vector2f Vector2f::xy() const$/;"	f	class:Vector2f
+xy	./vecmath/src/Vector3f.cpp	/^Vector2f Vector3f::xy() const$/;"	f	class:Vector3f
+xy	./vecmath/src/Vector4f.cpp	/^Vector2f Vector4f::xy() const$/;"	f	class:Vector4f
+xyw	./vecmath/src/Vector4f.cpp	/^Vector3f Vector4f::xyw() const$/;"	f	class:Vector4f
+xyz	./vecmath/src/Quat4f.cpp	/^Vector3f Quat4f::xyz() const$/;"	f	class:Quat4f
+xyz	./vecmath/src/Vector3f.cpp	/^Vector3f Vector3f::xyz() const$/;"	f	class:Vector3f
+xyz	./vecmath/src/Vector4f.cpp	/^Vector3f Vector4f::xyz() const$/;"	f	class:Vector4f
+xz	./vecmath/src/Vector3f.cpp	/^Vector2f Vector3f::xz() const$/;"	f	class:Vector3f
+y	./vecmath/src/Quat4f.cpp	/^float Quat4f::y() const$/;"	f	class:Quat4f
+y	./vecmath/src/Vector2f.cpp	/^float Vector2f::y() const$/;"	f	class:Vector2f
+y	./vecmath/src/Vector2f.cpp	/^float& Vector2f::y()$/;"	f	class:Vector2f
+y	./vecmath/src/Vector3f.cpp	/^float Vector3f::y() const$/;"	f	class:Vector3f
+y	./vecmath/src/Vector3f.cpp	/^float& Vector3f::y()$/;"	f	class:Vector3f
+y	./vecmath/src/Vector4f.cpp	/^float Vector4f::y() const$/;"	f	class:Vector4f
+y	./vecmath/src/Vector4f.cpp	/^float& Vector4f::y()$/;"	f	class:Vector4f
+y_pels_per_meter	bitmap_image.hpp	/^   unsigned int   y_pels_per_meter;$/;"	m	struct:bitmap_information_header
+yx	./vecmath/src/Vector2f.cpp	/^Vector2f Vector2f::yx() const$/;"	f	class:Vector2f
+yy	./vecmath/src/Vector2f.cpp	/^Vector2f Vector2f::yy() const$/;"	f	class:Vector2f
+yz	./vecmath/src/Vector3f.cpp	/^Vector2f Vector3f::yz() const$/;"	f	class:Vector3f
+yz	./vecmath/src/Vector4f.cpp	/^Vector2f Vector4f::yz() const$/;"	f	class:Vector4f
+yzw	./vecmath/src/Vector4f.cpp	/^Vector3f Vector4f::yzw() const$/;"	f	class:Vector4f
+yzx	./vecmath/src/Vector3f.cpp	/^Vector3f Vector3f::yzx() const$/;"	f	class:Vector3f
+yzx	./vecmath/src/Vector4f.cpp	/^Vector3f Vector4f::yzx() const$/;"	f	class:Vector4f
+z	./vecmath/src/Quat4f.cpp	/^float Quat4f::z() const$/;"	f	class:Quat4f
+z	./vecmath/src/Vector3f.cpp	/^float Vector3f::z() const$/;"	f	class:Vector3f
+z	./vecmath/src/Vector3f.cpp	/^float& Vector3f::z()$/;"	f	class:Vector3f
+z	./vecmath/src/Vector4f.cpp	/^float Vector4f::z() const$/;"	f	class:Vector4f
+z	./vecmath/src/Vector4f.cpp	/^float& Vector4f::z()$/;"	f	class:Vector4f
+zw	./vecmath/src/Vector4f.cpp	/^Vector2f Vector4f::zw() const$/;"	f	class:Vector4f
+zwx	./vecmath/src/Vector4f.cpp	/^Vector3f Vector4f::zwx() const$/;"	f	class:Vector4f
+zwy	./vecmath/src/Vector4f.cpp	/^Vector3f Vector4f::zwy() const$/;"	f	class:Vector4f
+zxy	./vecmath/src/Vector3f.cpp	/^Vector3f Vector3f::zxy() const$/;"	f	class:Vector3f
+~Camera	Camera.h	/^	virtual ~Camera(){}$/;"	f	class:Camera
+~DirectionalLight	Light.h	/^    ~DirectionalLight()$/;"	f	class:DirectionalLight
+~Group	Group.h	/^  ~Group(){$/;"	f	class:Group
+~Hit	Hit.h	/^    ~Hit()$/;"	f	class:Hit
+~Image	Image.h	/^    ~Image()$/;"	f	class:Image
+~Light	Light.h	/^    virtual ~Light()$/;"	f	class:Light
+~Material	Material.cpp	/^Material::~Material()$/;"	f	class:Material
+~Object3D	Object3D.h	/^	virtual ~Object3D(){}$/;"	f	class:Object3D
+~Plane	Plane.h	/^	~Plane(){}$/;"	f	class:Plane
+~PointLight	Light.h	/^    ~PointLight()$/;"	f	class:PointLight
+~RayTracer	RayTracer.cpp	/^RayTracer::~RayTracer()$/;"	f	class:RayTracer
+~SceneParser	SceneParser.cpp	/^SceneParser::~SceneParser() {$/;"	f	class:SceneParser
+~Sphere	Sphere.h	/^	~Sphere(){}$/;"	f	class:Sphere
+~Texture	texture.cpp	/^Texture::~Texture()$/;"	f	class:Texture
+~Transform	Transform.h	/^  ~Transform()$/;"	f	class:Transform
+~bitmap_image	bitmap_image.hpp	/^  ~bitmap_image()$/;"	f	class:bitmap_image
